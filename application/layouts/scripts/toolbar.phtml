@@ -1,0 +1,162 @@
+<script type="text/javascript">
+    dojo.require("dijit.MenuBar");
+    dojo.require("dijit.PopupMenuBarItem");
+    dojo.require("dijit.Menu");
+    dojo.require("dijit.MenuItem");
+    dojo.require("dijit.PopupMenuItem");
+</script>
+
+<!-- <span style="width:99%;border:none; border-bottom:1px solid #eeeeee;" class="dijitReset dijitInline dijitButtonNode">
+
+<?php   
+$tr = Application_Form_FrmLanguages::getCurrentlanguage(); 
+$session_user=new Zend_Session_Namespace('auth');
+$username = $session_user->first_name;
+    //user level    	
+	/*$session_user=new Zend_Session_Namespace('auth');		
+	$user_level=$session_user->level;	
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+	
+	$request=Zend_Controller_Front::getInstance()->getRequest();
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	if($user_level!=1){?>
+	    <input  type="button" id="student"  value="<?php //echo $tr->translate("តារាងនិសិ្សត");?>" label="<?php //echo $tr->translate("តារាងនិសិ្សត");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"student",'action'=>'index')); ?>';"/>
+		<input  type="button" id="newstudent"  value="<?php //echo $tr->translate("និសិ្សតថ្មី");?>" label="<?php //echo $tr->translate("និសិ្សតថ្មី");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"newstudent",'action'=>'index')); ?>';"/>
+		<input  type="button" id="attendent"  value="<?php //echo $tr->translate("អវត្តមាននិសិ្សត");?>" label="<?php //echo $tr->translate("អវត្តមាននិសិ្សត");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"attendent",'action'=>'index')); ?>';"/>
+		<input  type="button" id="score"  value="<?php //echo $tr->translate("តារាងពិន្ទុ");?>" label="<?php //echo $tr->translate("តារាងពិន្ទុ");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"score",'action'=>'index')); ?>';"/>
+		<input  type="button" id="result"  value="<?php //echo $tr->translate("លទ្ធផលប្រលង");?>" label="<?php //echo $tr->translate("លទ្ធផលប្រលង");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"result",'action'=>'index')); ?>';"/>
+		<input  type="button" id="certificate"  value="<?php //echo $tr->translate("និស្សិតទទួលសញ្ញាបត្រ");?>" label="<?php //echo $tr->translate("និស្សិតទទួលសញ្ញាបត្រ");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"certificate",'action'=>'index')); ?>';"/>
+		<input  type="button" id="allreport" value="របាយការណ៏ទាំងអស់" label="របាយការណ៏ទាំងអស់" onclick="window.location = '<?php //echo $this->baseUrl()."/allreport";?>'"
+											dojoType="dijit.form.Button" /> 
+		
+	<?php }else{
+	//if(isset($session_user->arr_module)){
+		$arr_module = $session_user->arr_module;
+		
+		foreach($arr_module as $module){
+			$url = $base_url.$module;
+
+		
+			if ($module == "rsvAcl"){
+?>
+			<input iconClass="dijitIconUsers" type="button" id="rsvAcl" value="កំនត់សិទ្ធអ្នកប្រើប្រាស់" label="កំនត់សិទ្ធអ្នកប្រើប្រាស់" onclick="window.location = '<?php echo $url;?>'" 
+						dojoType="dijit.form.Button" />
+<?php 		}
+			if ($module == "user"){
+?>				
+		<input  type="button" id="user" value="អ្នក​ប្រើ​ប្រាស់" label="អ្នក​ប្រើ​ប្រាស់" onclick="window.location = '<?php echo $url;?>'"
+						dojoType="dijit.form.Button" />
+<?php 		}
+
+		}
+		 			//if ($module == "register"){
+		?>
+							<input  type="button" id="registrar" value="ការិយាល័យ  ចុះឈ្មោះ" label="ការិយាល័យ  ចុះឈ្មោះ" onclick="window.location = '<?php echo $this->baseUrl()."/registrar";?>'"
+											dojoType="dijit.form.Button" />
+					<?php 		//}
+						?>
+							<input  type="button" id="accounting" value="ការិយាល័យ  គណនេយ្យ" label="ការិយាល័យ  គណនេយ្យ" onclick="window.location = '<?php echo $this->baseUrl()."/accounting";?>'"
+											dojoType="dijit.form.Button" />
+					<?php 				//if ($module == "admin"){
+					?>
+							<input  type="button" id="foundation" value="ឆ្នាំសិក្សាមូលដ្ឋាន" label="ដេប៉ាតឺមង់ ឆ្នាំសិក្សាមូលដ្ឋាន" onclick="window.location = '<?php echo $this->baseUrl()."/foundation";?>'"
+											dojoType="dijit.form.Button" />
+							<input  type="button" id="global" value="ព័ត៏មានផ្សេងៗ" label="ព័ត៏មានផ្សេងៗ" onclick="window.location = '<?php echo $this->baseUrl()."/global";?>'"
+											dojoType="dijit.form.Button" />
+							<!-- <input  type="button" id="allreport" value="របាយការណ៏ទាំងអស់" label="របាយការណ៏ទាំងអស់" onclick="window.location = '<?php echo $this->baseUrl()."/allreport";?>'"
+											dojoType="dijit.form.Button" /> -->
+					<?php 		//}
+						
+	}
+*/?>
+</span>-->
+<div dojoType="dijit.MenuBar" id="navMenu">
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            File
+        </span>
+        <div dojoType="dijit.Menu" id="fileMenu">
+            <div dojoType="dijit.MenuItem" onClick="alert('file 1')">
+                File #1
+            </div>
+            <div dojoType="dijit.MenuItem" onClick="alert('file 2')">
+                File #2
+            </div>
+        </div>
+    </div>
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            Modules
+        </span>
+        <div dojoType="dijit.Menu" id="editMenu">
+        	<div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/registrar"; ?>"' >
+            <?php echo $tr->translate("ការិយាល័យចុះឈ្មោះ");?>
+            </div>
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/accounting"; ?>"' >
+            	<?php echo $tr->translate("ការិយាល័យគណនេយ្យ");?>
+            </div>
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/foundation"; ?>"' >
+            	<?php echo $tr->translate("ការិយាល័យសិក្សា");?>
+            </div>
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/global"; ?>"' >
+            <?php echo $tr->translate("ព័ត៏មានផ្សេងៗ");?>
+            </div>
+        </div>
+    </div>
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            <?php echo $tr->translate("តំលៃសិក្សា");?>
+        </span>
+        <div dojoType="dijit.Menu" id="fee">
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/accounting/fee"; ?>"' >
+            	<?php echo $tr->translate("តំលៃសិក្សា");?>
+            </div>
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/global"; ?>"' >
+            <?php echo $tr->translate("ព័ត៏មានផ្សេងៗ");?>
+            </div>
+        </div>
+    </div>
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            	<?php echo $tr->translate("របាយការណ៏");?>
+        </span>
+        <div dojoType="dijit.Menu" id="report">
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/allreport"; ?>"' >
+                <?php echo $tr->translate("របាយការណ៏");?>
+            </div>
+        </div>
+    </div>
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            	<?php echo $tr->translate("ប្តូរភាសា");?>
+        </span>
+        <div dojoType="dijit.Menu" id="kh">
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/allreport"; ?>"' >
+                <?php echo $tr->translate("ភាសារខ្មែរ");?>
+            </div>
+            <div dojoType="dijit.MenuItem" onClick='window.location="<?php echo $this->baseUrl()."/allreport"; ?>"' >
+                <?php echo $tr->translate("ភាសារអង់គ្លេស");?>
+            </div>
+        </div>
+    </div>
+    <div dojoType="dijit.PopupMenuBarItem">
+        <span>
+            Backup
+        </span>
+        <div dojoType="dijit.Menu" id="backup">
+            <div dojoType="dijit.MenuItem" onClick="hideleft();">
+                Backup
+            </div>
+        </div>
+    </div>
+    
+    
+    <strong style="float: right;padding-right: 20px;">កំពុង​ប្រើ​ប្រាស់ ដោយ: <a href="<?php echo $this->url(array('module'=>'','controller'=>'index','action'=>'changepassword')); ?>"><font color="#006600"><?php echo $username;?></font></a></strong>
+<div style="clear: both;"></div>
+</div>
+<div style="clear: both;"></div>
+<?php 
+	//$session_lang=new Zend_Session_Namespace('lang');
+	//$session_lang->lang_id=2;//$formdata["lang"];//for creat session
+	//Application_Form_FrmLanguages::getCurrentlanguage(2);//for choose lang for when login
+?>

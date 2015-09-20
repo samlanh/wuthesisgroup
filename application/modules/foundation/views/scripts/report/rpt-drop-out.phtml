@@ -1,0 +1,75 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Report Student Drop Up'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='rpt_drop_up' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-drop-up')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<strong>ព្រះរាជាណាចក្រកម្ពុជា</strong><br />
+										<strong>ជាតិ សាសនា ព្រះមហាក្សត្រ</strong><br />
+										<strong style="font-family: Tacteing;">rr2ss</strong><br />
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>WESTERN UNIVERSITY</strong><br />
+										<strong>បញ្ជីរាយនាមនិស្សិតឆ្នាំទី១ ថ្នាក់បរិញ្ញាបត្រ និងបរិញ្ញាបត្ររងបោះបង់ការសិក្សា(វគ្គ២)</strong><br /><br />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+											<style> th{background:#ccc;border-top:double;border-bottom:double;}</style>
+												<th>ល.រ</th>
+												<th>គោលនាម-នាម</th>
+												<th>អក្សរឡាតាំង</th>
+												<th>ភេទ</th>
+												<th>អត្តលេខ</th>	
+												<th>ថ្ងៃ ខែ ឆ្នាំកំណើត</th>
+												<th>ជំនាញ</th>
+												<th>មូលហេតុ</th>
+												<th>លេខទូរស័ព្ទ</th>					
+											
+											</tr>
+											<style> td{padding:0 3px; }</style>
+											<?php for ($i=1;$i<25;$i++){?>
+											<tr style="font-size:13px;height: 23px;"​ align="center">
+												<td><?php echo $i;?></td>
+												<td>ដារា</td>
+												<td>dara</td>
+												<td>M</td>
+												<td>B11-0067</td>
+												<td>02/Jan/1991</td>
+												<td>IT</td>
+												<td>very busy with work</td>
+												<td>098352499</td>
+											</tr>
+											<?php }?>	
+										</table>	
+									</td>
+								</tr>
+								<tr><td><br /><br /></td></tr>
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="right" style="padding-right:25px;">
+										<strong>February 21,2014</strong><br /><br />
+										<strong>Prepeared by</strong><br /><br /><br /><br /><br />
+										<strong>Te Sekmuoy</strong><br />
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

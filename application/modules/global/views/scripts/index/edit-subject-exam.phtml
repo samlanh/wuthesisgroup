@@ -1,0 +1,35 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate('SRMS_EDIT_SUBJECT_EXAM')); 
+?>	
+
+<?php  $subject_exam= $this->frm_subject_exam;?>
+<form  id='add_subject_exam' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'edit-subject-exam')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table cellspacing="10" width="40%" style="margin: 0 auto;">
+	<tr>
+		<td>
+			<fieldset style="background-color:menu;">
+					<legend align="center" ><strong><?php echo $tr->translate("SRMS_EDIT_SUBJECT_EXAM");?></strong></legend>
+						<table style="margin: 0 auto; width: 95%;" cellspacing="10">
+							<tr>
+								<td style="width: 100px"><?php echo $tr->translate("SUBJECT_EXAM")?></td>
+								<td><?php  echo $subject_exam->getElement('subject_exam');?></td>
+							</tr>
+							<tr>
+								<td style="width: 5px"><?php echo $tr->translate("STATUS")?></td>
+								<td><?php  echo $subject_exam->getElement('status');?></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">
+									<input type="button" label="<?php echo $tr->translate('GO_BACK');?>" id="back" dojoType="dijit.form.Button" 
+										 iconClass="dijitIconUndo" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'subject-list'),null,true); ?>';" />
+									<input type="submit" value="<?php echo $tr->translate("GO_EDIT");?>" label="<?php echo $tr->translate("GO_EDIT");?>" id="submitButton" dojoType="dijit.form.Button" 
+										 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_subject_exam").submit();"/>
+								</td>
+							</tr>
+						</table>	
+			</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>

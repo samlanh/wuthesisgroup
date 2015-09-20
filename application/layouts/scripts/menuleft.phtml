@@ -1,0 +1,114 @@
+	<?php
+	$request=Zend_Controller_Front::getInstance()->getRequest();
+	$action = $request->getActionName();
+	$baseurl  = $this->baseUrl();
+		/*--------------------URLs link display--------------------------*/
+		  $tr=Application_Form_FrmLanguages::getCurrentlanguage();
+		$arr_param_menu=array( 
+			'home'=>array(
+						'index'=>'<li><a href="">'.$tr->translate("HOME").'</a></li>',
+			),
+			'registrar'=>array(
+				'Register'=>'<li><a href="">'.$tr->translate("ចុះឈ្មោះបង់លុយ").'</a></li>',
+				'Wurequest'=>'<li><a href="">'.$tr->translate("ពាក្យស្នើររបស់និស្សិត").'</a></li>',		 					
+				'Gepregister'=>'<li><a href="">'.$tr->translate("ចុះឈ្មោះបង់លុយ(TC)").'</a></li>',
+				'global'=>'<li><a href="">'.$tr->translate("បញ្ជីរាប់ទឹកប្រាក់").'</a></li>',
+				'global'=>'<li><a href="">'.$tr->translate("របាយការណ៏ទាំងអស់").'</a></li>',
+				
+			),
+			'foundation'=>array(			
+		        'newstudent'=>'<li><a href="">'.$tr->translate("តារាងនិសិ្សតថ្មី").'</a></li>',
+		        'student'=>'<li><a href="">'.$tr->translate("តារាងនិសិ្សត").'</a></li>',
+				'attendent'=>'<li><a href="">'.$tr->translate("អវត្តមាននិសិ្សត").'</a></li>',
+		        'score'=>'<li><a href="">'.$tr->translate("តារាងពិន្ទុ").'</a></li>',
+			    'result'=>'<li><a href="">'.$tr->translate("និស្សិតទទួលសញ្ញាបត្រ").'</a></li>',
+			    'certificate'=>'<li><a href="">'.$tr->translate("របាយការណ៏ទាំងអស់").'</a></li>',
+			    'global'=>'<li><a href="">'.$tr->translate("ផ្សេងៗ").'</a></li>', 		
+			),
+			'gep'=>array(
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',
+					/*
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',
+				'gep'=>'<li><a href="" title="">'.$tr->translate("មិនទាន់មានទិន្នន័យនៅឡើយ").'</a></li>',*/
+			),
+			'accounting'=>array(				
+				'wuar'=>'<li><a href="">'.$tr->translate("ចំណូលបង់លុយពី(WU)").'</a></li>',				
+				'tcar'=>'<li><a href="">'.$tr->translate("ចំណូលបង់លុយ(TC)").'</a></li>',
+				'Servicear'=>'<li><a href="">'.$tr->translate("ចំនូលពីសេវាកម្ម").'</a></li>',
+				'StudentDebt'=>'<li><a href="">'.$tr->translate("តារាងជំពាក់ជំពាក់").'</a></li>',
+				'fee'=>'<li><a href="">'.$tr->translate("TUITION_FEE").'</a></li>',
+				'services'=>'<li><a href="">'.$tr->translate("SERVICE_PROGRAMER_CATE").'</a></li>',		
+				'program'=>'<li><a href="">'.$tr->translate("SRMS_SERVICE_PROGRAM").'</a></li>',
+				'ProgramCharge'=>'<li><a href="">'.$tr->translate("GEPPROGRAM_FEE").'</a></li>',
+				'ServiceCharge'=>'<li><a href="">'.$tr->translate("SERVICE_FEE").'</a></li>',
+				'StudentLate'=>'<li><a href="">'.$tr->translate("STUDENT_LATE").'</a></li>',
+				'StudentDrop'=>'<li><a href="">'.$tr->translate("STUDENT_DROP").'</a></li>',
+				'global'=>'<li><a href="">'.$tr->translate("GLOBAL").'</a></li>',
+			),
+			'global'=>array(
+					'dept-list'=>"<li><span class''><a href='".$baseurl."/global/index/dept-list'>".$tr->translate("FACULTIES")."</a></span></li>",
+					'major-list'=>"<li><span class''><a href='".$baseurl."/global/index/major-list'>".$tr->translate("MAJORS")."</a></span></li>",
+					'room-list'=>"<li><span class''><a href='".$baseurl."/global/index/room-list'>".$tr->translate("ROOM_NAME")."</a></span></li>",
+					'teacher-lis'=>"<li><span class''><a href='".$baseurl."/global/index/teacher-list'>".$tr->translate("LACTURER")."</a></span></li>",
+					'subject-list'=>"<li><span class''><a href='".$baseurl."/global/index/subject-list'>".$tr->translate("SUBJECT_EXAM")."</a></span></li>",
+					'province-list'=>"<li><span class''><a href='".$baseurl."/global/index/province-list'>".$tr->translate("CITY_PROVINCE")."</a></span></li>",
+					'setting'=>"<li><span class''><a href='".$baseurl."/global/index/setting'>".$tr->translate("SETTING")."</a></span></li>",
+					'icon'=>"<li><span class''><a href='".$baseurl."/global/index/icon'>".$tr->translate("icon")."</a></span></li>",
+			),
+			'user'=>array(
+				'index'=>'<li><a href="">'.$tr->translate("USER").'</a></li>',
+			),	
+			'rsvAcl'=>array(
+					 	'index'=>'<li><a href="">'.$tr->translate("USER").'</a></li>',
+					    'acl'=>'<li><a href="">'.$tr->translate("ACL").'</a></li>',
+						'user'=>'<li><a href="">'.$tr->translate('USER').'</a></li>',
+						'userAccess'=>'<li><a href="">'.$tr->translate("USER_ACCESS").'</a></li>',
+						'userType'=>'<li><a href="">'.$tr->translate("USER_TYPE").'</a></li>',
+				),
+			'backup'=>array(
+						'index'=>'<li><a href="">'.$tr->translate("Backup List").'</a></li>',
+				),
+			'allreport'=>array(
+				'rpt-student-list'=>"<li><span class''><a href='".$baseurl."/allreport/foundation/rpt-student-list'>".$tr->translate("បញ្ជីឈ្មោះនិស្សិត")."</a></span></li>",
+				'poc'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-exam-degree'>".$tr->translate('បញ្ជីរាយនាមបេក្ខជនប្រលង')."</a></li>",
+				'legal-document'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-final-exams'>".$tr->translate("បេក្ខជនប្រលងជាប់ជាស្ថាពរ")."</a></li>",
+				'rfm'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-stuid'>".$tr->translate('បេក្ខជនបានធ្វើកាតរ')."</a></li>",
+				'pam'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-foundation'>".$tr->translate("បេក្ខជនបានធ្វើកាតរ")."</a></li>",
+				'prc'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-drop-out'>".$tr->translate("បេក្ខជនប្រលងជ្រើសរើសចូលរៀន")."</a></li>",
+				'budget-regulation'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-total-attendance'>".$tr->translate("បញ្ជីសរុបអវត្តមាន")."</a></li>",
+				'da'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-scorelist'>".$tr->translate("បញ្ជីស្រង់ពិន្ទសំរាប់គ្រូ")."</a></li>",
+				'asd'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-student-attendance'>".$tr->translate("បញ្ជីស្រង់អវត្តមាន")."</a></li>",
+				'asdf'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-amount-student'>".$tr->translate("បញ្ជីសរុបចំនួននិស្សិត")."</a></li>",
+				//''=>"<li><a href='".$baseurl."/allreport/foundation/rpt-scorelist'>".$tr->translate("REF_SOP")."</a></li>",
+				'rpt-allresult'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-allresult'>".$tr->translate("បញ្ជីលទ្ទផលប្រលងប្រចាំឆ្នាំ")."</a></li>",
+				''=>"<li><a href='".$baseurl."/allreport/foundation/rpt-certificate'>".$tr->translate("ឆ្នាំសិក្សាមូលដ្ឋាន ")."</a></li>",
+				'asasfd'=>"<li><a href='".$baseurl."/allreport/foundation/rpt-full-result'>".$tr->translate("ប្រាក់ចំណូលរបស់និស្សិត")."</a></li>",
+				'rpt-daily'=>"<li><a href='".$baseurl."/allreport/receiptionist/rpt-daily'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				//accounting
+				'rpt-account-rec'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-account-rec'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-gep-fee'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-gep-fee'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-gep-list'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-gep-list'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-invoice'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-invoice'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-list-of-item'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-list-of-item'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-student-list-detail-part1'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-student-list-detail-part1'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-student-list-detail-part2'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-student-list-detail-part2'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-student-list-detail-part3'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-student-list-detail-part3'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-studentpayment'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-studentpayment'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+				'rpt-tuition-fee'=>"<li><a href='".$baseurl."/allreport/accounting/rpt-tuition-fee'>".$tr->translate("ប្រាក់ចំណូលរបស់និ")."</a></li>",
+			),	
+		); 
+	?>
+	<div id="header-left">
+	<ul>
+			<?php 
+// 				$request=Zend_Controller_Front::getInstance()->getRequest();
+				$dc=new Application_Model_Decorator();					
+				$class="current-left";					
+				$menu=$dc->getMenuLeft($arr_param_menu[$request->getModuleName()],$request->getControllerName(),$request->getModuleName());
+				if($menu) echo $menu;					
+			?>
+	</ul>																
+	</div>

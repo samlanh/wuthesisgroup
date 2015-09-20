@@ -1,0 +1,92 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | Student Exam Fundation Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-final-exams')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("REPORT_FOUNDATION_EXAMININATION");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<span>Morning Session</span><br />
+										<span>A.Y:2013-2014</span><br />
+									</td>
+								</tr>
+								<tr>
+									<td width="20%">  <small>
+										<strong>WESTERN UNIVERSITY</strong><br />
+										<span>Department of Foundation Year</span><br />
+										<span>Dynamic text</span><br />
+										<span>Dynamic text</span><br />
+										<span>Dynamic text</span><br /></small>
+									</td>
+									<td align="center">
+			
+										<strong>Score List</strong><br />
+										<span>Lecturer:..........................</span><br />
+										<span>Subject:..........................</span><br />
+									
+									</td>
+									<td width="20%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+											<style type="text/css">
+body{font-family: "Times New Roman",Arial;  font-size:20px;}
+table{ border-collapse:collapse; border:1px double #000; margin: 0 auto;"
+}
+.padd tr td{ padding:1px 0px; font-size:12px; text-align:center}
+.padd tr th{ padding:0px 0px; font-size:12px; text-align:center; font-weight:normal; }
+
+</style>
+
+<table class="padd" width="842" border="1" align="center">
+  <tr>
+    <th  height="80" scope="col"><b>No</b></th>
+    <th  scope="col" width="130"><strong>Full Name</strong></th>
+    <th scope="col"><strong>Sex</strong></th>
+    <th scope="col"><strong>ID No</strong></th>
+    <th  scope="col">Attendence 10%</th>
+    <th  scope="col" width="70">Homework or Test or Quizzes<br/> 10%</th>
+    <th  scope="col">Assignment or Progect 15%</th>
+    <th scope="col">Mid-Term 15%</th>
+    <th  scope="col">Total On-going</th>
+    <th scope="col">Semester Exam 50%</th>
+    <th  scope="col">Total 100%</th>
+    <th  scope="col">Remark</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Mok Channy</td>
+    <td>M</td>
+    <td>B11-0639</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td bgcolor="#efefef">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td bgcolor="#efefef">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>
+
+	
+		
+	

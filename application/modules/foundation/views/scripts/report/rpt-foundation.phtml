@@ -1,0 +1,81 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Student Exam Fundation Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-foundation')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="right">
+										<strong>ព្រះរាជាណាចក្រកម្ពុជា</strong><br />
+										<strong>ជាតិ សាសនា ព្រះមហាក្សត្រ</strong><br />
+									</td>
+								</tr>
+								<tr>
+									<td width="20%" align="left">
+										<strong>ក្រសួងអប់រំ យុវជន និងកីឡា</strong><br />
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br /><br ><br ><br >
+									</td>
+									<td align="center">
+										<strong>បញ្ជីរាយនាមបេក្ខជនប្រលងជ្រើសរើស ចូលរៀនថ្នាក់ឆ្នាំសិក្សា លើកទីមួយ ជំនាន់ទីមួយ</strong><br />
+										<strong>មហាវិទ្យាល័យ សិល្បៈ មនុស្សសាស្រ្ត និងភាសា ,ជំនាញអប់រំភាសាអង់គ្លេស ឆ្នាំសិក្សា 2013-214</strong><br />
+									</td>
+									<td width="20%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+												<th rowspan="2">ល.រ</th>
+												<th rowspan="2">គោលនាម-នាម</th>
+												<th rowspan="2">អក្សរឡាតាំង</th>
+												<th rowspan="2">ភេទ</th>
+												<th rowspan="2">ថ្ងៃខែឆ្នាំកំណើត</th>	
+												<th colspan="2">ពិន្ទុតាមមុខវិជ្ជា</th>
+												<th rowspan="2">មធ្យមភាគ</th>
+												<th rowspan="2">លំដាប់ពិន្ទុរួម</th>
+												<th rowspan="2">ខេត្តដើមកំណើត</th>					
+												<th rowspan="2">ឆ្នាំជាប់សញ្ញាបត្រមធ្យម<br />សិក្សាទុតិយភូមិ</th>
+												<th rowspan="2">លេខសញ្ញាបត្រមធ្យម<br />សិក្សាទុតិយភូមិ</th>
+												<th rowspan="2">លទ្ធផល</th>
+											</tr>
+											<tr​​>
+												<th><small>វប្បធម៌ទូទៅ</small></th>
+												<th><small>ភាសាអង់គ្លេស</small></th>
+											</tr><style> td{padding:0 3px; }</style>
+											<?php for ($i=1;$i<25;$i++){?>
+											<tr style="font-size:13px;height: 23px;"​ align="center">
+												<td><?php echo $i;?></td>
+												<td align="left">ដារា</td>
+												<td align="left">dara</td>
+												<td>M</td>
+												<td>02/Jan/1991</td>
+												<td>56</td>
+												<td>78</td>
+												<td>64.54</td>
+												<td>134</td>
+												<td>Phnom Penh</td>
+												<td>2013</td>
+												<td>123013</td>
+												<td></td>
+											</tr>
+											<?php }?>	
+										</table>	
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

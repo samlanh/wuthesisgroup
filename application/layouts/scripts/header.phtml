@@ -1,0 +1,84 @@
+<?php 
+	  $tr=Application_Form_FrmLanguages::getCurrentlanguage();
+	
+	  $home=$this->url(array('module'=>'home','controller'=>'index','action'=>'index'), null, true);
+	  $registrar=$this->url(array('module'=>'registrar','controller'=>'Register','action'=>'wu-register'), null, true);
+	  $foundation=$this->url(array('module'=>'foundation','controller'=>'index','action'=>'index'), null, true);
+	  $accounting=$this->url(array('module'=>'accounting','controller'=>'index','action'=>'index'), null, true);
+	  $gep=$this->url(array('module'=>'gep','controller'=>'index','action'=>'index'), null, true);
+	  $report=$this->url(array('module'=>'allreport','controller'=>'index','action'=>'index'), null, true);
+	  $global=$this->url(array('module'=>'global','controller'=>'index','action'=>'index'), null, true);
+	  $inventory_path=$this->url(array('module'=>'inventory','controller'=>'tax-exemption','action'=>'index'), null, true);
+	  $reference_path=$this->url(array('module'=>'analysis','controller'=>'query','action'=>'index'), null, true);
+	  $backup=$this->url(array('module'=>'backup','controller'=>'index','action'=>'index'), null, true);
+      $user=$this->url(array('module'=>'user','controller'=>'index','action'=>'index'), null, true);
+      $acl=$this->url(array('module'=>'rsvAcl','controller'=>'index','action'=>'index'), null, true);
+	  $module=Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+	  
+	  $item_arr=array(
+		'index'=>'<li class="link">
+							<a title="ទំព័រដើម" href="'.$home.'">
+								<span>'.$tr->translate("ទំព័រដើម").'</span>
+							</a>
+						</li>',	  
+	  	'registrar'=>'<li class="link">
+						<a title="ការិ.ចុះឈ្មោះ" href="'.$registrar.'">
+							<span>'.$tr->translate("ការិ.ចុះឈ្មោះ").'</span>
+						</a>
+				  </li>',
+	 	'foundation'=>'<li class="link">
+							<a title="ការិ.ឆ្នាំសិក្សាមួលដ្ឋាន" href="'.$foundation.'">
+								<span>'.$tr->translate("ការិ.ឆ្នាំសិក្សាមួលដ្ឋាន").'</span>
+							</a>
+						</li>',
+	  	'gep'=>'<li class="link">
+			  		<a title="ការិ .ភាសាអង់គ្គេសទូទៅ" href="'.$gep.'">
+			  		<span>'.$tr->translate("ការិ .ភាសាអង់គ្គេសទូទៅ").'</span>
+			  		</a>
+			  		</li>',
+	  	'accounting'=>'<li class="link">
+						<a title="ការិ.គណនេយ្យ" href="'.$accounting.'">
+							<span>'.$tr->translate("ការិ.គណនេយ្យ").'</span>
+						</a>
+					</li>',
+	    'global'=>'<li class="link">
+						<a title="ព័ត៏មានផ្សេងៗ" href="'.$global.'">
+							<span>'.$tr->translate("ព័ត៏មានផ្សេងៗ").'</span>
+						</a>
+					</li>',	  
+	    'allreport'=>'<li class="link">
+						<a title="របាយការណ៏" href="'.$report.'">
+							<span>'.$tr->translate("របាយការណ៏").'</span>
+						</a>
+					   </li>',
+	    'backup'=>'<li class="link">
+						<a title="BACKUP DATABASE" href="'.$backup.'">
+							<span>'.$tr->translate("BACKUP DB").'</span>
+						</a>
+					 </li>',	  
+	  	'rsvAcl'=>'<li class="link">
+				  		<a title="acl" href="'.$acl.'">
+				  		<span>'.$tr->translate("ACL").'</span>
+				  		</a>
+				  		</li>',
+	  'logout'=>'<li class="link">
+	  		<a title="USER" href="'.$user.'">
+	  		<span>'.$tr->translate("LOGOUT").'</span>
+	  		</a>
+	  		</li>',
+	  );
+?>  
+<div id="menu">
+	<ul>
+		<?php
+			foreach($item_arr as $key=>$value){
+				if($module==$key){
+					echo str_replace('class="link"', 'class="current"', $value);
+				}
+				else{
+					echo $value;
+				}
+			} 
+		?>
+	</ul>
+</div>

@@ -1,0 +1,125 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | Student Exam Fundation Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-final-exams')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("REPORT_FOUNDATION_EXAMININATION");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								
+								<tr>
+									<td colspan="3">
+											<table width="800" border="0" style="margin:0 auto">
+  <tr>
+    <td width="94">Name</td>
+    <td width="10">:</td>
+    <td width="149"><b>Bun Sok Nouv</b></td>
+    <td width="284">&nbsp;</td>
+    <td width="87">Invoice No.</td>
+    <td width="11">:</td>
+    <td width="135"><strong>1212122</strong></td>
+  </tr>
+  <tr>
+    <td>Sex</td>
+    <td>:</td>
+    <td>M</td>
+    <td>&nbsp;</td>
+    <td>Date</td>
+    <td>:</td>
+    <td>20-Oct-2013</td>
+  </tr>
+  <tr>
+    <td>Student ID</td>
+    <td>:</td>
+    <td>B10-0343</td>
+    <td>&nbsp;</td>
+    <td>Year</td>
+    <td>:</td>
+    <td style="font-family:'Times New Roman', serif">II</td>
+  </tr>
+  <tr>
+    <td>Major</td>
+    <td>:</td>
+    <td>B-AHL</td>
+    <td>&nbsp;</td>
+    <td>Batch</td>
+    <td>:</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<style type="text/css">
+body{font-family: "Times New Roman",Arial;}
+table{ border-collapse:collapse;
+border:0px;
+border-style:solid; border-color:#000; }
+.padd tr td{ padding:5px 5px 5px 10px;}
+tr.b_right td{border-right:1px solid #000}
+tr.b_right th{border-right:1px solid #000; padding:3px 0; text-align:center; } 
+</style>
+<table class="padd" width="800" style="margin:0 auto" >
+
+  <tr class="b_right" style="border:1px solid #000">
+    <th width="24" ><strong>No</strong></th>
+    <th width="416"  align="center"><strong>Description</strong></th>
+    <th width="93" ><strong>Type Pmt</strong></th>
+    <th width="87" ><strong>Frees</strong></th>
+    <th width="79" ><strong>Discount</strong></th>
+    <th width="161" ><strong>Balance</strong></th>
+  </tr>
+  <tr class="b_right" style="border:1px solid #000; border-top:0px">
+    <td height="50">1</td>
+    <td >Tasasa</td>
+    <td >Y</td>
+    <td >2121$</td>
+    <td >&nbsp;</td>
+    <td  align="right">210.00$</td>
+  </tr>
+  <tr style="border-right:1px solid #000">
+    <td colspan="3" rowspan="3" >&nbsp;</td>
+    <td colspan="2"  style="border-left:1px solid #000;border-bottom:1px solid #000; border-right:1px solid #000" >Previouse Balance</td>
+    <td style="border-left:1px solid #000;border-bottom:1px solid #000; border-right:1px solid #000" ></td>
+  </tr>
+  <tr style="border-right:1px solid #000">
+    <td colspan="2" style="border-right:1px solid #000; border-left:1px solid #000; border-bottom:1px solid #000; "><b>Amount due</b></td>
+    <td style="border-left:1px solid #000; border-bottom:1px solid #000; border-right:1px solid #000" align="right" >
+        <b>$210.00</b>
+    </td>
+  </tr>
+
+</table>
+
+<table width="800" style="margin:0 auto">
+  <tr>
+    <td width="479">&nbsp;</td>
+    <td width="160" ><span style="margin-top:5px;">&nbsp; Date Due</span></td>
+    <td width="145" ><span style="margin-top:5px;">&nbsp; 12-Jan-2014</span></td>
+  </tr>
+</table>
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>
+
+	
+		
+	

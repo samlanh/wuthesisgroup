@@ -1,0 +1,101 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	echo $this->headTitle('SRMS | Student Exam Fundation Year'); 
+	
+?>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-foundation')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;scroll;overflow-x:scroll;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="right">
+										<strong>ព្រះរាជាណាចក្រកម្ពុជា</strong><br />
+										<strong>ជាតិ សាសនា ព្រះមហាក្សត្រ</strong><br />
+									</td>
+								</tr>
+								<tr>
+									<td width="20%" align="left">
+										<strong>ក្រសួងអប់រំ យុវជន និងកីឡា</strong><br />
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br /><br ><br ><br >
+									</td>
+									<td align="center">
+										<strong>ព្រះរាជាណាចក្រកម្ពុជា</strong><br />
+										<strong>ជាតិ សាសនា ព្រះមហាក្សត្រ</strong><br />
+										<strong style="font-family: Tacteing;">7</strong><br />
+										<strong>បញ្ជីរាយនាមបេក្ខជនប្រលងជ្រើសរើស ចូលរៀនថ្នាក់ឆ្នាំសិក្សា លើកទីមួយ ជំនាន់ទីមួយ</strong><br />
+										<strong>មហាវិទ្យាល័យ សិល្បៈ មនុស្សសាស្រ្ត និងភាសា ,ជំនាញអប់រំភាសាអង់គ្លេស ឆ្នាំសិក្សា 2013-214</strong><br />
+									</td>
+									<td width="20%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+												<th rowspan="2">ល.រ</th>
+												<th rowspan="2">គោលនាម-នាម</th>
+												<th rowspan="2">អក្សរឡាតាំង</th>
+												<th rowspan="2">ភេទ</th>
+												<th rowspan="2">អត្តលេខ</th>	
+												<th rowspan="2">ថ្ងៃខែឆ្នាំកំណើត</th>
+												<th rowspan="2">ផ្សេងៗ</th>
+												<th colspan="3">លេខទូរសព្ទ</th>
+												<th rowspan="2">វណ្ណៈក្នុងគ្រូសារ</th>
+												<th rowspan="2">ឯកទេស</th>
+												<th rowspan="2">ឆ្នាំជាប់បាក់ឌុប</th>					
+												<th rowspan="2">លេខកូដសញ្ញាបត្រ</th>
+												<th rowspan="2">លំដាប់ពិន្ទុសរុប</th>
+												<th rowspan="2">អាគតដ្ឋាន</th>
+												<th rowspan="2">អាគតដ្ឋានតាំងនៅ</th>
+												<th rowspan="2">ទីកន្លែងកំណើត</th>
+												<th rowspan="2">អាសយដ្ឋានរបស់និស្សិត</th>
+												<th rowspan="2">សមាសភាពនិស្សិត</th>
+												<th rowspan="2">និស្សិតមកពី</th>
+												<th rowspan="2">អាយុ</th>
+												<th rowspan="2">ឯកសារយោង</th>
+											</tr>
+											<tr​​>
+												<th align="center"​​><small>Personal</small></th>
+												<th align="center"><small>Father</small></th>
+												<th align="center"><small>mother</small></th>
+											</tr><style> td{padding:0 3px; }</style>
+											<?php for ($i=1;$i<25;$i++){?>
+											<tr style="font-size:12px;height: 23px;"​ align="center">
+												<td><?php echo $i;?></td>
+												<td align="left">ដារា</td>
+												<td align="left">dara</td>
+												<td>M</td>
+												<td>B88-00<?php echo $i;?></td>
+												<td>02/Jan/1991</td>
+												<td>&nbsp;</td>
+												<td>012332211</td>
+												<td>090332211</td>
+												<td>070332211</td>
+												<td>012321111</td>
+												<td>64.54</td>
+												<td>134</td>
+												<td>Phnom Penh</td>
+												<td>2013</td>
+												<td>123013</td>
+												<td></td>
+												<td>2013</td>
+												<td>123013</td>
+												<td></td>
+												<td></td>
+												<td>2013</td>
+												<td>123013</td>
+											</tr>
+											<?php }?>	
+										</table>	
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+</form>

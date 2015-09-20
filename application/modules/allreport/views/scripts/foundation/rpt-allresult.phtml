@@ -1,0 +1,191 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | Student Yearly Result'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<style>
+	#footer{ display: none;}
+</style>
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-final-exams')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("REPORT_FOUNDATION_EXAMININATION");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<strong><br />KINGDOM OF CAMBODIA</strong><br />
+										<strong>Nation Religion King</strong><br />
+									</td>
+								</tr>
+								<tr>
+									<td width="25%" align="center">
+										<img src="<?php echo $this->baseUrl();?>/images/logo.png" height="85px;"><br />
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong>
+										<strong>WESTERN UNIVERSITY</strong><br /><label>Department of Foundtion Year</label>
+										<label style="float:left;"><strong>English Program Bachelor Degree</strong></label><br />
+										<label  style="float:left;"><strong></strong></label><br ><br ><br >
+									</td>
+									<td align="center">
+										<strong>The Yearly Result(After Annual Supplementary Exam)<br />Everning Session</strong><br />
+										<strong>Year 1,Batch 8,A.Y 2013-2014</strong><br />
+									</td>
+									<td width="20%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+												<th rowspan="2">No</th>
+												<th rowspan="2">Name</th>
+												<th rowspan="2">DAte of Birth</th>
+												<th rowspan="2">Name</th>
+												<th rowspan="2">Sex</th>	
+												<th rowspan="2">ID</th>
+												<th colspan="5"><big>The Subject First Semester</big></th>
+												<th rowspan="2" align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">Grand Total</text>
+            										</svg>
+												</th>
+												<th rowspan="2" align="center" bgcolor="#ccc">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">First Semester Average</text>
+            										</svg>
+												</th>
+												<th rowspan="2" width="40" align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                									 	<text transform="rotate(270, 12, 0) translate(-190,0)">Rank</text>
+            										</svg>
+												</th>
+												<th colspan="5"><big>The Second Semester</big></th>
+												<th rowspan="2" align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">Grand Total</text>
+            										</svg>
+												</th>
+												<th rowspan="2" align="center" bgcolor="#ccc">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">Second Semester Average</text>
+            										</svg>
+												</th>
+												<th rowspan="2" width="40" align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                									 	<text transform="rotate(270, 12, 0) translate(-190,0)">Rank</text>
+            										</svg>
+												</th>
+												<th rowspan="2">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                									 	<text transform="rotate(270, 12, 0) translate(-190,0)">Grand Total Average</text>
+            										</svg>
+												</th>
+												<th rowspan="2" width="40" align="center">
+													<svg xmlns="http://www.w3.org/2000/svg"  height="210">
+                									 	<text transform="rotate(270, 12, 0) translate(-190,0)">Rank</text>
+            										</svg>
+												</th>
+												<th rowspan="2">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                									 	<text transform="rotate(270, 12, 0) translate(-190,0)">Remark</text>
+            										</svg>
+												</th>
+											</tr>
+											<tr​​>
+												<th align="center"><small>
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                										<text transform="rotate(270, 12, 0) translate(-190,0)">Core English I</text>
+            										</svg>
+													</small>
+												</th>
+												<th align="center"><small>
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English Liturer I</text>
+            											</svg>
+												</small></th>
+												<th align="center">
+													<small>
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English Grammar</text>
+            											</svg>
+													</small>
+												</th>
+												<th align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English For Communication</text>
+            										</svg>
+												</th>
+												<th align="center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">Advance Excel</text>
+            											</svg>
+            									</th>
+            									<th align="center"><small>
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                										<text transform="rotate(270, 12, 0) translate(-190,0)">Core English II</text>
+            										</svg>
+													</small>
+												</th>
+												<th align="center"><small>
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English Liturer II</text>
+            											</svg>
+												</small></th>
+												<th align="center">
+													<small>
+														<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English Grammar II</text>
+            											</svg>
+													</small>
+												</th>
+												<th align="center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">English For Communication</text>
+            										</svg>
+												</th>
+												<th align="center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="210">
+                											<text transform="rotate(270, 12, 0) translate(-190,0)">Office Application</text>
+            											</svg>
+            									</th>
+											</tr><style> td{padding:0 3px; }</style>
+											<?php for ($i=1;$i<25;$i++){?>
+											<tr style="font-size:13px;height: 23px;"​ align="center">
+												<td><?php echo $i;?></td>
+												<td align="left">ដារា</td>
+												<td align="left">dara</td>
+												<td>M</td>
+												<td>02/Jan/1991</td>
+												<td>B333333</td>
+												<td>64.54</td>
+												<td>64.54</td>
+												<td>64.54</td>
+												<td>13.22</td>
+												<td>78.13</td>
+												<td>20.13</td>
+												<td bgcolor="#ccc">77.13</td>
+												<td><?php echo $i;?></td>
+												<td>64.54</td>
+												<td>64.54</td>
+												<td>64.54</td>
+												<td>13.22</td>
+												<td>78.13</td>
+												<td>20.13</td>
+												<td bgcolor="#ccc">77.13</td>
+												<td><?php echo $i;?></td>
+												<td>85.10</td>
+												<td><?php echo $i;?></td>
+												<td>Pass</td>
+											</tr>
+											<?php }?>	
+										</table>	
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

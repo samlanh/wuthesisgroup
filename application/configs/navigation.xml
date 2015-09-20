@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <nav>
+        <label>Home</label>
+		<module>projectInfo</module>
+        <controller>project-info</controller>
+        <action>index</action>			
+        <pages>		
+			<!-- site map budget -->					
+            <project-disbursement>
+                <label>List of Projection of Disbursement</label>
+				<module>budget</module>
+                <controller>projection-disbursement</controller>
+                <action>index</action>
+                <pages>                    
+						<view-pd>
+							<label>View Projection of Disbursement</label>
+							<module>budget</module>
+							<controller>projection-disbursement</controller>
+							<action>view-pd</action>
+						</view-pd>		
+						<add-pd>
+							<label>Add Projection of Disbursement</label>
+							<module>budget</module>
+							<controller>projection-disbursement</controller>
+							<action>add-pd</action>
+						</add-pd>
+						<edit-pd>
+							<label>Edit Projection of Disbursement</label>
+							<module>budget</module>
+							<controller>projection-disbursement</controller>
+							<action>edit-pd</action>
+						</edit-pd>						                    				
+                </pages>
+            </project-disbursement>		
+			
+             
+		 <!-- site map bot/boo -->
+					
+		 <!-- end site map bot/boo -->
+        </pages>		
+    </nav>
+</configdata>

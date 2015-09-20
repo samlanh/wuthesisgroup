@@ -1,0 +1,188 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_MAJOR_LIST"));
+?>	
+<?php $frm =  $this->frm_search;?>
+<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'major-list')); ?>" dojoType="dijit.form.Form" method="post">
+<div dojoType="dijit.layout.AccordionPane">
+	<button IconClass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
+	<?php echo $frm->getElement("title");?>
+	<?php echo $frm->getElement('status_search');?>
+	<button class="right" iconClass="dijitIconNewTask" dojoType="dijit.form.Button" onclick="showDialog();" showLabel="true" type="button" ><?php echo $tr->translate("ADD_NEW");?></button>
+</div>
+<?php echo $this->list;?>
+</form>
+<?php $frm_major = $this->add_major;?>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("ADD_MAJOR");?>', onCancel:hideDialog" id="terms" >
+		<form id='frm_add_major' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td> <?php echo $tr->translate("MAJOR_ENNAME");?></td>
+				<td> <?php echo $frm_major->getElement("major_enname");?></td>
+			</tr>
+			<tr>
+				<td> <?php echo $tr->translate("MAJOR_KHNAME");?></td>
+				<td> <?php echo $frm_major->getElement("major_khname");?></td>
+			</tr>
+			<tr>
+				<td> <?php echo $tr->translate("SHORTCUT");?></td>
+				<td> <?php echo $frm_major->getElement("shortcut");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("SELECT_FACULTY_ENNAME");?></td>
+				<td><?php echo $frm_major->getElement("dept");?></td>
+			</tr>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm_major->getElement("status");?></td>
+			</tr>
+			<tr>
+				<td colspan="2"><?php echo $frm_major->getElement("major_id");?>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button"  label="<?php echo $tr->translate("CANCEL");?>" id="cancelmajor" 
+					dojoType="dijit.form.Button" iconClass="dijitEditorIcon  dijitEditorIconCancel" onclick="hideDialog();"/>
+					<input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submitButton" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addNewMarjor();"/>
+				</td>
+			</tr>
+			
+		</table>
+		</form>
+	</div>
+</div>
+<!-- popup dept -->
+<?php $frm_faculty = $this->add_faculty;?>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("ADD_FACULTY");?>', onCancel:hideFacultyDialog" id="showdept" >
+		<form id='frm_add_faculty' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table>
+			<tr>
+				<td><?php echo $tr->translate("FACULTY_ENNAME");?></td>
+				<td>
+					<?php echo $frm_faculty->getElement("en_name");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("FACULTY_KHNAME");?></td>
+				<td>
+					<?php echo $frm_faculty->getElement("kh_name");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("SHORTCUT");?></td>
+				<td><?php echo $frm_faculty->getElement("mul_shortcut");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm_faculty->getElement("mul_status");?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><br />
+					<input type="button"  label="<?php echo $tr->translate("CANCEL");?>" id="cancelfaculty" 
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon  dijitEditorIconCancel" onclick="hideFacultyDialog();"/>
+					<input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submitmajor" 
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addNewFaculty();"/>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+<script>
+function printSave(){		
+		showDialog();			
+}
+function showDialog() {		   
+	dijit.byId("terms").show();
+}
+var url_add_major= '<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'add-major')); ?>';
+function addNewMarjor(){
+	if(dijit.byId('frm_add_major').validate()) { 
+		dojo.xhrPost({
+		    url: url_add_major,
+		    form: dojo.byId('frm_add_major'),
+		    content : { 
+			    'major_enname':dijit.byId('major_enname').get('value'),
+			    'major_khname':dijit.byId('major_khname').get('value'),
+			    'shortcut':dijit.byId('shortcut').get('value'),
+			    'dept_id':dijit.byId('dept').get('value'),
+			    'status':dijit.byId('status').get('value'),			    
+			},				    
+		   handleAs:"json", 
+		   load: function(response) {
+		   hideDialog();
+		   alert('<?php echo $tr->translate('SAVE_SUCCESS');?>');
+		   location.reload();
+		    },
+		    error: function(err) {
+			    alert('<?php echo $tr->translate('INSERT_FAIL');?>');
+		    }
+		});
+		}
+}
+function hideDialog() {	
+	//document.getElementById("frm_add_major").reset();
+	//var _name = ['major_name', 'shortcut', 'dept','status'];
+	//clearText(_name);	
+	//dijit.byId('frm_sender_dlg').reset();
+	
+	//dojo.byId('frm_add_major').reset();
+	dijit.byId("terms").hide();//form: dojo.byId('frm_add_major'),
+}
+function hideFacultyDialog(){
+	dijit.byId("showdept").hide();
+}
+var url_add_faculty= '<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'add-department')); ?>';
+function addNewFaculty(){
+	if(dijit.byId('frm_add_faculty').validate()) { 
+		dojo.xhrPost({
+		    url: url_add_faculty,
+		    form: dojo.byId('frm_add_faculty'),
+		    content : { 
+				'en_name':dijit.byId('en_name').get('value'),
+			    'kh_name':dijit.byId('kh_name').get('value'),
+			    'shortcut':dijit.byId('mul_shortcut').get('value'),
+			    'status':dijit.byId('mul_status').get('value'),			    
+			},				    
+		   handleAs:"json", 
+		   load: function(response) {
+			   hideFacultyDialog();
+			   id = response.id;
+			   dijit.byId('dept').store.data[1].name=dijit.byId('en_name').get('value');
+			   //dijit.byId('dept').textbox.value=dijit.byId('en_name').get('value');
+			  // location.reload();
+		       //hideDialog();
+		    },
+		    error: function(err) {
+		    }
+		});
+		}
+}
+function addDataTogrid(){
+	var adNewDept = {
+			r_id : 1,//dijit.byId('reciever_name').get('value'),
+			name: 1,//dijit.byId('reciever_name').get('displayedValue'),
+			tel: 1,//dijit.byId('reciever_tel').value,
+			fax: 1,//dijit.byId('reciever_fax').value,
+			ac:  1,//dijit.byId('reciever_acc_no').value,
+			bank:1, //dijit.byId('reciever_bank_name').value,
+	};		
+
+	/*addDataToGrid(dijit.byId('grid'), tran_store, adNewDept);		
+	dijit.byId('stackContainer').forward();
+	totalAll();	
+	cleanRecieverDlg();*/
+}
+function ShowPopupDept(){
+	id = dijit.byId('dept').get('value');
+	if(id==-1){
+		dijit.byId("showdept").show();
+	}
+}
+</script>
+
+
+

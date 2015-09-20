@@ -1,0 +1,49 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_EDET_MAJOR"));
+?>	
+<?php  $frm_major= $this->frm_major;?>
+<form  id='edit-major' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'edit-major')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table cellspacing="10" width="50%" style="margin: 0 auto;">
+	<tr>
+		<td>
+		<fieldset>
+					<legend align="center" ><strong><?php echo $tr->translate("EDET_MAJOR");?></strong></legend>
+					<table style="margin: 0 auto; width: 100%;" cellspacing="10">
+						<tr>
+							<td> <?php echo $tr->translate("MAJOR_ENNAME");?></td>
+							<td> <?php echo $frm_major->getElement("major_enname");?></td>
+						</tr>
+						<tr>
+							<td> <?php echo $tr->translate("MAJOR_KHNAME");?></td>
+							<td> <?php echo $frm_major->getElement("major_khname");?></td>
+						</tr>
+						<tr>
+							<td> <?php echo $tr->translate("SHORTCUT");?></td>
+							<td> <?php echo $frm_major->getElement("shortcut");?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("SELECT_FACULTY_ENNAME");?></td>
+							<td><?php echo $frm_major->getElement("dept");?></td>
+						</tr>
+							<td><?php echo $tr->translate("STATUS");?></td>
+							<td><?php echo $frm_major->getElement("status");?></td>
+						</tr>
+						<tr>
+							<td colspan="2"><?php echo $frm_major->getElement("major_id");?></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								<input IconClass="dijitIconUndo"  type="button" value="<?php echo $tr->translate("GO_BACK");?>" 
+								label="<?php echo $tr->translate("BACK");?>" dojoType="dijit.form.Button" 
+								onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'major-list'),null,true); ?>';"/>
+								<input type="submit"  label="<?php echo $tr->translate("GO_EDIT");?>" id="submitButton" dojoType="dijit.form.Button" 
+							 	iconClass="dijitEditorIcon dijitEditorIconSave" />
+							</td>
+						</tr>
+					</table>	
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>

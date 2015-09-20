@@ -1,0 +1,98 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS System | User page'); 
+	echo $this->headTitle();
+	$url = Application_Form_FrmMessage::getUrl("/rsvAcl/user/edited?id=");
+?>	
+
+<style>
+	#grid{
+		margin: 0 auto;
+	}
+	.dojoxGridSortNode{
+		text-align: center;	
+		height: 30px;		
+	}
+</style>
+<script>
+	dojo.require("dojo.store.Memory");
+	dojo.require("dojo.data.ObjectStore");
+	dojo.require("dojox.grid.DataGrid");	
+	dojo.require('dijit.form.Button');
+	dojo.require('dijit.form.Form');	
+	dojo.require('dijit.form.FilteringSelect');
+	dojo.require('dijit.form.CheckBox');
+	
+	
+	dojo.ready(function(){
+		
+		//Creat data fror show			
+		loadData(<?php print_r($this->userlist);?>);
+
+
+		
+		dojo.connect(grid, "onRowClick", grid, function(evt){
+			var idx = evt.rowIndex,
+				item = this.getItem(idx);
+
+			window.location = '<?php echo $url;?>' + this.store.getValue(item, "id");
+		});
+	});
+
+
+	function loadData(data){			
+		// create an object store
+		var objectStore = new dojo.store.Memory({
+		       data: data		       
+		 });
+		
+		//load data into data grid
+		grid = new dojox.grid.DataGrid({						
+			store: dojo.data.ObjectStore({objectStore: objectStore}),	
+			autoHeight: true, 		
+			structure: [
+				{ name: "No", field: "num", width: "40px", cellStyles: "text-align: center;" },
+				{ name: "id", field: "id", hidden: "true" },
+				{ name: "LastName & FirstName", field: "name", width: "auto" },
+				{ name: "UserName", field: "user_name", width: "auto" },
+				{ name: "UserType", field: "user_type", width: "auto" },					
+				{ name: "Status", field: "active", width: "auto" }
+			]
+		}, "grid");
+		grid.startup();
+	}
+	
+</script>
+
+<form name="frmlist_users" action="<?php echo $this->url(array('module'=>'rsvAcl','controller'=>'user','action'=>'index')); ?>" dojoType="dijit.form.Form" method="post">
+<table class="full">	  	
+	  <tr>
+	    <td>
+	    	<input type="text" name="txtsearch" id="txtsearch" placeholder="តាម (នាម​ត្រកូល , នាម​ខ្លួន  និង អ្នក​ប្រើ​ប្រាស់)"  dojoType="dijit.form.TextBox"
+			 style="width: 320px;  height: 30px;" value='<?php echo $this->txtsearch;?>'/>
+			 <button dojoType="dijit.form.Button" showLabel="true" type="submit">ស្វែង​រក</button>
+		</td>
+	    <td align="right">
+	    	<select name="user_type" id="user_type"  onChange="document.frmlist_agent.submit();" style=" height: 30px;" dojoType="dijit.form.FilteringSelect"> 
+				<option value="-1" <?php if($this->user_type == -1) echo 'selected="selected"';?> >ជ្រើសរើស ប្រភេទ​អ្នក​ប្រើ​ប្រាស់</option> 
+				<?php foreach ($this->user_typelist as $key => $ut) : ?>
+					<option value="<?php echo $key;?>" <?php if($key == $this->user_type) echo 'selected'?>><?php echo $ut;?></option>
+				<?php endforeach;?>	 
+			</select>
+	    	<select name="active" id="active"  onChange="document.frmlist_agent.submit();" style=" height: 30px;" dojoType="dijit.form.FilteringSelect"> 
+				<option value="-1" <?php if($this->active == -1) echo 'selected="selected"';?> >ជ្រើសរើស ស្ថានការណ៍</option> 
+				<?php foreach ($this->activelist as $key => $at) : ?>
+					<option value="<?php echo $key;?>" <?php if($key == $this->active) echo 'selected'?>><?php echo $at;?></option>
+				<?php endforeach;?>	 
+			</select>
+		</td>			
+	  </tr>	
+	  <tr>
+	  	<td colspan="2">
+	  		<?php echo $this->list;?>
+	  	</td>
+	  </tr>	
+</table>
+</form>
+
+

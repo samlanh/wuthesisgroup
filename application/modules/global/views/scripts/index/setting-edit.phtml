@@ -1,0 +1,39 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("ADD_EDIT_SETTING"));
+?>	
+
+<?php  $frm_setting= $this->frm_setting;?>
+<form  id='add_setting' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'setting-edit')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+
+<table cellspacing="10" width="40%" style="margin: 0 auto;">
+
+	<tr>
+		<td>
+		<fieldset style="background-color:menu;">
+					<legend align="center" ><strong><?php echo $tr->translate("ADD_EDIT_SETTING");?></strong></legend>
+					<table style="margin: 0 auto; width: 95%;" cellspacing="10">
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("INPUT_KEY_SETTING")?></td>
+							<td><?php  echo $frm_setting->getElement('key_name');?></td>
+						</tr>
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("INPUT_SETTING")?></td>
+							<td><?php  echo $frm_setting->getElement('key_value');?>
+							    <?php  echo $frm_setting->getElement('id');?>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+							<input  type="button" value="<?php echo $tr->translate("ត្រលប់ក្រោយ");?>" label="<?php echo $tr->translate("ត្រលប់ក្រោយ");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'setting'),null,true); ?>';"/>
+							<input type="submit" value="រក្សាទុក" label="រក្សាទុក" id="submitButton" dojoType="dijit.form.Button" 
+								 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_setting").submit();"/>
+								 <input  type="button" value="<?php echo $tr->translate("រក្សាទុកនិងបន្ថែមថ្មី");?>" label="<?php echo $tr->translate("រក្សាទុកនិងបន្ថែមថ្មី");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'setting')); ?>';"/>
+							</td>
+						</tr>
+					</table>	
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>

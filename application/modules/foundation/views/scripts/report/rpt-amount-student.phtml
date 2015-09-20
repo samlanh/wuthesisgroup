@@ -1,0 +1,155 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Report Static Student By Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='rpt_static_student' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-static-student')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 18px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<strong>ស្ថិតិនិស្សិត ជំនាន់ទី១១ ឆ្នាំទី១ ថ្នាក់បរិញ្ញាបត្រ ឆ្នាំសិក្សា ២០១៣-១៤ ចុះឈ្មោះលើកទី១</strong><br /><br />
+				
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:14px; height: 30px;" align="center" >
+											<style> th{border-top:double;}</style>
+												<th rowspan="5" style="font-size: 20px;">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="150">
+													 <text transform="rotate(270, 12, 0) translate(-120,5)">Batch 11</text> 
+													</svg>
+											
+												</th>
+												<th>Session</th>
+												<th>English</th>
+												<th>Hotel</th>
+												<th>Law</th>	
+												<th>Business</th>
+												<th>Economics</th>
+												<th>Computer</th>				
+											
+											</tr>
+											
+											<?php for ($i=1;$i<5;$i++){?>
+											<tr style="font-size:12px;"​ align="center">
+												<td>Morning</td>
+												<td>82</td>
+												<td>51</td>
+												<td>0</td>
+												<td>89</td>
+												<td>129</td>
+												<td>42</td>
+											</tr>
+											<?php }?>
+											<tr style="font-size:13px;"​ align="center">
+												<td colspan="2">Total</td>
+												<td>386</td>
+												<td>75</td>
+												<td>0</td>
+												<td>164</td>
+												<td>209</td>
+												<td>85</td>
+											</tr>	
+										</table>
+										<br><br>	
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3" align="left">
+									<style>td{height:30px;}</style>
+										<table cellpadding="5"​ style="margin:0 auto;width:20%; border-collapse: collapse;" align="left" >
+										<tr style="font-size:14px;" align="center">
+											
+											<td>Grand Total:</td>
+											<td bgcolor="#fc0">919</td>
+										
+										</tr>
+										</table>
+									</td>
+								</tr>
+								<tr><td><br><br><br><br></td></tr>
+								<tr style="font-size: 18px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<strong>ស្ថិតិនិស្សិត ជំនាន់ទី១១ ឆ្នាំទី១ ថ្នាក់បរិញ្ញាបត្ររង ឆ្នាំសិក្សា ២០១៣-១៤ ចុះឈ្មោះលើកទី១</strong><br /><br />
+										
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:14px; height: 30px;" align="center" >
+											<style> th{border-top:double;}</style>
+												<th rowspan="5" style="font-size: 20px;">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="150">
+													 <text transform="rotate(270, 12, 0) translate(-120,5)">Batch 11</text> 
+													</svg>
+											
+												</th>
+												<th>Session</th>
+												<th>English</th>
+												<th>Hotel</th>
+												<th>Law</th>	
+												<th>Business</th>
+												<th>Economics</th>
+												<th>Computer</th>				
+											
+											</tr>
+											
+											<?php for ($i=1;$i<5;$i++){?>
+											<tr style="font-size:12px;"​ align="center">
+												<td>Morning</td>
+												<td>82</td>
+												<td>51</td>
+												<td>0</td>
+												<td>89</td>
+												<td>129</td>
+												<td>42</td>
+											</tr>
+											<?php }?>
+											<tr style="font-size:13px;"​ align="center">
+												<td colspan="2">Total</td>
+												<td>386</td>
+												<td>75</td>
+												<td>0</td>
+												<td>164</td>
+												<td>209</td>
+												<td>85</td>
+											</tr>	
+										</table>
+										<br><br>	
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3" align="left">
+									<style>td{height:30px;}</style>
+										<table cellpadding="5"​ style="margin:0 auto;width:60%; border-collapse: collapse;" align="left" >
+										<tr style="font-size:14px;" align="center">
+											
+											<td>Grand Total:</td>
+											<td bgcolor="#fc0">33</td>
+											<td bgcolor="#fc00">919</td>
+											<td bgcolor="#ffc">Update on</td>
+											<td bgcolor="#ffcc0">05-February-2014</td>
+										</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

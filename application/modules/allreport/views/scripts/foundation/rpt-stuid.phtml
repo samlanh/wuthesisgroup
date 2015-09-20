@@ -1,0 +1,54 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Student Exam Fundation Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='rpt_stuid' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-stuid')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="50%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 18px;">
+									
+									<td align="center" colspan="3">
+										<strong>List of Student Card</strong><br /><br />
+										
+									</td>
+								</tr>
+								<tr>
+								<td colspan="3">
+									<table cellpadding="5"​ style=" background:#ffffff;margin:0 auto;width:80%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+												<th>N<sup>o</sup></th>
+												<th>Full Name</th>
+												<th>Sex</th>
+												<th>StuID</th>
+												<th>Date of Birth</th>	
+									
+											</tr>
+					
+											<?php for ($i=1;$i<20;$i++){?>
+											<tr style="font-size:11px;height:30px;"​ align="center">
+												<td ><?php echo $i;?></td>
+												<td >Chhem Nary</td>
+												<td>M</td>
+												<td >B11-0067</td>
+												<td >03-Nov-1987</td>
+											</tr>
+											<?php }?>
+									</table>
+								</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>
+

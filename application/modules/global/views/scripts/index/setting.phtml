@@ -1,0 +1,14 @@
+<?php $tr = Application_Form_FrmLanguages::getCurrentlanguage();?>
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_SETTING"));
+?>	
+<?php $frm =  $this->frm_search;?>
+<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'setting')); ?>" dojoType="dijit.form.Form" method="post">
+<div dojoType="dijit.layout.AccordionPane">
+<button iconclass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
+<?php echo $frm->getElement("title");?>
+</div>
+<?php echo $this->list;?>
+</form>
+

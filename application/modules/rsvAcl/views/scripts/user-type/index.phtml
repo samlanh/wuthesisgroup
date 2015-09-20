@@ -1,0 +1,23 @@
+<title>SRMS System | User Type List</title>
+<?php 
+	$url_new = $this->url(array(
+		'module'=>'rsvAcl',
+		'controller'=>'user-type',
+		'action'=>'add-user-type',
+	));
+	$url = Application_Form_FrmMessage::getUrl("/rsvAcl/user-type/edit-user-type?id=");
+?>
+
+<div class="btn" align="right">
+	<input  type="button" value="បន្ថែម​ថ្មី" label="បន្ថែម​ថ្មី" id="btadd" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $url_new; ?>';"/>
+</div>
+
+<form name="frmlist" action="" dojoType="dijit.form.Form" method="post">
+	<table class="fullside">
+		  <tr>
+		  	<td>	  		
+		  		<?php echo $this->list;?>
+		  	</td>
+		  </tr>
+	</table>
+</form>

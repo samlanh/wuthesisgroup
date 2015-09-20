@@ -1,0 +1,49 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate('SRMS_ADD_TEACHER'));
+?>	
+<?php  $techer= $this->frm_techer;?>
+<form  id='add_techer' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'add-teacher')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table cellspacing="10" width="40%" style="margin: 0 auto;">
+	<tr>
+		<td>
+		<fieldset style="background-color:menu;">
+					<legend align="center" ><strong><?php echo $tr->translate("ADD_TECHER_NAME");?></strong></legend>
+					
+					<table style="margin: 0 auto; width: 95%;" cellspacing="10">
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("TEACHER_EN_NAME")?></td>
+							<td><?php  echo $techer->getElement('en_name');?></td>
+						</tr>
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("TEACHER_KH_NAME")?></td>
+							<td><?php  echo $techer->getElement('kh_name');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("SUBJECT_TEACH_EN")?></td>
+							<td><?php  echo $techer->getElement('en_subject');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("SUBJECT_TEACH_KH")?></td>
+							<td><?php  echo $techer->getElement('kh_subject');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("STATUS")?></td>
+							<td><?php  echo $techer->getElement('status');?></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+							
+							<input type="button" value="GO_BACK" label="<?php echo $tr->translate('GO_BACK');?>" id="back" dojoType="dijit.form.Button" 
+								 iconClass="dijitIconUndo" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'teacher-list'),null,true); ?>';" />
+								 
+							<input type="submit" value="GO_SAVE" label="<?php echo $tr->translate('GO_SAVE');?>" id="submitButton" dojoType="dijit.form.Button" 
+								 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_techer").submit();"/>
+							</td>
+						</tr>
+					</table>	
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>

@@ -1,0 +1,91 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Report Static Student By Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='rpt_student_attendance' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-student-attendance')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td align="left" >
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>Western University</strong><br />
+									</td>
+									<td align="center"><br />
+										<strong style="font-size: 20px;">Students' Attendance List</strong><br />
+										<small><b>Mr.Phuong Dararin</b></small><br />
+										<small><b>Subject:Math Application ,Room:Kenya</b></small><br />
+										<small><b>Morning Class</b></small><br />
+									</td>
+									<td align="right" width="20%">
+										<strong>Department of Foundation Year</strong><br />
+										<strong>Economics Program</strong><br />
+										<strong>Academic Year:2013-2014</strong><br />
+										<small><b>Batch 11, Year I, Semester I(First intake)</b><small><br />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:14px; height: 30px;" align="center" >
+											<style> th{border-top:double;}</style>
+												<th rowspan="2">N<sup>o</sup></th>
+												<th rowspan="2">Full Name</th>
+												<th rowspan="2">Sex</th>
+												<th rowspan="2">ID N<sup>o</sup></th>
+												<th colspan="48">Date</th>	
+												<th rowspan="2">Total</th>
+												<th rowspan="2">Total</th>
+											</tr>
+											<tr style="font-family: italic;"><?php $date="28-Nov-2013";
+												for ($i=1;$i<49;$i++){?>
+												<th>
+													<small>
+														<svg xmlns="http://www.w3.org/2000/svg" width="12" height="90"> 
+																<text transform="rotate(270, 12, 0) translate(-70,-2)">
+																	<?php echo $date;?>
+																</text> 
+														</svg>
+													</small>
+												</th>
+												<?php }?>
+												
+											</tr>
+											<tr></tr>
+											<tr></tr>
+											<?php for ($j=1;$j<25;$j++){?>
+											<tr align="center">
+												<td><?php echo $j;?></td>
+												<td>Bo Sokhon</td>
+												<td>M</td>
+												<td>B11-0987</td>
+												<?php $att="p";
+												for ($a=1;$a<49;$a++){?>
+												<td>
+													<?php echo $att;?>
+													
+												</td>
+												<?php }?>
+												<td>A</td>
+												<td>P</td>
+											</tr>
+											<?php }?>
+										</table>
+										<br><br>	
+									</td>
+								</tr>
+								
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

@@ -1,0 +1,178 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | Report Student Receivable'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>
+<style>
+#footer{display: none;}
+</style>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-final-exams')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("REPORT_STUDENT_RECIEVABLE");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td align="center">
+										<img src="<?php echo $this->baseUrl();?>/images/logo.png" height="85px;" />
+									</td>
+									<td></td>
+									<td><br />
+										
+									</td>
+								</tr>
+								<tr>
+									<td width="25%" align="center">
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>WESTERN UNIVERSITY</strong><br /><br ><br >
+									</td>
+									<td align="center">
+										
+									</td>
+									<td width="25%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+									<style> th,td{ padding:0 1px;}</style>
+<style type="text/css">
+body{font-family: "Times New Roman",Arial; }
+table{ border-collapse:collapse; margin:0 auto;
+border:0px;
+border-style:solid; border-color:#000; }
+.padd tr td{ padding:0px 2px 0px 2px; font-size:10px; text-align:center}
+.padd tr th{ padding:5px 2px 5px 2px; font-size:10px;text-align:center;  }
+tr.b_right td{border-right:1px solid #000; }
+tr.b_right th{border-right:1px solid #000} 
+</style>
+
+<table class="padd" width="99%" border="1" align="center">
+  <tr >
+    <th >No</th>
+    <th >ID No.</th>
+    <th >Name of student</th>
+    <th >Sex</th>
+    <th >DOB</th>
+    <th >Tel.</th>
+    <th>Note</th>
+    <th >Degree/Faculty</th>
+    <th >Subject</th>
+    <th >Batch</th>
+    <th >Yeat/Level</th>
+    <th >Term</th>
+    <th>Session</th>
+    <th>Class Room</th>
+    <th>Status</th>
+    <th >Grade</th>
+    <th >Type of Pmnt</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>B8-1213</td>
+    <td style="text-align:left">Heng Sirimongkul</td>
+    <td>M</td>
+    <td>12-Sep-2004</td>
+    <td>012121212</td>
+    <td>&nbsp;</td>
+    <td>B-AHL</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>IV</td>
+    <td>&nbsp;</td>
+    <td>Active</td>
+    <td>Columbia</td>
+    <td>Active</td>
+    <td>C</td>
+    <td>S</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>B8-1214</td>
+    <td style="text-align:left">Heng Sirivathanak</td>
+    <td>M</td>
+    <td>12-Sep-2003</td>
+    <td>034343944/099343433</td>
+    <td>&nbsp;</td>
+    <td>B-SS</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>IV</td>
+    <td>&nbsp;</td>
+    <td>Active</td>
+    <td>Columbia</td>
+    <td>Active</td>
+    <td>C</td>
+    <td>S</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>B8-1215</td>
+    <td style="text-align:left">Chantbol Vattanak</td>
+    <td>M</td>
+    <td>12-Sep-2001</td>
+    <td>067657657</td>
+    <td>&nbsp;</td>
+    <td>B-AHL</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>IV</td>
+    <td>&nbsp;</td>
+    <td>Active</td>
+    <td>Columbia</td>
+    <td>Active</td>
+    <td>C</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>B8-1215</td>
+    <td style="text-align:left">Ouk Heng Rathanak</td>
+    <td>M</td>
+    <td>12-Sep-2001</td>
+    <td>012121212</td>
+    <td>&nbsp;</td>
+    <td>B-AHL</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>IV</td>
+    <td>&nbsp;</td>
+    <td>Active</td>
+    <td>England</td>
+    <td>Active</td>
+    <td>D</td>
+    <td>S</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>B8-1217</td>
+    <td style="text-align:left">Chea Layheng</td>
+    <td>f</td>
+    <td>12-Sep-2001</td>
+    <td>012121212</td>
+    <td>&nbsp;</td>
+    <td>B-AHL</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>IV</td>
+    <td>&nbsp;</td>
+    <td>Active</td>
+    <td>Laos</td>
+    <td>Active</td>
+    <td>A</td>
+    <td>Y</td>
+  </tr>
+</table>
+									
+									
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>
+

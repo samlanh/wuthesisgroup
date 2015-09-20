@@ -1,0 +1,53 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Add Student Room'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<?php  $_add_student_room= $this->frm_AddStudentRoom;?>
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'index','action'=>'add-student-room')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table cellspacing="10" width="40%" style="margin: 0 auto;">
+	<tr>
+		<td>
+		<fieldset style="background-color:menu;">
+					<legend align="center" ><strong><?php echo $tr->translate("ADD_STUDENT_ROOM");?></strong></legend>
+					
+					<table style="margin: 0 auto; width: 95%;" cellspacing="10">
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("DATE_START")?></td>
+							<td><?php  echo $_add_student_room->getElement('dob');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("EXPIRE_DATE")?></td>
+							<td><?php  echo $_add_student_room->getElement('expire_date');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("CHECK")?></td>
+							<td><?php  echo $_add_student_room->getElement('check');?></td>
+						</tr>
+						
+						<tr>
+							<td style="width: 100px"><?php echo $tr->translate("ROOM_NAME")?></td>
+							<td><?php  echo $_add_student_room->getElement('room_name');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("SESSION")?></td>
+							<td><?php  echo $_add_student_room->getElement('session');?></td>
+						</tr>
+						<tr>
+							<td style="width: 5px"><?php echo $tr->translate("MAJOR_ENNAME")?></td>
+							<td><?php  echo $_add_student_room->getElement('major');?></td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" align="center">
+							<input type="submit" value="Save" label="Save" id="submitButton" dojoType="dijit.form.Button" 
+								 iconClass="dijitEditorIcon dijitEditorIconSave" />
+							</td>
+						</tr>
+					</table>	
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>

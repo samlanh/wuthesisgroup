@@ -1,0 +1,172 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Student Exam Fundation Year'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<script>
+dojo.require("dijit.layout.TabContainer");
+dojo.require("dijit.layout.ContentPane");
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+#footer{ display: none;}
+/*@font-face {
+  font-family: "Khmer OS Muol Light";
+  src: url("Khmer OS Muol Light.eot?") format("eot"),
+  url("Khmer OS Muol Light.woff") format("woff"),
+  url("Khmer OS Muol Light.ttf") format("truetype");
+}*/
+.doth{ border-bottom: 1px dotted #000; width: 100%;}
+.value{ border-bottom: 1px dotted #000; margin-bottom:10px; }
+</style>
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-foundation')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;">
+							<legend align="center" ><strong><?php echo $tr->translate("ទម្រង់បត្រសញ្ញាឆ្នាំសិក្សាមូលដ្ឋាន");?></strong></legend>
+							<br />
+							<div id="mainTabContainer" style="width: 1200px;height: 23cm; margin:0 auto;" dojoType="dijit.layout.TabContainer" region="center" >
+					      		<div class="tabContentSection" dojoType="dijit.layout.ContentPane" title="<?php echo $tr->translate("CERTI_FRONT");?>" selected="true">
+									<div style="width:30cm;background:#fff;font-size:14px;letter-spacing:1px;height:21cm; margin: 0 auto; border: 1px dotted #ccc;">
+										<div style="width:15cm; height:21cm; background:#; float: left; ">
+											<table width="100%" style="margin-top:3cm;" border="1">
+												<tr>
+													<td colspan="4" align="center"  style='font-size: 14px;​font-family:"kh moul"'>សាកលវិទ្យាធិការ</td>
+												</tr>
+												<tr>
+													<td colspan="4" align="center"><br /><br />បញ្ជាក់ថាៈ<br /><br /><br /><br /></td>
+												</tr>
+												<tr>
+													<td style="padding:0cm 0 0 3cm; ">និស្សិតឈ្មោះ </td>
+													<td class="value" width="200px;"><label>ម៉ក់ ចន្នី</label></td>
+													<td width="50px;">ភេទ :</td>
+													<td width="50px;" class="value"> ប្រុស</td>
+												</tr>
+												<tr>
+													<td style="padding-left:3cm;">កើតថ្ងៃទី :</td>
+													<td colspan="3" class="value"> 06/March/1990</td>
+												</tr>
+												<tr>
+													<td colspan="4" style="padding-left:3cm; "><br />បានបញ្ចប់ថ្នាក់ឆ្នាំសិក្សាមូលដ្ឋានដោយជោគជ័យនៅ សាកលវិទ្យាល័យ<br /><br /></td>
+												</tr>
+												<tr>
+													<td colspan="4" style="padding-left:3cm; ">វេស្ទើន ក្នុងឆ្នាំសិក្សា 2012-2013  ។ <br /><br /></td>
+												</tr>
+												<tr>
+													<td colspan="4" style="padding-left:3cm; "><br />វិញ្ញាបនបត្រនេះប្រគល់ជូនសាមីជន ដើម្បីយកទៅប្រើប្រាស់តាម <br /> <br />
+														ដែលអចប្រើបាន ។
+													<br /></td>
+												</tr>
+												<tr>
+													<td style="padding-left:3cm; "><br /><label style="width:78px; height:99px; display:block;text-align:center; border: 1px solid #000;"></label></td>
+													<td colspan="3" align="center"><br />ធ្វើនៅ ភ្នំពេញ ថ្ញៃទី ៣០ ខែ កញ្ញ ឆ្នាំ ២០១២<br /><br />
+														ជ.សាកលវិទ្យាធិការ<br /><br />
+														សាកលវិទ្យាធិការរង
+													</td>
+												</tr>
+											</table>
+										</div>
+										<div style="width:15cm; height:21cm; background:#ccc; float: left; ">
+											<table width="100%" style="margin-top:3cm; font-family:'Times New Roman'" border="1">
+												<tr height="30px">
+													<td colspan="2" align="center"  style='font-size: 16px;'><strong>THE RECTOR</strong></td>
+												</tr>
+												<tr height="116px">
+													<td colspan="2" align="center" style='font-size:16px;'><br /><br />Certifies that<br /><br /><br /><br /></td>
+												</tr>
+												<tr height="47px">
+													<td style="padding:0cm 0 0 3cm; ">Name  : <label class="doth"><strong>Mok Channy</strong></label><br /><br /></td>
+													<td>Sex : F<br /><br /></td>
+												</tr>
+												<tr height="48px">
+													<td colspan="2" style="padding-left:3cm; ">Date of Birth : 06/March/1990 <br /><br /></td>
+												</tr>
+												<tr height="64px">
+													<td colspan="2" style="padding-left:3cm; "><br />has successfully completed Fundation Year Course at  <br /><br /></td>
+												</tr>
+												<tr>
+													<td colspan="2" style="padding-left:3cm; "><strong>Western University</strong>in academic year 2012-2013  ។ <br /><br /></td>
+												</tr>
+												<tr height="91px">
+													<td colspan="2" style="padding-left:3cm; "><br />This certificate is presented to the bearer with all rights<br /> <br />
+														and privileges pertaining thereto.
+													<br /></td>
+												</tr>
+												<tr height="135px">
+													<td style="padding-left:3cm; "><br /><label style="width:78px; height:99px; display:block;text-align:center;"></label></td>
+													<td align="center"><br />Issued at Phnom Penh,September 30,2013<br /><br />
+														<strong>F.RECTOR</strong><br /><br />
+														<strong>VICE RECTOR</strong>
+													</td>
+												</tr>
+											</table>
+										</div>
+										</div>
+								</div><!-- tab1 -->
+					     		<div class="tabContentSection" dojoType="dijit.layout.ContentPane" title="<?php echo $tr->translate("CERTI_BACE");?>" selected="false">
+									<div style="width:30cm;background:#fff;font-size:14px;letter-spacing:1px;height:21cm; margin: 0 auto; border: 1px dotted #ccc;">
+										<div style="width:15cm; height:21cm; background:#; float: left; ">
+											<table width="100%" style="margin-top:2cm;" border="1">
+												<tr>
+													<td colspan="4" align="center"  style='font-size: 14px;​font-family:"kh moul"'>
+														<strong>ព្រឹត្តិបត្រពិន្ទុ</strong><br />
+														<strong>Academic Transcript</strong>
+													</td>
+												</tr>
+												<tr>
+													<td style="padding:0cm 0 0 2cm; ">Name</td>
+													<td>បញ្ជាក់ថាៈ</td>
+													<td>ID</td>
+													<td> B8-008</td>
+												</tr>
+											</table>
+										</div>
+										<div style="width:15cm; height:21cm; background:#ccc; float: left; ">
+											<table width="100%" style="margin-top:3cm; font-family:'Times New Roman'" border="1">
+												<tr height="30px">
+													<td colspan="2" align="center"  style='font-size: 16px;'><strong>THE RECTOR</strong></td>
+												</tr>
+												<tr height="116px">
+													<td colspan="2" align="center" style='font-size:16px;'><br /><br />Certifies that<br /><br /><br /><br /></td>
+												</tr>
+												<tr height="47px">
+													<td style="padding:0cm 0 0 3cm; ">Name  : <label class="doth"><strong>Mok Channy</strong></label><br /><br /></td>
+													<td>Sex : F<br /><br /></td>
+												</tr>
+												<tr height="48px">
+													<td colspan="2" style="padding-left:3cm; ">Date of Birth : 06/March/1990 <br /><br /></td>
+												</tr>
+												<tr height="64px">
+													<td colspan="2" style="padding-left:3cm; "><br />has successfully completed Fundation Year Course at  <br /><br /></td>
+												</tr>
+												<tr>
+													<td colspan="2" style="padding-left:3cm; "><strong>Western University</strong>in academic year 2012-2013  ។ <br /><br /></td>
+												</tr>
+												<tr height="91px">
+													<td colspan="2" style="padding-left:3cm; "><br />This certificate is presented to the bearer with all rights<br /> <br />
+														and privileges pertaining thereto.
+													<br /></td>
+												</tr>
+												<tr height="135px">
+													<td style="padding-left:3cm; "><br /><label style="width:78px; height:99px; display:block;text-align:center;"></label></td>
+													<td align="center"><br />Issued at Phnom Penh,September 30,2013<br /><br />
+														<strong>F.RECTOR</strong><br /><br />
+														<strong>VICE RECTOR</strong>
+													</td>
+												</tr>
+											</table>
+										</div>
+										</div>
+								</div>
+							</div>
+							<br />
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

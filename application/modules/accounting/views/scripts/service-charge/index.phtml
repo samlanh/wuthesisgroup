@@ -1,0 +1,50 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_TEACHER"));
+?>	
+<?php $frm =  $this->frm_search;?>
+<div dojoType="dijit.layout.AccordionPane">
+	<button iconclass="dijitIconSearch" dojoType="dijit.form.Button" onclick="showDialog();" showLabel="true" type="button"><?php echo $tr->translate("SEARCH");?></button>
+	<input class="right"  type="button"​ id="add-room" Iconclass="dijitIconNewTask" value="<?php echo $tr->translate("ADD_NEW");?>" label="<?php echo $tr->translate("ADD_NEW");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'accounting','controller'=>"ServiceCharge",'action'=>'add-service-charge'),null,true); ?>';"/>
+</div>
+<?php echo $this->list;?>
+<?php $frm_search = $this->frm_search;?>
+<form id="listss" name="listss" action="<?php echo $this->url(array('module'=>'accounting','controller'=>'ServiceCharge','action'=>'index')); ?>" dojoType="dijit.form.Form" method="post">
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("SEARCH");?>', onCancel:hideDialog" id="popup_dept" >
+		<table cellpadding="5" cellspacing="5">
+			<tr>
+				<td><?php echo $tr->translate("CODE");?></td>
+				<td><?php echo $frm_search->getElement("service_code");?></td>
+				<td><?php echo $tr->translate("CATE_TYPE");?></td>
+				<td><?php echo $frm_search->getElement("cate_type");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("SERVICE_NAME");?></td>
+				<td><?php echo $frm_search->getElement("service_name");?></td>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm_search->getElement("status_search");?></td>
+			</tr>
+			<tr>
+				<td colspan="4" align="center"><br />
+					<input type="submit" label="<?php echo $tr->translate("SEARCH");?>" id="submitButton" 
+					dojoType="dijit.form.Button" iconClass="dijitIconSearch" />
+					<input type="submit" value="testing" onclick="dijit.byId('listss').submit();" />
+			</tr>
+		</table>
+	</div>
+</div>
+</form>
+ <script type="text/javascript">
+function showDialog() {	
+	dijit.byId("popup_dept").show();
+}
+function hideDialog() {		
+	dijit.byId("popup_dept").hide();
+}
+url_submit='<?php echo $this->url(array('module'=>'accounting','controller'=>'ServiceCharge','action'=>'index')); ?>';
+function submitData(){
+	dijit.byId('listss').submit();
+}
+ </script>
+ 

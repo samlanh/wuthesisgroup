@@ -1,0 +1,370 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate('EDITPROGRAM_FEE')); 
+	$payment_term = $this->payment_term;
+	$rate = $this->rate;
+?>	
+<script type="text/javascript" src="js/dojo/dojo.js" djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+    dojo.require("dojo.NodeList-manipulate");
+    dojo.require('dijit.form.Textarea');
+    dojo.require("dojo.parser");
+    dojo.require("dijit.form.Select"); 
+    dojo.require("dojo.data.ItemFileWriteStore"); 
+</script>
+<style>
+select{ width:100%;}
+fieldset{  background:#DFF7FD;}
+table tr.head-title{ background: none repeat scroll 0% 0% rgba(213, 249, 244, 1); padding:2px;}
+table tr td.null-border{ background: #fff; border-left:none !important;}
+table .set-style td,table .set-style th{ padding: 5px; border:1px solid #ccc;}
+table .set-style tr.st1{ background: none repeat scroll 0% 0% rgba(218, 250, 255, 1);}
+</style>
+<?php
+$frm_set_price = $this->frm_set_charge;?>
+<form id='servicecharge' dojoType="dijit.form.Form" onsubmit="return CheckFormSubmit();" action="<?php echo $this->url(array('module'=>'accounting','controller'=>'ProgramCharge','action'=>'edit-program-charge')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table cellspacing="2" style="margin: 0 auto;width:100%;" >
+	<tr>
+		<td>
+		<fieldset>
+					<legend align="center"><strong><?php echo $tr->translate("EDITPROGRAM_FEE");?></strong></legend>
+					<table style="margin: 0 auto; width: 100%; background:#DFF7FD;" cellspacing="10" broder 1>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("PROGRAM_TYPE");?></td>
+							<td><label id='service_cate'><?php echo $frm_set_price->getElement('service_name');?></label></td>
+							<td><?php echo $tr->translate("TYPE");?></td>
+							<td><?php echo $frm_set_price->getElement('type_hour');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("TOTAL_HOUR");?></td>
+							<td><?php echo $frm_set_price->getElement('total_hour');?></td>
+							<td><?php //echo $tr->translate("STATUS");?></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("CREATED_DATE");?></td>
+							<td><?php echo $frm_set_price->getElement('create_date');?></td>
+							<td><?php echo $tr->translate("STATUS");?></td>
+							<td><?php echo $frm_set_price->getElement('status');?></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td colspan="2">
+							</td>
+						</tr>
+					</table>
+					<table class="set-style"  style="border:1px solid #DFF7FD; border-collapse: collapse;margin: 0 auto; width: 100%; background:#DFF7FD;" >
+						<thead style="border:none !important">
+							<tr style="border:none !important">
+								<td colspan="8" align="left" style="border:none !important">
+									<br />
+								 	<?php $id=0; for($i = 0;$i < count($payment_term);$i++){ ?>
+									<?php $id++;if($i==0)$term = $id;
+									else{$term.=','.$id;} ?>
+								<?php }?>
+									<input type="hidden" name="iden_term" id="iden_term"  value="<?php echo $term;?>" >
+									<input type="hidden" name="identity" id="identity"  value="" >
+								 </td>
+							</tr>
+							<tr>
+								<td colspan="8">
+									<table id="table_row" border="1px" style="border-collapse: collapse; border:1px solid #DFF7FD;">
+										<tr id="head-title" class="head-td" align="center"></tr>
+									</table>
+								</td>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td colspan="8" align="center">
+									<input type="button" label="<?php echo $tr->translate('GO_BACK');?>" id="back" dojoType="dijit.form.Button" 
+									 iconClass="dijitIconUndo" onclick="window.location = '<?php echo $this->url(array('module'=>'accounting','controller'=>"PCharge",'action'=>'index'),null,true); ?>';" />
+									<input type="button" dojoType="dijit.form.Button" onclick="CheckFormSubmit();dijit.byId('servicecharge').submit();" label="<?php echo $tr->translate('SAVE');?>" id="save_new"
+								 		iconClass="dijitEditorIcon dijitEditorIconSave"/>
+								</td>
+							</tr>
+						</tfoot>
+				 </table>
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>
+<?php $frm = $this->frm_service_name;?>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("ADD_SERVICE_PROGRAG");?>', onCancel:hideDialog" id="popup_service" >
+	<form id="frm_service" dojoType="dijit.form.Form">
+		<table width="500px" cellspacing="10">
+			<tr>
+				<td><?php echo $tr->translate("SERVICE_NAME");?></td>
+				<td><?php echo $frm->getElement("title");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("CATE_TYPE");?></td>
+				<td><?php echo $frm->getElement("type");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("DISCRIPTION");?></td>
+				<td><?php echo $frm->getElement("desc");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm->getElement("status_program");?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><br />
+					<input type="button"  label="<?php echo $tr->translate("CANCEL");?>" id="cancel" 
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon  dijitEditorIconCancel" onclick="hideDialog();"/>
+					<input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submit" 
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addServiceName();"/>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</div>
+
+
+<!-- service category -->
+<?php $frm = $this->frm_ser_category;?>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("PROGRAM_TYPE_ADD");?>', onCancel:hideDialog" id="popup_service_type" >
+	<form id="frm_service_type" dojoType="dijit.form.Form">
+		<table width="500px" cellspacing="10">
+			<tr>
+				<td><?php echo $tr->translate("PROGRAM_TITLE");?></td>
+				<td><?php echo $frm->getElement("servicetype_title");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("CATE_TYPE");?></td>
+				<td><?php echo $frm->getElement("ser_type");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("DISCRIPTION");?></td>
+				<td><?php echo $frm->getElement("item_desc");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm->getElement("sertype_status");?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><br />
+					<input type="button"  label="<?php echo $tr->translate("CANCEL");?>" 
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon  dijitEditorIconCancel" onclick="dijit.byId('popup_service_type').hide();"/>
+					<input type="button"  label="<?php echo $tr->translate("SAVE");?>"
+						dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addServiceType();"/>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</div>
+<?php $service_Rows = $this->service_exist;?>
+<script type="text/javascript">
+function CheckFormSubmit(){	
+	if(dijit.byId('servicecharge').validate()){
+		if(dijit.byId('service_name').value==-1)
+		{ dijit.byId('service_name').focus();return false}
+		return true;						
+	}
+	return false;
+}							
+function CheckDegree(){
+}
+function ResetRecordRecord() {
+}
+var template = '';
+var services = '<?php echo $this->service_options; ?>';
+var payment_term = '<?php echo count($this->payment_term);?>';
+var col = 0;
+var no = 0;
+var title = 0;
+tmp = '';
+temp='';
+func='';
+ function initList(){
+		<?php if(!empty($service_Rows)) {		
+			foreach($service_Rows AS $i=>$r){?>
+			col++;no++;
+			template='';
+				if(title!=1){
+					temp+='<th><?php echo $tr->translate("DEL");?></th>';
+					temp+='<th><?php echo $tr->translate("N_O");?></th>';
+					temp+='<th id="lbl_titlemetion" width="250px"><?php echo $tr->translate("PROGRAM_NAME");?></th>';
+					temp+='<th id="lbl_titlelevel"><?php echo $tr->translate("LEVEL");?></th>';
+					<?php $s=0; ?>
+					<?php foreach ($payment_term as $value){?>
+					<?php echo"temp+='<th>$value</th>';"; ?>
+					<?php }?>
+					temp+='<th><?php echo $tr->translate("REMARK");?></th>';
+					dojo.query("#head-title").append(temp);
+					title=1;
+				}
+					template+='<td width="47px"align="center"><img  src="<?php echo $this->baseUrl();?>/images/Delete_16.png"></td>';
+					template+='<td width="6%" align="center">'+no+'</td>';
+					template+='<td align="center" id="lbl_metion'+col+'"><label id="lbl_select'+col+'"><select Onchange="showDialog('+col+');" class="full" dojoType="dijit.form.FilteringSelect" name="service_id'+col+'" id="service_id'+col+'" value='+<?php echo $r['id'];?>+' >'+services+'</select></label></td>';
+					template+='<td width="10%"><input type="text" required="true" name="level'+col+'" id="level'+col+'" dojoType="dijit.form.TextBox" placeholder="កំរិត Ex:1,2,3" style="width: 100%;"/></td>';
+					column = 0;
+					<?php foreach ($payment_term as $index => $value){?>
+						<?php if($index==1){ $func = 'onblur="CalculateRate(1,1)"';}
+						if($index==2){ $func = 'onblur="CalculateRate(2,1)"'; } ?>
+						template+='<td width="9%"><input  <?php echo $func;?>type="text" required="true" value="<?php echo $r['price_'.$index];?>" name="fee'+col+'_<?php echo $index; ?>" id="fee'+col+'_<?php echo $index; ?>" dojoType="dijit.form.NumberTextBox" style="width: 100%;" /></td>';
+						<?php  $func=''; }?>
+					//for(j=0;j<payment_term;j++){ column++;
+						//template+='<td width="9%"><input type="text" required="true" value="<?php //echo $r['price_1'];?>" id="fee'+col+'_'+column+'" name="fee'+col+'_'+column+'" dojoType="dijit.form.NumberTextBox" style="width: 100%;" /></td>';
+					//}
+					template+='<td class="quater-input"><input type="text" value="<?php echo $r['remark'];?>" required="true" name="remark'+col+'" id="remark'+col+'" dojoType="dijit.form.TextBox" placeholder="ផ្សេងៗ"style="width: 100%;"/><label id="subsub"></label></td>';
+				tmp='<tr id="row'+col+'">';
+				tmp+="</tr>";
+				dojo.query("#table_row").append(tmp);
+				if($("#identity").val()!="") {
+					var identity = $("#identity").val();
+					$("#identity").val(identity+','+col);
+				} else {$("#identity").val(col);}
+				dojo.html.set(dojo.byId("row"+col),template , {
+				     parseContent: true,
+				     onBegin: function(){
+				    	 
+				          }
+				})
+		<?php 	}
+		}?>
+
+	}
+dojo.ready(function(){
+	//service_exist();
+	// addRow();
+	 initList()
+});
+var url_add_service= '<?php echo $this->url(array('module'=>'globals','controller'=>'globals','action'=>'add-services'),null,true); ?>';
+select='';
+function addServiceName(){
+	if(dijit.byId('frm_service').validate()){ 
+		dojo.xhrPost({
+			  url: url_add_service,
+			  form: dojo.byId('frm_service'),
+			  content :{ 
+					'add_title':dijit.byId('title').get('value'),
+				    'type':dijit.byId('type').get('value'),
+				    'desc':dijit.byId('desc').get('value'),
+				    'is_program':2,
+				    'status':dijit.byId('status_program').get('value'),			    
+				},				    
+			   handleAs:"json", 
+			   load: function(response){
+				  if(response.id==-1){
+							alert('<?php echo $tr->translate("SERVICENAME_EXIST"); ?>');
+					}else{
+						dojo.html.set(dojo.byId("lbl_select"+id_record),'',{
+						     parseContent: true});
+						services=response.service_option;
+							select='<select class="full" dojoType="dijit.form.FilteringSelect" name="services_id'+id_record+'" id="services_id'+id_record+'" >'+services+'</select>';
+							dojo.html.set(dojo.byId("lbl_select"+id_record),select, {
+							     parseContent: true
+							});
+							dijit.byId("services_id"+id_record).attr( 'value',response.id);
+							alert('<?php echo $tr->translate("INSERT_SUCCESS"); ?>');
+							dijit.byId('frm_service').reset(); 
+					}
+					dijit.byId("popup_service").hide();
+			    },
+			    error: function(err) {
+				    alert(err);
+			    }
+		});
+	}
+}
+var url_add_service_type= '<?php echo $this->url(array('module'=>'global','controller'=>'globalS','action'=>'add-service-category')); ?>';
+function addServiceType(){
+	if(dijit.byId('frm_service_type').validate()){ 
+		dojo.xhrPost({
+			  url: url_add_service_type,
+			  form: dojo.byId('frm_service_type'),		    
+			   handleAs:"json", 
+			   load: function(response) {
+				   alert(response.id);
+				   if(response.id==-1){
+						alert('<?php echo $tr->translate("RECORD_EXIST"); ?>');
+				   }else{
+					    dojo.html.set(dojo.byId("service_cate"),'',{
+						     parseContent: true, 
+						});
+					   select='<select class="full" dojoType="dijit.form.FilteringSelect" name="service_name" id="service_name" ></select>';
+						dojo.html.set(dojo.byId("service_cate"),select, {
+						     parseContent: true,
+						});
+						dijit.byId("service_name").attr( 'value',response.id);
+					}
+				   dijit.byId('frm_service_type').reset(); 
+				   dijit.byId("popup_service_type").hide();
+			    },
+			    error: function(err){
+				    alert("Error");
+			    }
+		});
+	}
+	
+}
+function CalculateRate(type,r_key){
+	
+	rate = '<?php echo $rate['rate'];?>';
+	
+	if(type==1){
+		money_kh=dijit.byId('fee'+r_key+'_1').value;
+		if(isNaN(money_kh)){
+			
+		}else{
+		money_dollar = money_kh/rate;
+		money_dollar=money_dollar.toFixed(2);
+		dijit.byId('fee'+r_key+'_2').attr('value',money_dollar);}
+	}
+	else if(type==2){
+		money_kh=dijit.byId('fee'+r_key+'_2').value;
+		if(isNaN(money_kh)){
+		}else{
+			money_reil = money_kh*rate;
+			money_reil=money_reil.toFixed(2);
+			dijit.byId('fee'+r_key+'_1').attr('value',money_reil);
+		}
+	}
+}
+function showDialog(id) {
+	value=dijit.byId('service_id'+id).value;
+	if(value==-1){
+		id_record = id;
+		defult=dijit.byId('service_name').value;
+		dijit.byId('type').attr('value',defult);
+		dijit.byId("popup_service").show();
+	}
+}
+function PopupServiceCate(){
+	cate_id = dijit.byId('service_name').value;
+	if(cate_id==-1){
+		dijit.byId('ser_type').attr('value',2);
+		dijit.byId("popup_service_type").show();
+	}	
+}
+function hideDialog() {		
+	dijit.byId("popup_service").hide();
+}
+ function deleteRecord(index) {
+		var identity = $('#identity').val();
+		var arrays = identity.split(',');
+		for(var i=0;i<arrays.length;i++) {
+		if(arrays[i] == index) arrays.splice(i,1);
+		}
+		var strings = arrays.join(',');
+		$('#identity').val(strings);
+		dojo.query("#row"+index).remove();
+}	
+</script>

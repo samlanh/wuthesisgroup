@@ -1,0 +1,81 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Transfer Report page'); 
+	$this->headTitle('SRMS | Report Exam Semester I'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<style>
+
+</style>
+<form  id='rpt_exam1' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-exam1')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #000;">
+								<tr style="font-size: 13px;">
+									<td colspan="2"></td>
+									<td align="center">
+										<strong>ព្រះរាជាណាចក្រកម្ពុជា</strong><br />
+										<strong>ជាតិ សាសនា ព្រះមហាក្សត្រ</strong><br />
+										<strong style="font-family: Tacteing;">rr2ss</strong><br />
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>WESTERN UNIVERSITY</strong><br /><br />
+										<strong>បញ្ជីរាយនាមនិស្សិតឆ្នាំទី១ ថ្នាក់បរិញ្ញាបត្រ ប្រឡងឆមាសលើកទី១</strong><br />
+										<strong>មហាវិទ្យាល័យ ពាណិជ្ជសាស្រ្ត</strong><br /><br />
+										<strong>ឆ្នាំទី១ ជំនាន់ទី១១,ព្រឹក ឆ្នាំសិក្សា ២០១៣-២០១៤</strong><br />
+										<strong>បន្ទប់ Japan</strong><br />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse; border: 1px solid #000;"  border="1" >
+											<tr style="font-size:11px; height: 30px;" align="center" >
+											<style> th{background:#88d7fc;border-top:double;border-bottom:double;}</style>
+												<th>ល.រ</th>
+												<th>គោលនាម-នាម</th>
+												<th>អក្សរឡាតាំង</th>
+												<th>ភេទ</th>
+												<th>អត្តលេខ</th>	
+												<th>ថ្ងៃ ខែ ឆ្នាំកំណើត</th>
+												<th>បន្ទប់ប្រឡង</th>
+												<th>Math</th>
+												<th>Bus</th>
+												<th>Eco</th>
+												<th>Basic</th>
+												<th>Public</th>
+												<th>Office</th>					
+											
+											</tr>
+											<style> td{padding:0 3px; }</style>
+											<?php for ($i=1;$i<25;$i++){?>
+											<tr style="font-size:13px;height: 23px;"​ align="center">
+												<td><?php echo $i;?></td>
+												<td>លី ឌីណា</td>
+												<td>Ly Dyna</td>
+												<td>M</td>
+												<td>B11-0067</td>
+												<td>02/Jan/1991</td>
+												<td>Kenya</td>
+												<td>17</td>
+												<td>16</td>
+												<td>20</td>
+												<td>15</td>
+												<td>20</td>
+												<td>21</td>
+											</tr>
+											<?php }?>	
+										</table>	
+									</td>
+								</tr>
+								
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

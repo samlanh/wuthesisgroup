@@ -1,0 +1,92 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('Currency Smart | Report Tuition Fee For Bachelor Degree'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<form  id='rpt_tf_bachelor_degree' action="<?php echo $this->url(array('module'=>'accounting','controller'=>'report','action'=>'rpt-tf-bachelor-degree')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									
+									<td align="left" >
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>Western University</strong><br /><br /><br />
+										<strong>S1.1 Toul Kork</strong><br />
+									</td>
+									<td align="right" width="20%">
+										<strong><u>School Tuition Fee</u></strong><br />
+										<strong>2013</strong><br />
+										<small>Effective date:</small><br />
+									</td>
+								</tr>
+								<tr>
+									<td><br /></td>
+								</tr>
+								
+								<tr>
+									<td colspan="3">
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											<tr style="font-size:13px; height: 30px;" align="center" >
+												<th rowspan="2" width="5%">4</th>
+												<th rowspan="2" >Course Title</th>
+												<th colspan="2" width="17%">1</th>
+												<th colspan="2" width="17%">2</th>
+												<th colspan="2" width="17%">3</th>	
+												<th colspan="2" width="17%">4</th>	
+									
+											</tr>
+											<tr align="center"​​>
+												<th colspan="2" width="20%"><small>Semester</small></th>	
+												
+												<th colspan="2"><small>Year</small></th>
+													
+												<th colspan="2"><small>Full Fee</small></th>
+												<th colspan="2"><small></small></th>
+												
+											</tr>
+										</table>
+										</td>
+										</tr>
+										
+										<?php for ($i=1;$i<9;$i++){?>
+									<tr style="font-size: 13px;">
+									
+										<td align="left" style="padding-left:5px;">
+													<strong>Associate Degree</strong><br />
+												</td>
+												<td align="right" width="20%" style="padding-right:5px;">
+													<strong>Batch 4</strong><br />
+												</td>			
+									</tr>
+									
+									<tr>
+										<td colspan="3">		
+										<table cellpadding="5"​ style="margin:0 auto;width:100%; border-collapse: collapse;"  border="1" >
+											
+											<?php for ($j=1;$j<6;$j++){?>
+											<tr style="font-size:12px;height:30px;"​ align="center">
+												<td width="5%"><?php echo $j;?></td>
+												<td >Children(1,2,3)</td>
+												<td width="20%">$85.00</td>
+												<td width="17%">$155.00</td>
+												<td width="17%">$155.00</td>
+												<td width="17%"></td>
+											</tr>
+											<?php }?>		
+										</table>	
+									</td>
+								</tr>
+							<?php }?>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>

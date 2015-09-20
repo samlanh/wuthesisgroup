@@ -1,0 +1,108 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_FACULTIES_LIST"));
+?>	
+<?php $frm = $this->frm_search;?>
+<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'dept-list')); ?>" dojoType="dijit.form.Form" method="post">
+<div dojoType="dijit.layout.AccordionPane">
+	 <button IconClass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
+	 <?php echo $frm->getElement("title");?>
+	 <?php echo $frm->getElement('status_search');?>
+	 <button class="right" IconClass="dijitIconNewTask" dojoType="dijit.form.Button" onclick="showDialog();" showLabel="true" type="button" ><?php echo $tr->translate("ADD_NEW");?></button> 
+</div>
+<?php echo $this->list;?>
+</form>
+<?php $frm_dept = $this->add_dept;?>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" data-dojo-props="title:'<?php echo $tr->translate("ADD_FACULTY");?>', onCancel:hideDialog" id="popup_dept" >
+		<form id='frm_add_dept' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table>
+			<tr>
+				<td><?php echo $tr->translate("FACULTY_ENNAME");?></td>
+				<td>
+					<?php echo $frm_dept->getElement("en_name");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("FACULTY_KHNAME");?></td>
+				<td>
+					<?php echo $frm_dept->getElement("kh_name");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("SHORTCUT");?></td>
+				<td><?php echo $frm_dept->getElement("shortcut");?></td>
+			</tr>
+			<tr>
+				<td><?php echo $tr->translate("STATUS");?></td>
+				<td><?php echo $frm_dept->getElement("status");?>
+					<?php echo $frm_dept->getElement("dept_id");?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><br />
+					<input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submitButton" 
+					dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addNewDepartment();"/>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+<script>
+function printSave(){		
+	showDialog();			
+}
+function showAddDialog(){
+    dojo.forEach(dijit.byId('frm_add_dept').getDescendants(), function(widget) {
+    widget.attr('value', '');
+  });
+	showDialog();
+}
+function showDialog() {	
+	dijit.byId("popup_dept").show();
+}
+function hideDialog() {		
+	dijit.byId("popup_dept").hide();
+	//dijit.byId('frm_add_tran').submit();
+}
+var url_add_dept= '<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'add-department')); ?>';
+function addNewDepartment(){
+	if(dijit.byId('frm_add_dept').validate()) { 
+		dojo.xhrPost({
+		    url: url_add_dept,
+		    form: dojo.byId('frm_add_dept'),
+		    content : { 
+				'en_name':dijit.byId('en_name').get('value'),
+			    'kh_name':dijit.byId('kh_name').get('value'),
+			    'shortcut':dijit.byId('shortcut').get('value'),
+			    'status':dijit.byId('status').get('value'),			    
+			},				    
+		   handleAs:"json", 
+		   load: function(response) {
+			   location.reload();
+		       hideDialog();
+		    },
+		    error: function(err) {
+		    }
+		});
+		}
+}
+function addDatatogrids(){		
+		_no = dijit.byId('grid').rowCount + 1;
+		var myNewItem = {
+				num: _no,
+				id: _no,
+				en_name : dijit.byId('en_name').get('value'),
+				kh_name : dijit.byId('kh_name').get('value'),
+				shortcut: dijit.byId('shortcut').get('value'),
+				modify_date: 12/78/78,
+				is_active: dijit.byId('status').attr('displayedValue'),
+				user_name:  <?php $session_user=new Zend_Session_Namespace('auth');
+    			$username = $session_user->first_name; echo $username;?>,
+				
+		};		
+		tran_store.newItem(myNewItem);
+		addDataToGrid(dijit.byId('grid'), tran_store, myNewItem);	
+}
+</script>

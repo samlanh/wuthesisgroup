@@ -1,0 +1,215 @@
+<title>SRMS System | View Module Assignment</title>
+<style>
+fieldset.fifthy {	
+	border-right: 0px;
+	width: 30%;
+}
+fieldset.fifthy table{
+	padding-right: 1px;
+}
+table.user td{
+	vertical-align: top;   
+}
+</style>       
+
+<?php
+$cancel_url=$this->url(array(
+		'module'=>'rsvAcl',
+		'controller'=>'user-access',
+		'action'=>'index',
+	));	
+	
+	  $acl=($this->acl=='')? array():$this->acl;
+	  $acl_name=($this->acl_name=='')? array(): $this->acl_name;
+?>
+<br/>
+<div class="btn" align="right">
+	<input  type="button" value="ត្រលប់​ក្រោយ" label="ត្រលប់​ក្រោយ" id="btadd" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $cancel_url; ?>';"/>
+</div>
+<table cellspacing="20" style="margin: 0 auto; width: 100%">
+	<tr>
+		<td>
+			<fieldset>
+				<legend>Module Assignment</legend>
+				<table cellspacing="20" align="center">
+					<tr>
+						<td class="field-member">User type</td>
+						<td class="add-edit">
+							<input type="text" required="true" name="user_type" id="user_type" placeholder="User Type" 
+										dojoType="dijit.form.ValidationTextBox" value="<?php echo $this->rs[0]['user_type'];?>"
+										missingMessage="Invalid User type!" class='fullside' disabled/>
+						</td>				
+					</tr>			
+				</table>
+			</fieldset>	
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<fieldset>
+				<legend>Search option</legend>
+				<form name="frmsearch" action="" method="post">
+				<table cellspacing="20" style="margin: 0 auto; width: 100%">
+					<tr>
+						<td>Module</td>
+						<td><select name="fmod" id="fmod" class='fullside' required="true" missingMessage="Invalid Parent Name!" dojoType="dijit.form.FilteringSelect"><?php echo $this->optoin_mod;?></select></td>	
+						<td>Controller</td>
+						<td><select name="fcon" id="fcon" class='fullside' required="true" missingMessage="Invalid Parent Name!" dojoType="dijit.form.FilteringSelect"><?php echo $this->optoin_con;?></select></td>				
+					</tr>	
+					<tr>
+						<td>Action</td>
+						<td><select name="fact" id="fact" class='fullside' required="true" missingMessage="Invalid Parent Name!" dojoType="dijit.form.FilteringSelect"><?php echo $this->optoin_act;?></select></td>	
+						<td>Status</td>
+						<td><select name="fstatus" id="fstatus" class='fullside' required="true" missingMessage="Invalid Parent Name!" dojoType="dijit.form.FilteringSelect"><?php echo $this->optoin_status;?></select></td>				
+					</tr>	
+					<tr>
+						<td class="btn" colspan="4" align="center">
+							<input type="submit" value="Search" name="btsave" label="Search" title="Search" dojoType="dijit.form.Button"/>
+						</td>
+					</tr>		
+				</table>
+				</form>
+			</fieldset>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<fieldset >		
+				<legend>Module/Controller/Action Assignment</legend>
+				<form name="frmlist" action="" dojoType="dijit.form.Form" method="post">
+					<table class="fullside">
+						  <tr>
+						  	<td>	  		
+						  		<?php echo $this->result_row;?>
+						  	</td>
+						  	<td align="right" >
+						  		<?php echo $this->rows_per_page;?>
+						  	</td>
+						  </tr>
+						  <tr>
+						  	<td colspan="2">
+						  		<div id="grid" ></div>
+						  	</td>
+						  </tr>	
+						  <tr>
+						  	<td colspan="2" align="center">
+						  		<div id="navigetion" style="margin: 0 auto;"><?php echo $this->nevigation;?></div>	  		
+						  	</td>
+						  </tr>		  
+					</table>
+				</form>
+			</fieldset>			
+		</td>
+	</tr>
+</table>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/grid/resources/tundraGrid.css"/>
+<style>
+<!--
+	.pointer{
+		cursor: pointer;	
+	}
+	#grid{
+	    margin-top: 10px;		
+	}
+	.dojoxGridSortNode{
+		text-align: center;	
+		height: 24px;		
+	}
+-->
+</style>
+<script type="text/javascript">	
+	dojo.require("dijit.form.ValidationTextBox");
+	dojo.require('dijit.form.Form');
+	dojo.require('dijit.form.FilteringSelect');	
+	dojo.require('dijit.form.Button');
+	dojo.require("dojo.store.Memory");
+	dojo.require("dojo.data.ObjectStore");
+	dojo.require("dojox.grid.DataGrid");	
+	
+	dojo.ready(function(){
+		<?php if(!empty($this->datafiter['fmod'])):?>
+			dijit.byId('fmod').attr("value", "<?php echo $this->datafiter['fmod'];?>");
+		<?php endif;?>
+		<?php if(!empty($this->datafiter['fcon'])):?>
+			dijit.byId("fcon").attr("value", "<?php echo $this->datafiter['fcon'];?>");
+		<?php endif;?>
+		<?php if(!empty($this->datafiter['fact'])):?>
+			dijit.byId("fact").attr("value", "<?php echo $this->datafiter['fact'];?>");
+		<?php endif;?>
+		<?php if(!empty($this->datafiter['fstatus'])):?>
+			dijit.byId("fstatus").attr("value", "<?php echo $this->datafiter['fstatus'];?>");
+		<?php endif;?>
+		//Creat data fror show			
+		loadData(<?php print_r($this->list);?>);
+		
+		
+		dojo.connect(grid, "onRowClick", grid, function(evt){
+			var idx = evt.rowIndex,
+				item = this.getItem(idx);
+			
+			changeStatus(this.store.getValue(item, "acl_id"), this.store.getValue(item, "status"));
+		});
+	});
+
+	function loadData(data){			
+		// create an object store
+		var objectStore = new dojo.store.Memory({
+		       data: data
+		 });
+
+		//load data into data grid
+		grid = new dojox.grid.DataGrid({
+			store: dojo.data.ObjectStore({objectStore: objectStore}),
+			autoHeight: true,	
+			structure: [
+				{ name: "No", field: "num", width: "50px", cellStyles: "text-align: center;" },
+				{ name: "id", field: "acl_id", hidden: true },				
+				{ name: "URL", field: "user_access", width: "auto" },				
+				{ name: "Status", field: "status", width: "auto", cellStyles: "text-align: center;",
+					formatter: function(value,rowIndex) { 
+			           var src = "<?php echo BASE_URL?>/images/icon/"; 
+			           if(value == 1){
+			        	   src += "tick.png";
+			           }
+			           else{
+			        	   src += "none.png";
+			           }
+			           //alert('Value:'+value + ", row index:" + rowIndex);
+			           //var acl_id = this.store.getValue(item, "acl_id");
+			           var item = this.grid.getItem(rowIndex);
+			           var acl_id =  item.acl_id;
+			           return "<img id='img_"+acl_id+"' src=\"" + src + "\" />"; 
+			       } 
+			    }				
+			]
+		}, "grid");
+		grid.startup();
+	}
+
+	function changeStatus(id, status_val){
+		url = "<?php echo BASE_URL;?>/rsvAcl/user-access/update-status";
+		status = "no";
+		none_src = "<?php echo BASE_URL?>/images/icon/none.png";
+		tick_src = "<?php echo BASE_URL?>/images/icon/tick.png";
+		user_type = "<?php echo $this->rs[0]['user_type_id'];?>"
+
+		if( status_val == 1){
+			status = "yes";
+		}
+		
+		dojo.xhrPost({
+		      url: url,
+		      content:{'acl_id': id, 'status': status, 'user_type_id':user_type},		     
+		      load: function(data){
+		    	  	img_src = none_src;
+			         if(data == "yes"){
+						img_src = tick_src;
+			         }	     
+			         dojo.attr(dojo.byId("img_" + id),"src", img_src);
+		      },
+		      error: function(error){	        
+		        alert("Error, please reload page, Try it again.");
+		      }
+	    });
+	}	
+</script>

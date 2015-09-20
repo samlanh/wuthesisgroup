@@ -1,0 +1,60 @@
+<title>SRMS System | Edit Module Assignment</title>
+<?php $form=$this->form;?>
+<style>
+fieldset.fifthy {	
+	border-right: 0px;
+	width: 50%;
+}
+table.user td{
+	vertical-align: top;
+   
+}
+</style> 
+<br/>
+<?php 
+$cancel_url=$this->url(array(
+		'module'=>'rsvAcl',
+		'controller'=>'user-access',
+		'action'=>'index',
+	));
+$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+?>
+<form id="frm" action="<?php echo $form->getAction(); ?>" method="post" enctype="application/x-www-form-urlencoded" >
+	<div class="btn" align="right">
+			    <button name="save" class="positive" type="submit">
+			        <img alt="" src="<?php echo BASE_URL?>/images/icon/apply2.png">
+			        <?php echo $tr->translate('SAVE');?>
+			    </button>												   						
+			    <a class="negative" href="<?php echo $cancel_url;?>">
+			        <img alt="" src="<?php echo BASE_URL?>/images/icon/cross.png">
+			        <?php echo $tr->translate('CANCEL');?>
+			    </a>
+	</div>
+	<fieldset>
+		<legend><?php echo $tr->translate('USER_ACCESS');?></legend>
+		<table>
+			<tr>
+				<td id="field"><?php echo $tr->translate('USER_TYPE');?></td>
+				<td class="add-edit"><?php echo $form->getElement('user_type');?></td>				
+			</tr>						
+		</table>
+	</fieldset>	
+	<fieldset >
+		<legend><?php echo $tr->translate('MODULE')."/".$tr->translate('CONTROLLER')."/".$tr->translate('ACTION');?></legend>
+		<?php echo $this->form_layout;?>
+		<?php /*
+		<div style="width:490px; height: 400px; overflow: auto; ">
+		<table>	
+			<?php				
+				for($i=1;$i<=$form->getPlus();$i++){
+				?>			
+				<tr>											
+						<td id="field" style="width: 300px;"><?php echo $form->getElement('acl_id_'.$i)->getLabel(); ?></td>
+						<td class="add-edit"><?php echo $form->getElement('acl_id_'.$i);?></td>
+				</tr>			
+		    <?php } ?>		   		
+		</table>
+		</div>
+		*/?>
+	</fieldset>				
+</form>

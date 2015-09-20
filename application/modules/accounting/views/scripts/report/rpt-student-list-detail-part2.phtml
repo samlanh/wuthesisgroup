@@ -1,0 +1,183 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | Report Student Receivable'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>
+<style>
+#footer{display: none;}
+</style>	
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'report','action'=>'rpt-final-exams')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<div style="width:100%; background:none repeat scroll 0% 0% rgba(234, 255, 253, 1);">
+		<table width="100%" style="margin: 0 auto;">
+			<tr>
+				<td>
+				<fieldset style="background: none;height: 600px;overflow: scroll;overflow-x:hidden;">
+							<legend align="center" ><strong><?php echo $tr->translate("REPORT_STUDENT_RECIEVABLE");?></strong></legend>
+							<table style="width:30cm;background:#fff; margin: 0 auto; border: 1px dotted #ccc;">
+								<tr style="font-size: 13px;">
+									<td align="center">
+										<img src="<?php echo $this->baseUrl();?>/images/logo.png" height="85px;" />
+									</td>
+									<td></td>
+									<td><br />
+										
+									</td>
+								</tr>
+								<tr>
+									<td width="25%" align="center">
+										<strong>សាកលវិទ្យាល័យ វេស្ទើន</strong><br />
+										<strong>WESTERN UNIVERSITY</strong><br /><br ><br >
+									</td>
+									<td align="center">
+										
+									</td>
+									<td width="25%"></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+									<style> th,td{ padding:0 1px;}</style>
+
+									<style type="text/css">
+body{font-family: "Times New Roman",Arial; }
+table{ border-collapse:collapse; margin:0 auto;
+border:0px;
+border-style:solid; border-color:#000; }
+.padd tr td{ padding:0px 2px 0px 2px; font-size:10px; text-align:center}
+.padd tr th{ padding:5px 2px 5px 2px; font-size:10px; text-align:center }
+tr.b_right td{border-right:1px solid #000; }
+tr.b_right th{border-right:1px solid #000} 
+</style>
+
+<table class="padd" width="99%" border="1" align="center">
+   <tr >
+    <th rowspan="2" >Amount</th>
+    <th rowspan="2" >Dis.%B8-1213</th>
+    <th rowspan="2" >Dis.$</th>
+    <th rowspan="2" >Schoolarship P</th>
+    <th rowspan="2" >Net Tuition Fees</th>
+    <th rowspan="2" >Admin Free</th>
+    <th rowspan="2" >Total</th>
+    <th colspan="6">Semester I or Quarter I &amp; II</th>
+    <th colspan="3">Semester II or</th>
+  </tr>
+  <tr>
+    <td>Aug</td>
+    <td>Sep</td>
+    <td>Oct</td>
+    <td>Nov</td>
+    <td>Dec</td>
+    <td>Jan</td>
+    <td>Feb</td>
+    <td>Mar</td>
+    <td>Apr</td>
+    
+  </tr>
+  <tr>
+    <td>195$</td>
+    <td>&nbsp;</td>
+    <td style="text-align:left">-</td>
+    <td>55</td>
+    <td>140.00</td>
+    <td>&nbsp;</td>
+    <td>140.00</td>
+    <td>140.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>215$</td>
+    <td>&nbsp;</td>
+    <td style="text-align:left">-</td>
+    <td>&nbsp;</td>
+    <td>215.00</td>
+    <td>&nbsp;</td>
+    <td>215.00</td>
+    <td>215.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td>195$</td>
+    <td>&nbsp;</td>
+    <td style="text-align:left">-</td>
+    <td>90</td>
+    <td>105.00</td>
+    <td>&nbsp;</td>
+    <td>215.00</td>
+    <td>215.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  <tr>
+    <td height="23">380$</td>
+    <td>&nbsp;</td>
+    <td style="text-align:left">-</td>
+    <td>80</td>
+    <td>300.00</td>
+    <td>&nbsp;</td>
+    <td>300.00</td>
+    <td>30.00</td>
+    <td>30.00</td>
+    <td>&nbsp;</td>
+    <td>30.00</td>
+    <td>30.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="23">420$</td>
+    <td>30%</td>
+    <td style="text-align:left">126</td>
+    <td>&nbsp;</td>
+    <td>140.00</td>
+    <td>&nbsp;</td>
+    <td>140.00</td>
+    <td>140.00</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>8</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    
+  </tr>
+  
+</table>
+									
+									
+									</td>
+								</tr>
+							</table>
+				</fieldset>		
+				</td>
+			</tr>
+		</table>
+	</div>	
+</form>
+

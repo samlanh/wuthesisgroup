@@ -1,0 +1,159 @@
+<?php
+$this->headTitle('Registration | log in page'); 
+echo $this->headTitle();
+$base_url = Application_Form_FrmMessage::getUrl("/");
+?>
+<!DOCTYPE HTML> 
+<html>
+<head>
+<?php /*
+*/?>
+<script src="<?php echo $base_url;?>/js/dojo-1.6.1/dojo/dojo.js"  djConfig="isDebug: true,parseOnLoad: true"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>/js/dojo-1.6.1/dijit/themes/tundra/tundra.css"/>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	.btn{
+		height: 40px;
+		min-width: 100px;	
+	}
+</style>
+<link rel="stylesheet" href="css/stylelogin.css"/>
+<link rel="shortcut icon" href="images/icon.ico" type="image/x-icon"/>
+<script type="text/javascript">	
+	dojo.require("dijit.form.ValidationTextBox");
+	dojo.require('dijit.form.Form');	
+	dojo.require('dijit.form.Button');
+
+	dojo.require("dijit.layout.BorderContainer");
+	dojo.require("dijit.layout.TabContainer");
+	dojo.require("dijit.layout.AccordionContainer");
+	dojo.require("dijit.layout.ContentPane");
+	dojo.require("dojo.parser");
+	
+</script>
+</head>
+<body class="tundra">
+<div id="header">
+	<table>
+		<tr align="center">
+			<td class="title"><label class="textgreen footertitle"​ style="font:bold 22px 'Khmer OS Muol Light'; text-align: center;"><?php echo $this->data["system_name"];//echo"ប្រព័ន្ធចុះឈ្មោះនិស្សិត ​";//echo"ážŸáž¶áž€áž›ážœáž·áž‘áŸ’áž™áž¶áž›áŸ�áž™ ážœáŸ�ážŸáŸ’áž‘áž¾áž“";//echo $this->data['mainbranch'];?></label></td>
+		</tr>
+		<tr>
+			<td class="textblue" align="center"></td>
+		</tr>
+	</table>
+</div>
+<div id="content">
+	<div id='marquee'>
+		<marquee behavior="scroll" direction="left" onmouseout="this.start()" onmouseover="this.stop()" scrollamount="5"><?php echo $this->data["label_animation"];?></marquee>
+	</div>
+	<table cellpadding="0" cellspacing="0" id="main">
+		<tr>
+			<td style="width: 472px;padding-left:50px;" >				
+				<img alt="<?php ?>" src="<?php echo $base_url.$this->data['logo-path-name']?>">
+			</td>
+			<td valign="top" style="width: 120px">
+				<label class="lblheader"></label>
+				<ul>
+					<?php						
+// 						$services = explode("," , $this->data['services']);						
+// 						foreach ($services AS $i =>$s){
+// 							echo "<li>". $s ."</li>";
+// 						}
+					?>
+				</ul>
+			</td>
+			<td align="right">
+				<div id="login">
+					<form id="frmLogin" dojoType="dijit.form.Form" method="post" action="">
+						<script type="dojo/method" event="onSubmit">				
+								if(this.validate()) {						
+									return true;
+								}
+								return false;
+						</script>
+						<table id="login">		
+						<tr>
+							<td colspan="2" align="center" class="lblheader textwithe">
+								<label style="font:bold 20px 'Khmer OS Muol Light';"><small>ប្រព័ន្ធសុវត្ថិភាព ​</small></label>
+							</td>				
+						</tr>	
+						<tr>
+							<td colspan="2" align="center" style="color: red; padding-bottom: 10px;">
+								<?php echo $this->msg;?>
+							</td>				
+						</tr>			
+						<tr>
+							<td id="field">អ៊ីម៉ែលអ្នកប្រើប្រាស់ </td>
+							<td class="add-edit">
+								<input type="text" required="true" name="txt_user_name" id="txt_user_name" placeholder="ឈ្មោះអ្នកប្រើប្រាស់​" 
+								dojoType="dijit.form.ValidationTextBox" missingMessage="សូមបំពេញឈ្មោះអ្នកប្រើប្រាស់! " style="width: 100%;"/>
+							</td>
+						</tr>
+						<tr>
+							<td id="field">លេខសំងាត់</td>
+							<td class="add-edit">
+								<input type="password" required="true" name="txt_password" id="txt_password" placeholder="លេខសំងាត់" 
+								dojoType="dijit.form.ValidationTextBox" missingMessage="សូមបំពេញលេខសំងាត់!" style="width: 100%;"/>
+							</td>
+						</tr>
+						<tr>
+							<td id="field">ភាសា</td>
+							<td class="add-edit">
+								<select name="lang" id="lang" style=" height: 30px; width:170px " > 
+									<option value="1">ខ្មែរ</option> 
+									<option value="2">អង់គ្លេស</option> 
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="right">
+								<input  type="submit" value="ចាប់ផ្តើម" label="ចាប់ផ្តើម" dojoType="dijit.form.Button" />
+								<input  type="reset" value="សំអាត" id="clear_login" dojoType="dijit.form.Button" label="សំអាត" /> 								
+							</td>				
+						</tr>
+					</table>
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>	
+</div>
+<div id="footer">
+	<table id="main">
+		<tr>
+			<td><br />
+				<label class="textgreen footertitle">អាសយដ្ឋាន​ ៖</label>
+				<dl>
+				   <lable class="textblue"><?php echo $this->data['branch_add']?></lable><br />
+				  	<?php						
+						$tels = explode("," , $this->data['branch-tel']);						
+						foreach ($tels AS $i =>$tel){
+							echo "<dd>". $tel ."</dd>";
+						}
+					?>	
+					<lable class="textblue"><?php echo $this->data['branch_email']?></lable><br />		   
+				</dl>
+				<br />
+			</td>
+			<td align="right" class="textwithe" rowspan="2" valign="bottom">
+				<label class="textgreen footertitle">បង្កើតដោយ៖</label>
+				<a href="http://western.edu.kh/" target="_blank"><label class="textyellow footertitle">
+					<?php echo $this->data['power_by']?>
+				</label>				
+			</td>
+		</tr>
+		<tr>
+			<td class="textgreenlight">
+				<label class="textgreen footertitle">&copy រក្សាសិទ្វិដោយ</label>
+				<a href="http://western.edu.kh/" target="_blank"><label class="textyellow footertitle">
+					<?php echo $this->data['branch']?>
+				</label>	
+			</td>
+			
+		</tr>
+	</table>
+</div>
+</body>
+</html>

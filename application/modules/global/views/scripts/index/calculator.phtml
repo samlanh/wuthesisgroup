@@ -1,0 +1,490 @@
+<?php 
+$this->headTitle('SRMS | Cash Out');
+echo $this->headTitle();
+?>
+<?php 
+	$frm_cal = $this->frm_cal;
+	define("CENTER","center");
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+?>
+<script type="text/javascript">
+	dojo.require("dijit.Dialog");
+</script>
+<form id="cash_count" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded" >
+<table cellspacing="20" width="100%" >
+	<tr>
+		<td width="48%">
+			<fieldset>
+				<legend align="center"><?php echo $tr->translate("USD");?></legend>
+				<table style="margin: 0 auto; width: 90%;" cellspacing="10">
+					<tr height="30px">
+						<td>$ 100</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>" width="40%"><?php echo $frm_cal->getElement("d_hundred");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>" width="40%"><?php echo $frm_cal->getElement("rs_hundred");?></td>
+					</tr>
+					<tr>
+						<td>$ 50</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("d_fifty");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_fifty");?></td>
+					</tr>
+					<tr>
+						<td>$ 20</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("d_tweenty");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_tweenty");?></td>
+					</tr>
+					<tr>
+						<td>$ 10 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("d_ten");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_ten");?></td>
+					</tr>
+					<tr>
+						<td>$ 5</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("d_five");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_five");?></td>
+					</tr>
+					<tr>
+						<td>$ 1</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("d_one");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_one");?></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="<?php echo CENTER;?>"><?php echo $tr->translate("ALL_TOTAL_DOLLAR");?></td>
+						<td>$</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_dollar_total");?></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="<?php echo CENTER;?>"><?php echo $tr->translate("ALL_TOTAL_REIL");?></td>
+						<td>$</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("total_reil_dollar");?></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="<?php echo CENTER;?>"><?php echo $tr->translate("ALL_TOTAL_REIL");?></td>
+						<td>$</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("total_amount");?></td>
+				</table>
+			</fieldset>
+			</td>
+			<td width="48%">
+			<fieldset>
+				<legend align="center"><?php echo $tr->translate("RIEL");?></legend>
+				<table style="margin: 0 auto; width: 90%;" cellspacing="10">
+					<tr>
+						<td>R 50,000 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>" width="40%"><?php echo $frm_cal->getElement("r_fiftyhousend");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>" width="40%"><?php echo $frm_cal->getElement("rs_fiftyhousend");?></td>
+					</tr>
+					<tr>
+						<td>R 10,000</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("r_tenthousend");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_tenthousend");?></td>
+					</tr>
+					<tr>
+						<td>R 5,000 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("r_fivehousend");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_fivehousend");?></td>
+					</tr>
+					<tr>
+						<td>R 2,000</td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("r_tweentyhousend");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_tweentyhousend");?></td>
+					</tr>
+					<tr>
+						<td>R 1,000 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("thousend");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_thousend");?></td>
+					</tr>
+					<tr>
+						<td>R 500 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("r_fivehundred");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_fivehundred");?></td>
+					</tr>
+					<tr>
+						<td>R 100 </td>
+						<td>x</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("r_onehundred");?></td>
+						<td>=</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_onehundred");?></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="<?php echo CENTER;?>"><?php echo $tr->translate("ALL_TOTAL_REIL");?></td>
+						<td>R</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rs_kh_total");?></td>
+					</tr>
+					<tr>
+						<td colspan="3" align="<?php echo CENTER;?>"><?php echo $tr->translate("Convert to dollars");?></td>
+						<td>R</td>
+						<td align="<?php echo CENTER;?>"><?php echo $frm_cal->getElement("rate");?></td>
+					</tr>
+				</table>
+			</fieldset>
+		</td>
+	</tr>
+</table>
+</form>
+<table width="100%">
+	<tr align="center">
+		<td>
+			<input type="button" value="Save & Print" label="Save & Print" id="busyButton" dojoType="dijit.form.Button" 
+			iconClass="dijitEditorIcon dijitEditorIconPrint" onclick="printCashCount();"/>
+		</td>
+	</tr>
+</table>
+<script>
+function Calcuhundred(){
+	d_hundred=dijit.byId('d_hundred').get('value');
+	//alert(d_hundred);
+	rs_hundred=d_hundred*100;
+	dojo.byId("rs_hundred").value = dojo.number.format(rs_hundred);
+	//subTotalDollar();
+	dojo.connect("onkeyup", function(evt){
+		subTotalDollar();
+    });	
+}
+function Calfifty(){
+	d_fifty=dijit.byId('d_fifty').get('value')
+	rs_fifty=d_fifty*50;
+	dojo.byId("rs_fifty").value = dojo.number.format(rs_fifty);
+	subTotalDollar();	
+}
+function Caltweenty(){
+	d_tweenty=dijit.byId('d_tweenty').get('value')
+	rs_tweenty=d_tweenty*20;
+	dojo.byId("rs_tweenty").value = dojo.number.format(rs_tweenty);	
+	subTotalDollar();
+}
+function Calten(){
+	d_ten=dijit.byId('d_ten').get('value')
+	rs_ten=d_ten*10;
+	dojo.byId("rs_ten").value = dojo.number.format(rs_ten);	
+	subTotalDollar();
+}
+function Calfive(){
+	d_five=dijit.byId('d_five').get('value')
+	rs_five=d_five*5;
+	dojo.byId("rs_five").value = dojo.number.format(rs_five);
+	subTotalDollar();
+}
+function Calone(){
+	d_one=dijit.byId('d_one').get('value')
+	rs_one=d_one*1;
+	dojo.byId("rs_one").value = dojo.number.format(rs_one);
+	subTotalDollar();
+}
+function subTotalDollar(){
+	rs_hundred=parseFloat(dijit.byId('rs_hundred').get('value'));
+	rs_fifty=parseFloat(dijit.byId('rs_fifty').get('value'));
+	rs_tweenty=parseFloat(dijit.byId('rs_tweenty').get('value'));
+	rs_ten=parseFloat(dijit.byId('rs_ten').get('value'));
+	rs_five=parseFloat(dijit.byId('rs_five').get('value'));
+	rs_one=parseFloat(dijit.byId('rs_one').get('value'));
+	if(isNaN(rs_hundred)){
+		rs_hundred=0;
+	}
+	if(isNaN(rs_fifty)){
+		rs_fifty=0;
+	}
+	if(isNaN(rs_tweenty)){
+		rs_tweenty=0;
+	}
+	if(isNaN(rs_ten)){
+		rs_ten=0;
+	}
+	if(isNaN(rs_five)){
+		rs_five=0;
+	}
+	if(isNaN(rs_one)){
+		rs_one=0;
+	}
+	sub_totaldollar=rs_hundred+rs_fifty+rs_tweenty+rs_ten+rs_five+rs_one;
+	dojo.byId("rs_dollar_total").value = dojo.number.format(sub_totaldollar);
+	AllAmountTotal();
+}
+///calculator kh
+function Calfiftyhousend(){
+	r_fiftyhousend=dijit.byId('r_fiftyhousend').get('value')
+	r_fiftyhousend=r_fiftyhousend*50000;
+	dojo.byId("rs_fiftyhousend").value = dojo.number.format(r_fiftyhousend);
+	subTotalkh();
+}
+function Caltenthousend(){
+	r_tenthousend=dijit.byId('r_tenthousend').get('value')
+	r_tenthousend=r_tenthousend*10000;
+	dojo.byId("rs_tenthousend").value = dojo.number.format(r_tenthousend);
+	subTotalkh();	
+}
+function Calfivehousend(){
+	r_fivehousend=dijit.byId('r_fivehousend').get('value')
+	rs_tweenty=r_fivehousend*5000;
+	dojo.byId("rs_fivehousend").value = dojo.number.format(rs_tweenty);	
+	subTotalkh();
+}
+function Caltweentyhousend(){
+	r_tweentyhousend=dijit.byId('r_tweentyhousend').get('value')
+	r_tweentyhousend=r_tweentyhousend*2000;
+	dojo.byId("rs_tweentyhousend").value = dojo.number.format(r_tweentyhousend);	
+	subTotalkh();
+}
+function Calthousend(){
+	thousend=dijit.byId('thousend').get('value')
+	thousend=thousend*1000;
+	dojo.byId("rs_thousend").value = dojo.number.format(thousend);	
+	subTotalkh();
+}
+function Calfivehundred(){
+	r_fivehundred=dijit.byId('r_fivehundred').get('value')
+	r_fivehundred=r_fivehundred*500;
+	dojo.byId("rs_fivehundred").value = dojo.number.format(r_fivehundred);	
+	subTotalkh();
+}
+function Calonehundred(){
+	r_onehundred=dijit.byId('r_onehundred').get('value')
+	r_onehundred=r_onehundred*100;
+	dojo.byId("rs_onehundred").value = dojo.number.format(r_onehundred);	
+	subTotalkh();
+}
+function subTotalkh(){
+	rs_fiftyhousend=parseFloat(dijit.byId('rs_fiftyhousend').get('value'));
+	rs_tenthousend=parseFloat(dijit.byId('rs_tenthousend').get('value'));
+	rs_fivehousend=parseFloat(dijit.byId('rs_fivehousend').get('value'));
+	rs_tweentyhousend=parseFloat(dijit.byId('rs_tweentyhousend').get('value'));
+	rs_thousend=parseFloat(dijit.byId('rs_thousend').get('value'));
+	rs_fivehundred=parseFloat(dijit.byId('rs_fivehundred').get('value'));
+	rs_onehundred=parseFloat(dijit.byId('rs_onehundred').get('value'));
+	if(isNaN(rs_fiftyhousend)){
+		rs_fiftyhousend=0;
+	}
+	if(isNaN(rs_tenthousend)){
+		rs_tenthousend=0;
+	}
+	if(isNaN(rs_fivehousend)){
+		rs_fivehousend=0;
+	}
+	if(isNaN(rs_tweentyhousend)){
+		rs_tweentyhousend=0;
+	}
+	if(isNaN(rs_thousend)){
+		rs_thousend=0;
+	}
+	if(isNaN(rs_fivehundred)){
+		rs_fivehundred=0;
+	}
+	if(isNaN(rs_onehundred)){
+		rs_onehundred=0;
+	}
+	sub_totalkh=rs_fiftyhousend+rs_tenthousend+rs_fivehousend+rs_tweentyhousend+rs_thousend+rs_fivehundred+rs_onehundred;
+	dojo.byId("rs_kh_total").value = dojo.number.format(sub_totalkh);	
+	//rs_kh_total=parseFloat(dijit.byId('rs_kh_total').get('value'));
+	rate=parseFloat(dijit.byId('rate').get('value'));
+	covertfromreil = sub_totalkh/rate;
+	dojo.byId("total_reil_dollar").value = dojo.number.format(covertfromreil);
+	AllAmountTotal();
+	
+}
+function AllAmountTotal(){
+	rs_total_dollar=parseFloat(dijit.byId('rs_dollar_total').get('value'));
+	rs_total_reil=parseFloat(dijit.byId('total_reil_dollar').get('value'));
+	if(isNaN(rs_total_dollar)){
+		rs_total_dollar=0;
+	}
+	if(isNaN(rs_total_reil)){
+		rs_total_reil=0;
+	}
+	total_amount = rs_total_dollar+rs_total_reil;
+	//total_amount = total_amount.
+	dojo.byId("total_amount").value = dojo.number.format(total_amount);
+}
+function printCashCount(){		
+	if(dijit.byId('cash_count').validate()) {
+		dojo.byId("lb_hundred").innerHTML =dijit.byId('d_hundred').get('value');
+										  //= dijit.byId('d_hundred').get('value')
+		//dd=dijit.byId("rs_hundred").value;
+		d_hundred = dijit.byId("rs_hundred").value;
+		dojo.byId("rd_hundred").innerHTML = isNaN(d_hundred)?0:d_hundred;
+		d_fifty = dijit.byId("d_fifty").value;
+		dojo.byId("lb_fifty").innerHTML = isNaN(d_fifty)?0:d_fifty;
+		drs_fifty = dijit.byId("rs_fifty").value;
+		dojo.byId("rd_fifty").innerHTML =  isNaN(drs_fifty)?0:drs_fifty;
+		d_tweenty=dijit.byId("d_tweenty").value;
+		dojo.byId("lb_tweenty").innerHTML = isNaN(d_tweenty)?0:d_tweenty;
+		drs_tweenty = dijit.byId("rs_tweenty").value;
+		dojo.byId("rd_tweenty").innerHTML = isNaN(drs_tweenty)?0:drs_tweenty;
+		d_ten = dijit.byId("d_ten").value;
+		dojo.byId("lb_ten").innerHTML = isNaN(d_ten)?0:d_ten;
+		rd_ten=dijit.byId("rs_ten").value;
+		dojo.byId("rd_ten").innerHTML = isNaN(rd_ten)?0:rd_ten;
+		d_five = dijit.byId("d_five").value;
+		dojo.byId("lb_five").innerHTML = isNaN(d_five)?0:d_five;
+		rd_five = dijit.byId("rs_five").value;
+		dojo.byId("rd_five").innerHTML = isNaN(rd_five)?0:rd_five;
+		d_one = dijit.byId("d_one").value;
+		dojo.byId("lb_one").innerHTML = isNaN(d_one)?0:d_one;
+		rd_one=dijit.byId("rs_one").value;
+		dojo.byId("rd_one").innerHTML =  isNaN(rd_one)?0:rd_one;
+		///////////////////riel//////////////////////////
+		dojo.byId("lb_fiftythousend").innerHTML = dijit.byId("r_fiftyhousend").value;
+		dojo.byId("rr_fiftythousend").innerHTML = dijit.byId("rs_fiftyhousend").value;
+		dojo.byId("lb_tenthousend").innerHTML = dijit.byId("r_tenthousend").value;
+		dojo.byId("rr_tenhousend").innerHTML = dijit.byId("rs_tenthousend").value;
+		dojo.byId("lb_fivethousend").innerHTML = dijit.byId("r_fivehousend").value;
+		dojo.byId("rr_fivethousend").innerHTML = dijit.byId("rs_fivehousend").value;
+		dojo.byId("lb_twothousend").innerHTML = dijit.byId("r_tweentyhousend").value;
+		dojo.byId("rr_twothousend").innerHTML = dijit.byId("rs_tweentyhousend").value;
+		dojo.byId("lb_thousend").innerHTML = dijit.byId("thousend").value;
+		dojo.byId("rr_thousend").innerHTML = dijit.byId("rs_thousend").value;
+		dojo.byId("lb_fivehundred").innerHTML = dijit.byId("r_fivehundred").value;
+		dojo.byId("rr_fivehundred").innerHTML = dijit.byId("rs_fivehundred").value;
+		dojo.byId("lbr_hundred").innerHTML = dijit.byId("r_onehundred").value;
+		dojo.byId("rr_fivehundred").innerHTML = dijit.byId("rs_onehundred").value;
+		dijit.byId("inv_cash").show();	
+	}
+	
+}
+function doPrint() {
+	window.frames["print_frame"].document.body.innerHTML=dojo.byId('divPrint').innerHTML;
+    window.frames["print_frame"].window.focus();
+    window.frames["print_frame"].window.print();
+    dijit.byId("inv_cash").hide();	//hideDialog();
+}
+</script>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" align="center" data-dojo-props="title:'<?php echo $tr->translate("STUDENT_PAYMENT_RECEIPT");?>'" id="inv_cash" >
+		<div id="divPrint" style="width: 21cm; height: 14cm ; padding: 0px; margin: 0px;">
+		<table cellspacing="20" width="100%" >
+		<tr>
+			<td width="48%">
+			<fieldset style="background:none; border-bottom: none;border-left: none;border-right: none;">
+				<legend align="center"><?php echo $tr->translate("USD");?></legend>
+					<table cellspacing="5" style="width:100%; height:220px; font-size:12pt; color:rgba(14, 0, 107, 1); padding: 0px; margin: 0px;">
+							<tr>
+								<td>$ 100</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_hundred"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_hundred"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>$ 50</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_fifty"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_fifty"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>$ 20</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_tweenty"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_tweenty"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>$ 10</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_ten"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_ten"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>$ 5</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_five"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_five"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>$ 1</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_one"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rd_one"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>Total</td>
+					            <td>&nbsp;&nbsp;&nbsp;<label id="lb_total"></label></td>
+					            <td style="border-top: 1px solid #000;">&nbsp;&nbsp;&nbsp;<label id="lb_totala"></label></td>
+						   	</tr>
+				  </table>
+				</fieldset>
+		</td>
+		<td>
+		<fieldset style="background:none;border-bottom: none; border-left: none;border-right: none;">
+			<legend align="center"><?php echo $tr->translate("RIEL");?></legend>
+				<table cellspacing="5" style="width:100% ; height:220px; font-size:12pt; color:rgba(14, 0, 107, 1); padding: 0px; margin: 0px;">
+							<tr>
+								<td>R 50,000</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_fiftythousend"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_fiftythousend"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 10,000</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_tenthousend"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_tenhousend"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 5,000</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_fivethousend"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_fivethousend"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 2,000</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_twothousend"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_twothousend"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 1,000</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_thousend"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_thousend"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 500</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lb_fivehundred"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_fivehundred"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>R 100</td>
+					            <td>&nbsp;x&nbsp;&nbsp;<label id="lbr_hundred"></label></td>
+					            <td>&nbsp;=&nbsp;&nbsp;<label id="rr_hundred"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>Total in Khmer</td>
+					            <td>&nbsp;&nbsp;&nbsp;<label id="lb_total"></label></td>
+					            <td style="border-top: 1px solid #000;">&nbsp;&nbsp;&nbsp;<label id="lb_totala"></label></td>
+						   	</tr>
+						   	<tr>
+								<td>Exchange Rate</td>
+					            <td>&nbsp;&nbsp;&nbsp;$ <label id="lb_exchange_rate">4100</label></td>
+					            <td style="border-top: 1px solid #000;">&nbsp;&nbsp;&nbsp;<label id="lb_totala"></label></td>
+						   	</tr>
+				  </table>
+		</fieldset>
+	 	 </td>
+	</tr>
+	<tr>
+		<td><strong>All Total :  $ 30.000</strong></td>
+		<td><strong> </strong></td>
+	</tr>
+	<tr>
+		<td align="center"><strong style="height: 30px; border-top:1px solid #000; padding:2px 10px;">Remitted by</strong></td>
+		<td align="center"><strong style="height: 30px; border-top:1px solid #000; padding:2px 10px;">Received by</strong></td>
+	</tr>
+	</table>
+		</div>
+		<iframe name=print_frame width=0 height=0 frameborder=0 src=about:blank></iframe>	
+		<button dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconPrint"
+				showLabel="false" type="button" onclick="doPrint();">Print</button>
+		<button dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconCancel"
+				showLabel="false" type="button" onclick="hideDialog();">Cancel</button>
+	</div>
+</div>	
+
