@@ -30,27 +30,36 @@ class Application_Model_Decorator
 	public function getMenuLeft($arr_menu,$controller,$module=null){
 		$menu='';
 		$i=0;
-		if(is_array($arr_menu)){
+		$session_user=new Zend_Session_Namespace('auth');
+		$arr_actin=$session_user->arr_actin;
+// 		print_r($arr_actin);
+		
+		//if(is_array($arr_menu)){
 			foreach($arr_menu as $param=>$url){
-				if($param==$controller){
-					$menu.=$this->spanMenu($url);
-				}else{
-					if($module!=null){
-						$uri=$this->baseUrl().'/'.$module.'/'.$param;
-						$url=str_replace('href=""', 'href="'.$uri.'"', $url);
-						$menu.=$url;
-					}else{
-						$menu.=$url;
-					}
-				}
+				$access = array_search($module.'/'.$param,$arr_actin);
+				//if($access!=''){
+						if($param==$controller){
+							$uri=$this->baseUrl().'/'.$module.'/'.$param;
+							$url=str_replace('href=""', 'href="'.$uri.'"', $url);
+							$menu.=$this->spanMenu($url,$controller=null);
+						}else{
+							if($module!=null){
+								$uri=$this->baseUrl().'/'.$module.'/'.$param;
+								$url=str_replace('href=""', 'href="'.$uri.'"', $url);
+								$menu.=$url;
+							}else{
+								$menu.=$url;
+							}
+						}
+				//}
 				$i++;
 			}
 			return $menu;
-		}
-		return null;
+	 // }
+		//return null;
 	}
 	public function spanMenu($url,$class="current-left"){
-		$temp=str_replace('<a', '<span class="'.$class.'"', $url);
+		$temp=str_replace('<a', '<a class="'.$class.'"', $url);
 		$temp=str_replace('</a>', '</span>', $temp);
 		return $temp;
 	}

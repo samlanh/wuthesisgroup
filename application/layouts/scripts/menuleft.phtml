@@ -49,14 +49,17 @@
 				'global'=>'<li><a href="">'.$tr->translate("GLOBAL").'</a></li>',
 			),
 			'global'=>array(
-					'dept-list'=>"<li><span class''><a href='".$baseurl."/global/index/dept-list'>".$tr->translate("FACULTIES")."</a></span></li>",
-					'major-list'=>"<li><span class''><a href='".$baseurl."/global/index/major-list'>".$tr->translate("MAJORS")."</a></span></li>",
-					'room-list'=>"<li><span class''><a href='".$baseurl."/global/index/room-list'>".$tr->translate("ROOM_NAME")."</a></span></li>",
-					'teacher-lis'=>"<li><span class''><a href='".$baseurl."/global/index/teacher-list'>".$tr->translate("LACTURER")."</a></span></li>",
-					'subject-list'=>"<li><span class''><a href='".$baseurl."/global/index/subject-list'>".$tr->translate("SUBJECT_EXAM")."</a></span></li>",
-					'province-list'=>"<li><span class''><a href='".$baseurl."/global/index/province-list'>".$tr->translate("CITY_PROVINCE")."</a></span></li>",
-					'setting'=>"<li><span class''><a href='".$baseurl."/global/index/setting'>".$tr->translate("SETTING")."</a></span></li>",
-					'icon'=>"<li><span class''><a href='".$baseurl."/global/index/icon'>".$tr->translate("icon")."</a></span></li>",
+					'faculty'=>'<li><a href="">'.$tr->translate("FACULTIES").'</a></li>',
+					'major'=>'<li><a href="">'.$tr->translate("MAJORS").'</a></li>',
+					'room'=>'<li><a href="">'.$tr->translate("ROOM_NAME").'</a></li>',
+					'lecturer'=>'<li><a href="">'.$tr->translate("LACTURER").'</a></li>',
+					'subject'=>'<li><a href="">'.$tr->translate("SUBJECT_EXAM").'</a></li>',
+					'LecturerSubject'=>'<li><a href="">'.$tr->translate("LACTURER_SUBJECT").'</a></li>',
+					'province'=>'<li><a href="">'.$tr->translate("CITY_PROVINCE").'</a></li>',
+					'highschool'=>'<li><a href="">'.$tr->translate("highschool").'</a></li>',
+					'studentgroup'=>'<li><a href="">'.$tr->translate("studentgroup").'</a></li>',
+					'setting'=>'<li><a href="">'.$tr->translate("SETTING").'</a></li>',
+					'icon'=>'<li><a href="">'.$tr->translate("icon").'</a></li>',
 			),
 			'user'=>array(
 				'index'=>'<li><a href="">'.$tr->translate("USER").'</a></li>',
@@ -108,7 +111,7 @@
 				$dc=new Application_Model_Decorator();					
 				$class="current-left";					
 				$menu=$dc->getMenuLeft($arr_param_menu[$request->getModuleName()],$request->getControllerName(),$request->getModuleName());
-				if($menu) echo $menu;					
+				if($menu) echo $menu;				
 			?>
 	</ul>																
 	</div>
