@@ -2,7 +2,13 @@
 	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
 	echo $this->headTitle($tr->translate('SRMS_EDIT_TECHER_NAME')); 
 	$teacher= $this->update_teacher;?>
-<form  id='update_techer' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'edit-teacher')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<form  id='update_techer' action="<?php echo $this->url(array('module'=>'global','controller'=>'lecturer','action'=>'edit')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<script type="dojo/method" event="onSubmit">										
+			if(this.validate()) {								
+				return true;
+			}
+			return false;
+	</script>
 <table cellspacing="10" width="50%" style="margin: 0 auto;">
 	<tr>
 		<td>
@@ -32,9 +38,6 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-							<input type="button" value="GO_BACK" label="<?php echo $tr->translate('GO_BACK');?>" id="back" dojoType="dijit.form.Button" 
-								 iconClass="dijitIconUndo" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'teacher-list'),null,true); ?>';" />
-								 
 							<input type="submit" value="<?php echo $tr->translate('GO_EDIT');?>" label="<?php echo $tr->translate('GO_EDIT');?>" id="submitButton" dojoType="dijit.form.Button" 
 								 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("update_techer").submit();"/>
 							</td>

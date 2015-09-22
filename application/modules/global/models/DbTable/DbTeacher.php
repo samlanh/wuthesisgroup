@@ -22,7 +22,7 @@ class Global_Model_DbTable_DbTeacher extends Zend_Db_Table_Abstract
 	}
 	public function getTeacherById($id){
 		$db = $this->getAdapter();
-		$sql = "SELECT * FROM rms_teacher WHERE teacher_id = ".$db->quote($id);
+		$sql = "SELECT * FROM rms_teacher WHERE id = ".$db->quote($id);
 		$sql.=" LIMIT 1";
 		$row=$db->fetchRow($sql);
 		return $row;
@@ -31,8 +31,8 @@ class Global_Model_DbTable_DbTeacher extends Zend_Db_Table_Abstract
 		$_arr=array(
 				'teacher_name_en' => $_data['en_name'],
 				'teacher_name_kh' => $_data['kh_name'],
-				'subject_name_en' => $_data['en_subject'],
-				'subject_name_kh' => $_data['kh_subject'],
+// 				'subject_name_en' => $_data['en_subject'],
+// 				'subject_name_kh' => $_data['kh_subject'],
 				'modify_date' => Zend_Date::now(),
 				'is_active'   => $_data['status'],
 				'user_id'	  => $this->getUserId()
@@ -43,10 +43,9 @@ class Global_Model_DbTable_DbTeacher extends Zend_Db_Table_Abstract
 	
 	function getAllTeacher($search){
 		$db = $this->getAdapter();
-		$sql = " SELECT teacher_id AS id, teacher_name_en,teacher_name_kh,
-		subject_name_en,subject_name_kh, modify_date, is_active as status ,
-		(SELECT first_name from rms_users where id=user_id )AS user_name FROM rms_teacher
-		WHERE 1";
+		$sql = " SELECT  id, teacher_name_en,teacher_name_kh,sex,phone,degree,status,
+					(SELECT first_name FROM rms_users WHERE id=user_id )AS user_name 
+				FROM rms_teacher WHERE 1  ";
 		$order=" order by teacher_name_en";
 		$where = '';
 		if(!empty($search['title'])){
@@ -54,11 +53,9 @@ class Global_Model_DbTable_DbTeacher extends Zend_Db_Table_Abstract
 			OR teacher_name_kh LIKE '%".$search['title']."%')";
 		}
 		if($search['status']>-1){
-			$where.= " AND is_active = ".$search['status'];
+			$where.= " AND status = ".$search['status'];
 		}
-		if($search['subjec_name']>-1){
-			$where.= " AND subject_name_en = '".$search['subjec_name']."'";
-		}
+		
 		return $db->fetchAll($sql.$where.$order);
 	}
 	

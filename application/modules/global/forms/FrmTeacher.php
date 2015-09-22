@@ -43,9 +43,9 @@ Class Global_Form_FrmTeacher extends Zend_Dojo_Form {
 		if(!empty($_data)){
 			$_enname->setValue($_data['teacher_name_en']);
 			$_khname->setValue($_data['teacher_name_kh']);
-			$_ensubject->setValue($_data['subject_name_en']);
-			$_khsubject->setValue($_data['subject_name_kh']);
-			$_status->setValue($_data['is_active']);
+// 			$_ensubject->setValue($_data['subject_name_en']);
+// 			$_khsubject->setValue($_data['subject_name_kh']);
+			$_status->setValue($_data['status']);
 		}
 		$this->addElements(array($_enname,$_khname,$_ensubject,$_khsubject,$_status,$_submit));
 		

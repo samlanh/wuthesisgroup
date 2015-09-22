@@ -3,7 +3,7 @@
 	echo $this->headTitle($tr->translate("SRMS_MAJOR_LIST"));
 ?>	
 <?php $frm =  $this->frm_search;?>
-<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'major-list')); ?>" dojoType="dijit.form.Form" method="post">
+<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'major','action'=>'index')); ?>" dojoType="dijit.form.Form" method="post">
 <div dojoType="dijit.layout.AccordionPane">
 	<button IconClass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
 	<?php echo $frm->getElement("title");?>
@@ -41,9 +41,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button"  label="<?php echo $tr->translate("CANCEL");?>" id="cancelmajor" 
-					dojoType="dijit.form.Button" iconClass="dijitEditorIcon  dijitEditorIconCancel" onclick="hideDialog();"/>
-					<input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submitButton" dojoType="dijit.form.Button" 
+				  <input type="button"  label="<?php echo $tr->translate("SAVE");?>" id="submitButton" dojoType="dijit.form.Button" 
 				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addNewMarjor();"/>
 				</td>
 			</tr>

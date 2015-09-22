@@ -3,7 +3,8 @@
 	echo $this->headTitle($tr->translate("SRMS_EDET_MAJOR"));
 ?>	
 <?php  $frm_major= $this->frm_major;?>
-<form  id='edit-major' action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'edit-major')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<form  id='edit-major' action="<?php echo $this->url(array('module'=>'global','controller'=>'major','action'=>'edit')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+
 <table cellspacing="10" width="50%" style="margin: 0 auto;">
 	<tr>
 		<td>
@@ -34,9 +35,6 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<input IconClass="dijitIconUndo"  type="button" value="<?php echo $tr->translate("GO_BACK");?>" 
-								label="<?php echo $tr->translate("BACK");?>" dojoType="dijit.form.Button" 
-								onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'major-list'),null,true); ?>';"/>
 								<input type="submit"  label="<?php echo $tr->translate("GO_EDIT");?>" id="submitButton" dojoType="dijit.form.Button" 
 							 	iconClass="dijitEditorIcon dijitEditorIconSave" />
 							</td>
