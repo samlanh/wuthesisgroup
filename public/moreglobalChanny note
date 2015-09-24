@@ -1,0 +1,20 @@
+@channy 
+//for alert message 
+Application_Form_FrmMessage::message('ការផ្លាស់ប្តូរត្រូវបរាជ័យ');
+// for allert message and write mms to text file
+Application_Form_FrmMessage::message("ការ​បញ្ចូល​មិន​ជោគ​ជ័យ");
+$err =$e->getMessage();
+Application_Model_DbTable_DbUserLog::writeMessageError($err);
+// for relaod page after insert by ajax
+ location.reload();;
+ 
+ //get data from json
+ var term ='<?php echo (Zend_Json::encode($payment_term));?>';
+///alert(term);
+//convert data to json
+terms = JSON.parse(term);
+//get data from json
+terms.discount
+///////////////////////////
+FOR ADD OPTION TO SELECT BOX IN DOJO
+dojo.create("option", { text:"txt", value:"val" }, dojo.byId("xyz"));
