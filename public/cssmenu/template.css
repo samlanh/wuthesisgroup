@@ -1,0 +1,158 @@
+#menu {
+	vertical-align:middle;	
+	width : 100%;
+	line-height : normal;
+	height : 46px; /* 34 */
+	/*background : url(topNav.png) no-repeat 0% 8px;*/
+	clear : both;
+	margin : 0 0 0 0px;
+	overflow : hidden;
+}
+#menu div, ul, li{
+	margin : 0;
+	padding : 0;
+}
+#menu ul {
+	height: 42px;
+    list-style: none outside none;
+    background: none repeat scroll 0 0 #008;
+    border-bottom: 4px solid #CA9812;
+	/*margin-top:11px;*/
+}
+#menu li {
+	
+    /*background: none repeat scroll 0 0 #1887AE;*/
+    background: none repeat scroll 0 0 #008;
+	/*border-bottom: 2px double #CA9812;*/
+
+
+    float: left;
+    font: bold 14px calibri,Arial;
+	font-family:calibri,Arial,Helvetica,sans-serif;
+	text-transform:uppercase;
+	text-align:center;
+}
+#menu a {
+	border-right:1px solid #999;
+	color: #fff;
+    display: block;
+    line-height: 34px;
+    padding: 4px 15px;
+    text-decoration: none;
+}
+#menu a:hover {
+	color : #bbb;
+	text-decoration: none;
+}
+#menu li.current {
+	background :#CA9812; /*url(activeNav.png) no-repeat 0 0;*/
+	/*width: 145px;*/
+	height: 44px;
+	line-height: 34px;
+    border:1px solid #CA9812;
+    padding-top:4px;
+    border-bottom:none;
+
+}
+#menu li.section {
+	background : url(activeNav.png) no-repeat 0% 0;
+	width : 160px;
+	height : 34px;
+	line-height : 34px;
+}
+#menu li.section a {
+	color : #c7d8ec;
+	text-decoration: none;
+}
+#menu li.current a, #menu li.current a:hover {
+	background: none repeat scroll 0 0 #E5A909;
+    color: #FFFFFF;
+    margin-top: -4px;
+    padding: 8px 5px;
+    text-decoration: none;
+}
+/* ------------------------- COLOR PALETTE FOR BLUE STORK
+
+Dark blue color: 			#146295 		RGB: 20/98/149
+Med blue color: 			#025A8D 		RGB: 2/90/141
+Light blue color: 			#70ace4 		RGB: 112/172/228
+Extra light blue color: 	#BED6FF 		RGB: 190/214/255
+Orange color: 				#FC8F30 		RGB: 252/143/48
+Light grey color:			#f7f7f7 		RGB: 247/247/247
+Medium grey color:			#d7d7d7 		RGB: 215/215/215
+Dark grey color:			#666666 		RGB: 102/102/102
+Border grey color:			#CCCCCC 		RGB: 204/204/204
+
+----------------------------------------------------------*/
+
+#header-left ul {   	
+   clear:both;
+   float:left;
+   list-style:none;
+   margin:0;
+   padding:0;
+   text-align:left;
+   width: 100%;
+}
+#header-left ul li{     
+   display:block;   
+   list-style:none;
+   margin:0px;
+   padding:0px;
+   margin-top:3px;
+   margin-bottom:3px;
+   position:relative;
+   border: 1px solid #ccc;
+
+}
+#header-left ul li a {
+    color: #333333;
+    display: block;
+	border:0px solid #EDF7DF;
+    /*font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;*/
+    font-family: 'Kh Battambang','Khmer Battambang',Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 35px;
+    padding: 0px 5px;
+	border-right-color:#9BC37C;
+	border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;    
+	text-decoration:none;
+    text-shadow: 0 1px 0 #EEEEEE;
+}
+
+#header-left ul li span {    
+    display: block;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 35px;
+    padding: 0 5px;
+	/*width:189px;*/
+	text-decoration:none;
+    text-shadow: 0 1px 0 #EEEEEE;
+}
+span.current-left {    
+    background: none repeat scroll 0 0 #EDF7F8;
+	border: 1px solid #9DA2DD; 
+	border-right-color:#EDF7F8;  
+  /* border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border:1px solid #9BC37C; 
+    */
+    color: #333333;
+    margin-top: -1px;
+	padding: 0 24px;
+    text-shadow: 1px 1px 1px #C6D9E9;
+}
+#header-left ul li a:hover,
+#header-left ul li a:active,
+#header-left ul li a:focus{	
+	background: #EDF7F8;
+  /*  border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;	*/	
+}
+/*---------------------end slide left-------------------------*/
+.langiconen{  color:red; background:url('../images/en.jpg') left top no-repeat;width:42px;height:33px; }
+.langiconkh{  color:red; background:url('../images/km.gif') left top no-repeat;width:42px;height:33px;  }
