@@ -1,0 +1,31 @@
+.fullside{
+	width: 100%;	
+}
+*{
+margin:0px;
+padding:0px;
+}
+h3 { 
+	font-size:100%;
+	}
+.mleft dijitButtonNode{ width: 300px !important; background:#000;}
+.mleft dijitReset dijitInline dijitButtonNode button{width: 300px !important; background:#000; }
+img{border:0px;}
+.right{ float: right;}
+.left{ float: left;}
+html{
+width:100%;
+height:100%;
+background-color: #fffefe;
+
+/*
+background-image:url(../images/bg.gif);
+background-position:top left;
+background-repeat:repeat-x;
+*/
+}
+body{
+/*width:1000px;*/
+margin:0 auto;
+}
+/*

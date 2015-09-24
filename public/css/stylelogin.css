@@ -1,0 +1,207 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+	font-family: 'NiDA Khmer Empire';
+}
+
+
+
+img{
+	border: 0;
+}
+/** style header **/
+#header{	
+	background-color: #03274B;	
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-bottom: 4px solid rgb(43, 77, 113);
+}
+
+#header .title{
+	font-family: 'NiDA Funan';
+	color: #fff;
+	font-size: 2em;
+	font-weight: bolder;	
+}
+
+#header .subtitle{
+	font-family: 'NiDA Funan';
+	color: #ffff00;
+	font-size: 1em;		
+}
+
+#header div#links{
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+	padding: 0;
+}
+
+#header div#links a{
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+#header div#links a img{
+	width: 32px;
+	height: 32px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#header img{
+	margin-top: 15px;
+	margin-left: 30px;
+}
+
+/** Style content **/
+#content{
+	background-color: #ffffff;	
+	width: 100%;	
+}
+
+#content table#main{
+	clear: both;
+	padding-bottom: 0px;
+	padding-top: 30px;
+	padding-left: 30px;
+	padding-right: 30px;	
+	width: 100%;
+}
+
+#content table tr td ul li{
+	color: #006600;
+}
+
+#content table img{	
+	padding: 0;
+	margin: 0;
+}
+
+#content table#login{	
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;	
+	width: 100%;
+}
+
+#content div#marquee{
+	float: right;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: 99%;	
+	background-color: #ffffff;	
+	color: rgb(3, 39, 75);
+}
+
+#content div#login{
+	float: right;
+	background-color: #03274B;
+	-moz-box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 10px 10px 5px #888;
+	border-radius:5px;
+}
+
+#content div#login table tr td#field{
+	color: #ffffff;
+	width: 150px;
+}
+#content div#login table tr td.add-edit{
+	width: 350px;
+}
+#content div#login table tr td input{
+	height: 30px;	
+}
+
+/* style footer*/
+#footer{
+	clear: both;	
+	background-color: #03274B;	
+	width: 100%;
+	margin-top: 30px;
+}
+
+#footer table#main{
+	margin: 0 auto;		
+	width: 90%;
+}
+
+#footer table tr td dl{
+	line-height: 30px;
+	color: #ffffff;
+}
+
+#footer table tr td dl dt{
+	font-size: 1em;
+	color: #ffff00;
+	font-weight: bolder;
+}
+
+#footer table tr td dl dd dl dt{	
+	color: #8cc63f;
+	font-weight: bold;
+}
+
+#footer a{	
+	text-decoration: none;
+	color: #ffffff;
+}
+
+#footer a:hover{	
+	text-decoration: underline;
+}
+
+#footer a:visited{	
+	text-decoration: none;
+}
+
+/** Style class **/
+.lblheader{
+	color: #006600;
+	font-size: 2em;
+	font-weight: bolder;
+}
+
+.footertitle{
+	font-size: 1em;
+	font-weight: bolder;
+}
+
+.textwithe{
+	color: #ffffff;	
+}
+
+.textyellow{
+	color: #ffff00;	
+}
+
+.textgreen{
+	color: #5F8EC2;	
+}
+.textblue{
+	color:#ccc;
+}
+
+
+.textgreenlight{
+	color: #8dc53e;	
+}
+
+.clearmarginpadding{
+	margin: 0;
+	padding: 0;
+}
+
+.fullsize{
+	width: 100%;
+}
+
+.midsize{
+	width: 50%;
+}

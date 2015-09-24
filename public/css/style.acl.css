@@ -1,0 +1,635 @@
+/*style list data*/
+fieldset table{
+	width: 100%;
+}
+fieldset th.tdheader {
+    background: url("../images/tbheader-bg1.jpg") repeat-x scroll center top #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+fieldset th.tdheader-delete {
+    background: url("../images/tbheader-bg1.jpg") repeat-x scroll center top #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+	width: 20px;
+}
+th.tdheader {
+    background: url("../images/tbheader-bg1.jpg") repeat-x scroll center top #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+tr.normal td, tr.alternate td {
+    border: 1px solid #DDDDDD;
+    line-height: 20px;
+    padding: 1px 5px;
+}
+td.items-no {
+    border: 1px solid #CCCCCC;
+    color: #666666;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 30px;
+    padding: 2px 5px;
+    text-align: center;
+    width: 35px;
+}
+td.items-no-inline {
+    border: 1px solid #CCCCCC;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    padding: 2px 5px;
+    text-align: left;
+}
+tr.normal{
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+tr.alternate{
+    background: none repeat scroll 0 0 #EBEDEC;
+}
+
+/* :hover is a pseudo selector to use to set the mouseover attributes */
+tr.normal:hover, tr.alternate:hover {
+  background-color: rgb(72.9%, 82%, 92.2%);
+}
+
+.items img, .items input[type="checkbox"]{
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.items a{
+	text-decoration: none;
+	color:#146295 !important;
+}
+
+.items a:HOVER{
+	color: #74CEE2 !important;
+}
+
+.items a img{	
+    margin: 0px;    
+}
+
+/*end style list data*/
+
+/** Table style **/
+table.collape {
+	border-collapse: collapse;	
+	margin:0px;
+	padding:0px;
+	width: 100%;
+}
+
+table.collape td{
+	padding: 5px;
+	border: 1px solid #CCCCCC;
+}
+
+table.collape td.no-border{
+	padding: 5px;
+	border: none;
+}
+
+table.collape td.no{		
+	border-left:1px solid #000;
+	width:30px;
+	text-align: center;
+}
+table.collape td.num{	
+	text-align: right;	
+}
+table.collape td.id{	
+	text-align: center;	
+}
+table.collape td.last{	
+	text-align: right;	
+	border-right:1px solid #000;
+}
+table.collape td.tdheader {
+	background: none repeat scroll 0 0 #F1F1F1;
+	color: #666666;				
+	font-weight: bold;				
+	text-align: center;
+}	
+table.collape td.tdheader p{
+	margin:0px;
+}
+.bolder{
+	font-weight: bolder;
+}
+.title{		
+	font-weight: bolder;
+	font-size:15px;
+}
+
+/** CSO logo style **/	
+.cso-logo{		
+    height: 100px;
+	/*	
+	width: 130px;
+	padding-right: 5px;
+	*/
+}
+div.pager input {
+    background: none repeat scroll 0 0 #EDF7F8;
+    border: 1px solid #EDF7F8;
+    color: #333333;
+    height: 22px;
+    padding: 0;
+    text-align: center;
+    width: 54px;
+}
+
+td.field {
+    color: #333333;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 12px;
+    margin: 0;
+    min-width: 150px;
+    padding: 6px 5px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+td.field-no-border {
+    color: #333333;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 12px;
+    margin: 0;
+    min-width: 150px;
+    padding: 6px 5px;
+    text-align: left;
+    word-wrap: break-word;
+	border: none;
+}
+
+td.field-member {
+    color: #333333;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 12px;
+    margin: 0;
+    width: 400px;
+    padding: 6px 5px;
+    text-align: left;
+    word-wrap: break-word;
+}
+/*----------Value for form view-----------*/
+#value {
+	padding:6px 5px;
+	margin:0px;
+	border:solid 1px #BDC3AD;
+	/*background:#FFFFFF;*/
+	color:#333;
+	font-family:Arial, Helvetica, sans-serif; font-size:12px;
+	font-weight:normal;
+	text-align:left;
+	min-width:180px;
+	max-width:200px;    	
+	line-height:18px;
+	word-wrap: break-word;
+}
+
+
+td #value-auto-row span{
+	color: #146295;
+}
+
+td.no-field{
+	text-align:center;
+	font-size:14px;
+	color:#FF4747;
+}
+/*----------Value for form add for edit-----------*/
+td.cs-cw{
+	border: 1px solid #ccc; 
+	background:none repeat scroll 0 0 #FFFFFF;
+	text-align: left;
+}
+td.cs-cw input{
+	border: 1px solid #FFFFFF;	
+	min-height:25px;		
+	text-align:right;
+	padding-right: 6px;
+}
+td.cs-cw input.none-date{        		         			
+	border: 1px solid #FFFFFF;
+	width:90%;		
+	min-height:25px;		
+	text-align:right;
+	padding-right: 6px;		
+}
+td.quater-input{
+	border: 1px solid #ccc; 
+	background:none repeat scroll 0 0 #FFFFFF;
+	padding-right: 5px;
+	text-align: right;
+}
+td.quater-input input, td.quater-input textarea{        		         			
+	border: none;
+	width:97%;		
+	min-height:25px;		
+	/*text-align:right;
+	*/
+	padding-right: 6px;		
+}
+input:disabled, textarea:disabled, select:disabled{
+	background-color: #FFFFFF;
+}
+td.quater-input-sub{
+	border: 1px solid #ccc; 
+	background:none repeat scroll 0 0 #FFFFFF;
+	padding-right: 5px;
+	text-align: right;
+}
+td.quater-input-sub input{        		         			
+	border: 1px solid #FFFFFF;
+	width:70%;		
+	min-height:25px;		
+	text-align:right;
+	padding-right: 6px;		
+}
+td.quater-input select{        		         			
+	border: 1px solid #FFFFFF;
+	width:98%;			
+	min-height:25px;		
+	text-align:left;
+	padding-right: 0px;		
+}
+td.quater-input div.sub-quater-amount p{
+	border-bottom:1px solid #ccc;	
+	width: 100%;	
+	margin-right:-5px;
+	padding-right: 5px;
+}
+div.sub-quater-amount span{
+	border: 1px solid #FFFFFF;
+    min-height: 30px;
+    padding-right: 6px;
+    text-align: right;
+    width: 97%;
+}
+td.quater-input select.category{        		         			
+	border: 1px solid #FFFFFF;
+	width:150px;		
+	min-height:25px;		
+	text-align:left;
+	padding-right: 0px;		
+}
+td.quater-input select.code{        		         			
+	border: 1px solid #FFFFFF;
+	width:90px;		
+	min-height:25px;		
+	text-align:left;
+	padding-right: 0px;		
+}
+
+td.add-edit input[type=text]{	
+	border: 1px solid #BDB597;	    
+    color: #000;	
+	height:25px;	
+	padding:1px 2px;	
+	margin-top: 3px;
+	width:255px;
+}
+td.value{	
+	background:none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #BDC3AD;	    
+    color: #333333;
+	min-width:255px;	
+	min-height:25px;	
+	padding:1px 2px;	
+	margin-top: 3px;
+	word-wrap: break-word;
+}
+td p.project{
+	border: 1px solid #BDC3AD;
+	padding:5px;
+	height:20px;
+	width: 825px;
+}
+td.add-edit select{	
+	width:260px;
+	border: 1px solid #BDB597;
+	background-color:#FFFFFF;
+	min-height:25px;		
+	padding:3px 2px 2px 3px;
+	margin-top: 5px;	
+}
+td.add-edit-yes select{	
+	width:60px;
+	border: 1px solid #BDB597;
+	background-color:#FFFFFF;
+	min-height:25px;		
+	padding:3px 2px 2px 3px;
+	margin-top: 5px;	
+}
+td.total-qauter{
+	
+    border: 1px solid #ccc;    
+    margin: 0px;
+    padding:0px;
+	padding-right:5px;
+    text-align: right;
+}
+/*td.field{
+	font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+	padding:6px 5px;
+	margin:0px;	
+  	background:#F7F7F7;		
+	font-size:12px;	
+	color:#333333;	
+	text-align:left;
+	min-width:150px;
+	word-wrap: break-word;	
+}*/
+select optgroup{
+	font-style: normal;	
+	color: #3B5998;
+}
+select optgroup option{		 	   		
+	padding-left: 15px;
+	color: #000;	
+}
+td.add-edit textarea{
+	font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 12px;
+	width:84.5%;
+	max-height:70px;
+	border: 1px solid #BDB597;
+	min-height:23px;
+	overflow:auto;		
+}
+/*----------------------------*/
+
+img, a {
+    border: 0 none;
+    outline: medium none;
+    text-decoration: none;
+}
+a, img {
+    margin: 0;
+    padding: 0;
+}
+
+table.collape a:link {
+    color: #146295;
+}
+table.collape a {
+    text-decoration: none;
+}
+a:link {
+    color: #fff;
+    outline: medium none;
+    text-decoration: none;
+}
+.btn{
+	margin-bottom: 10px;
+}
+
+
+
+/*---------Class select search------------*/
+div.select {
+    float: right;
+    margin-top: 5px;
+    padding: 5px 0;
+}
+form {
+    margin: 0;
+    padding: 0;
+}
+div.select table {
+    padding-right: 0;
+}
+div.select table {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+}
+div.select td.select {
+    color: #666666;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 10pt;
+    padding-right: 5px;
+}
+div.select td.select select {
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 250px;
+}
+
+.float-left td.select {
+    color: #666666;
+    font-family: "Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;
+    font-size: 10pt;
+    padding-right: 5px;
+    text-align: right;
+}
+
+.float-left td.select select{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 250px;
+}
+
+td.select select{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 250px;
+}
+td.input input{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 200px;
+}
+td.input-answer input{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 450px;
+}
+
+td.input-train input,select{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 200px;
+}
+
+td.input-add-1col input{
+    border: 1px solid #BDB597;
+    color: #333333;
+    height: 25px;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 2px;
+    width: 500px;
+}
+/*---Button Print----*/
+
+
+button.positive1 {
+    color: #529214;
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #F5F5F5;
+    border-color: #EEEEEE #DEDEDE #DEDEDE #EEEEEE;
+    border-right: 1px solid #DEDEDE;
+    border-style: solid;
+    border-width: 1px;
+    color: #565656;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: "Lucida Grande",Tahoma,Arial,Verdana,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 130%;
+    margin: 0 7px 0 0;
+    padding: 5px 10px 6px 7px;
+    text-decoration: none;    
+}
+.table{
+	position: relative;
+}
+td.des {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #BDB597 #000000 #BDB597 #BDB597;
+    border-style: solid;
+    border-width: 1px;
+    color: #333333;
+    height: 20px;
+    padding: 0;
+    text-align: center;
+}
+td.des input {
+    border: 0 none;
+    font-size: 9pt;
+    height: 25px;
+    width: 100%;
+}
+.tableagetype{
+	border: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.float-left{
+	float: left;
+}
+td.figure input {
+	width: 50px;
+	
+}
+
+fieldset.sub-detail {
+    border: 0 solid #CCCCCC;
+    font-size: 12px;
+    margin-left: 0;
+    width: 100%;
+}
+fieldset.sub-detail table.collape {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+fieldset td.sub-tdheader {
+    background: url("../images/tbheader-bg1.jpg") repeat-x scroll center top #F1F1F1;
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 5px;
+    text-align: center;
+}
+
+.clear-both{
+	clear: both;
+}
+dt#comboevaluation-label{
+	height: 0px;
+}
+dd#evaluation-element br{
+	display: none;
+}
+dt#evaluation-label{
+	height: 0px;
+}
+dt#areacomment-label{
+	height: 0px;
+}
+#paddinglef{
+	padding-left:41px;
+}
+#map_canvas { width:100%; height: 50% }
+#map_canvas a { display: none; }
+.name a {
+	color: green;
+}
+
+.mem_photo{	
+	display: block;
+	border:1px solid #000;
+	width: 120px;
+	height: 160px;
+}
+.uploadfield{
+	width: 200px;
+	margin-bottom:5px;
+}
+.cso-icon{	
+	float: right;
+	padding-right: 20px;
+}
