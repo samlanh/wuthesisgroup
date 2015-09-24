@@ -8,6 +8,8 @@
 	 <button IconClass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
 	 <?php echo $frm->getElement("title");?>
 	 <?php echo $frm->getElement('status_search');?>
+	 <button class="right" iconClass="dijitIconNewTask" dojoType="dijit.form.Button" onclick="showAddDialog();" showLabel="true" type="button" ><?php echo $tr->translate("ADD_NEW");?></button>
+	 
 </div>
 <?php echo $this->list;?>
 </form>

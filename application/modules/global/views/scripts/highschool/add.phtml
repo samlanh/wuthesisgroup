@@ -3,7 +3,7 @@
 	echo $this->headTitle($tr->translate('SRMS_ADD_SCHOOL')); 
 ?>
 <?php  $school= $this->frm_school;?>
-<form id="add_school" action="<?php echo $this->url(array('module'=>'global','controller'=>'index','action'=>'add-school')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<form id="add_school" action="<?php echo $this->url(array('module'=>'global','controller'=>'highschool','action'=>'add')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
 	<table cellspacing="20" style="margin: 0 auto; width: 600px">
 		<tr>
 			<td>
@@ -29,8 +29,6 @@
 									</tr>
 									<tr>
 										<td colspan="2" align="center">
-											<input iconClass="dijitIconUndo" type="button" value="<?php echo $tr->translate("ត្រលប់ក្រោយ");?>" 
-											label="<?php echo $tr->translate("GO_BACK");?>" dojoType="dijit.form.Button" onclick="window.location = '<?php echo $this->url(array('module'=>'global','controller'=>"index",'action'=>'school-list'),null,true); ?>';"/>
 											<input type="submit" value="<?php echo $tr->translate("GO_SAVE");?>" label="<?php echo $tr->translate("GO_SAVE");?>" id="submitButton" dojoType="dijit.form.Button" 
 											 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_school").submit();"/>
 										</td>
