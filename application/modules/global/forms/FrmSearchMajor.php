@@ -100,31 +100,31 @@ Class Global_Form_FrmSearchMajor extends Zend_Dojo_Form{
 				'placeholder'=>$this->tr->translate("SEARCH_BY_TEACHER_NAME")));
 		$_title->setValue($request->getParam('title'));
 		
-		$_db = new Application_Model_DbTable_DbGlobal();
-		//$rows = $_db->getGlobalDb("SELECT DISTINCT subject_name_en FROM rms_teacher WHERE teacher_name_en!='' AND subject_name_en!=''");
-		$rows=array();
-		$opt = array(-1=>$this->tr->translate("CHOOSE_SUJECT"));
-		if(!empty($rows))foreach($rows AS $row) $opt[$row['subject_name_en']]=$row['subject_name_en'];
-		$_subject = new Zend_Dojo_Form_Element_FilteringSelect('subjec_name');
-		$_subject->setMultiOptions($opt);
-		$_subject->setAttribs(array(
-				'dojoType'=>$this->filter,
-				'required'=>'true',
-				'placeholder'=>$this->tr->translate("INPUT_VALUE_SETTING")));
-		$_subject->setValue($request->getParam('subjec_name'));
+// 		$_db = new Application_Model_DbTable_DbGlobal();
+// 		//$rows = $_db->getGlobalDb("SELECT DISTINCT subject_name_en FROM rms_teacher WHERE teacher_name_en!='' AND subject_name_en!=''");
+// 		$rows=array();
+// 		$opt = array(-1=>$this->tr->translate("CHOOSE_SUJECT"));
+// 		if(!empty($rows))foreach($rows AS $row) $opt[$row['subject_name_en']]=$row['subject_name_en'];
+// 		$_subject = new Zend_Dojo_Form_Element_FilteringSelect('subjec_name');
+// 		$_subject->setMultiOptions($opt);
+// 		$_subject->setAttribs(array(
+// 				'dojoType'=>$this->filter,
+// 				'required'=>'true',
+// 				'placeholder'=>$this->tr->translate("INPUT_VALUE_SETTING")));
+// 		$_subject->setValue($request->getParam('subjec_name'));
 		
 		
-		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status_search');
-		$_status->setAttribs(array('dojoType'=>$this->filter,));
-		$_status_opt = array(
-				-1=>$this->tr->translate("ALL_STATUS"),
-				1=>$this->tr->translate("ACTIVE"),
-				0=>$this->tr->translate("DACTIVE"));
-		$_status->setMultiOptions($_status_opt);
-		$_status->setValue($request->getParam("status_search"));
+// 		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status_search');
+// 		$_status->setAttribs(array('dojoType'=>$this->filter,));
+// 		$_status_opt = array(
+// 				-1=>$this->tr->translate("ALL_STATUS"),
+// 				1=>$this->tr->translate("ACTIVE"),
+// 				0=>$this->tr->translate("DACTIVE"));
+// 		$_status->setMultiOptions($_status_opt);
+// 		$_status->setValue($request->getParam("status_search"));
 	
 	
-		$this->addElements(array($_title,$_subject,$_status));
+		$this->addElements(array($_title));
 		if(!empty($_data)){
 		}
 	

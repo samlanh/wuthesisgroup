@@ -96,5 +96,17 @@ class Application_Model_DbTable_DbDept extends Zend_Db_Table_Abstract
 		$this->update($_arr, $where);
 	    //return  $this->insert($_arr);
 	}
+	public function AddNewFaculty($_data){
+		$this->_name='rms_dept';
+			$_arr=array(
+					'en_name'	  => $_data['faculty_en'],
+					'kh_name'	  => $_data['faculty_kh'],
+					'shortcut'    => $_data['shortcut'],
+					'modify_date' => new Zend_Date(),
+					'is_active'   => 1,
+					'user_id'	  => $this->getUserId()
+			);
+			return  $this->insert($_arr);
+	}
 }
 

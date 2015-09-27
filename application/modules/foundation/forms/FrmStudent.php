@@ -32,6 +32,13 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		
 		$_sex =  new Zend_Dojo_Form_Element_FilteringSelect('sex');
 		$_sex->setAttribs(array('dojoType'=>$this->filter,'class'=>'fullside',));
+		
+		$_address =  new Zend_Dojo_Form_Element_TextBox('address');
+		$_address->setAttribs(array('dojoType'=>$this->text,'class'=>'fullside',));
+		
+		$_semester=  new Zend_Dojo_Form_Element_TextBox('semester');
+		$_semester->setAttribs(array('dojoType'=>$this->text,'class'=>'fullside',));
+		
 		$sex_opt = array(
 				1=>$this->tr->translate("MALE"),
 				2=>$this->tr->translate("FEMALE"));
@@ -40,7 +47,7 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		 
 		$_dob = new Zend_Dojo_Form_Element_TextBox('dob');
 		$_dob->setAttribs(array(
-				'dojoType'=>$this->t_date,'class'=>'fullside','required'=>'true',
+				'dojoType'=>$this->t_date,'class'=>'fullside',
 				//'constraints'=>'{datePattern:"dd/MM/yyyy"'
 		));
 		//$_dob->setValue('value',"2/7/2017");
@@ -57,8 +64,8 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		
 		$_degree =  new Zend_Dojo_Form_Element_FilteringSelect('degree');
 		$arr_opt = array(
-				1=>$this->tr->translate("ASSOCIATE"),
 				2=>$this->tr->translate("BACHELOR"),
+				1=>$this->tr->translate("ASSOCIATE"),
 				3=>$this->tr->translate('MASTER'),
 				4=>$this->tr->translate('DOCTORATE'));
 		$_degree ->setMultiOptions($arr_opt);
@@ -68,17 +75,27 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		
 		));
 		
-		$_batch =  new Zend_Dojo_Form_Element_NumberTextBox("batch");
+		$_batch =  new Zend_Dojo_Form_Element_FilteringSelect("batch");
 		$_batch->setAttribs(array(
-				'dojoType'=>$this->t_num,
+				'dojoType'=>$this->filter,
 				'required'=>'true',
 				'class'=>'fullside',));
+		$opt = "";
+		for($i=8;$i<=25;$i++){
+			$opt[$i]=$i;
+		}
+		$_batch->setMultiOptions($opt);
 		
-		$_year =  new Zend_Dojo_Form_Element_TextBox("year");
+		$_year =  new Zend_Dojo_Form_Element_FilteringSelect("year");
 		$_year->setAttribs(array(
-				'dojoType'=>$this->t_num,
+				'dojoType'=>$this->filter,
 				'required'=>'true',
 				'class'=>'fullside',));
+		$opt = "";
+		for($i=1;$i<=6;$i++){
+			$opt[$i]=$i;
+		}
+		$_year->setMultiOptions($opt);
 		
 		$_session = new Zend_Dojo_Form_Element_FilteringSelect("session");
 		$opt_session = array(
@@ -96,7 +113,7 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		
 		$_db = new Application_Model_DbTable_DbGlobal();
 		$rows = $_db->getGlobalDb('SELECT dept_id,en_name FROM rms_dept WHERE is_active=1 AND en_name !="" ');
-		$opt = "";
+		$opt = array("-1"=>"Select Faculty");
 		if(!empty($rows))foreach($rows AS $row) $opt[$row['dept_id']]=$row['en_name'];
 		 
 		$_dept = new Zend_Dojo_Form_Element_FilteringSelect("dept");
@@ -134,8 +151,13 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		$_mother_tel = new Zend_Dojo_Form_Element_TextBox('mother_phone');
 		$_mother_tel->setAttribs(array('dojoType'=>$this->t_num,'class'=>'fullside',));
 		
-		$_bacc_exam = new Zend_Dojo_Form_Element_TextBox('finish_bacc');
-		$_bacc_exam->setAttribs(array('dojoType'=>$this->t_num,'class'=>'fullside',));
+		$_bacc_exam = new Zend_Dojo_Form_Element_FilteringSelect('finish_bacc');
+		$_bacc_exam->setAttribs(array('dojoType'=>$this->filter,'class'=>'fullside',));
+		$year = '';
+		for($i=2008;$i<=2025;$i++){
+			$year[$i]=$i;
+		}
+		$_bacc_exam->setMultiOptions($year);
 		
 		$_bacc_code = new Zend_Dojo_Form_Element_TextBox('certificate_code');
 		$_bacc_code->setAttribs(array(
@@ -171,10 +193,10 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		$rows_school = $_db->getGlobalDb("SELECT 
 					CONCAT(school_name,' - '
 					,(SELECT province_en_name FROM rms_province AS p 
-					WHERE p.province_id= sp.province_id)) AS school_province,school_id 
+					WHERE p.province_id= sp.province_id)) AS school_province,id 
 					FROM rms_school_province AS sp WHERE status=1 ORDER BY sp.province_id");
 		$opt_school = "";
-		if(!empty($rows_school))foreach($rows_school AS $row) $opt_school[$row['school_id']]=$row['school_province'];
+		if(!empty($rows_school))foreach($rows_school AS $row) $opt_school[$row['id']]=$row['school_province'];
 		$_from_school = new Zend_Dojo_Form_Element_FilteringSelect("from_school");
 		$_from_school->setMultiOptions($opt_school);
 		$_from_school->setAttribs(array(
@@ -248,7 +270,7 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 			  $_khname, $_enname,$_studid, $_sex,$_dob,$_degree,$_phone,
 			  $_dept,$_batch,$_year,$_session,$_dept,$_major,$_from_school,$_student_add,$_student_from,$_situation,$_father_tel,
 			  $_mother_tel, $_bacc_exam, $_bacc_code, $_bacc_score, $_from_school,$_remark,
-			  $_pob, $_curr_add, $_composition, $_age, $_mention, $_status));
+			  $_pob, $_curr_add, $_composition, $_age,$_semester, $_mention, $_status,$_address));
 		if(!empty($data)){
 			$_khname->setValue($data['stu_khname']);
 			$_enname->setValue($data['stu_enname']);

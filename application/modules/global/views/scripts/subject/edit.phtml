@@ -12,8 +12,12 @@
 					<legend align="center" ><strong><?php echo $tr->translate("SRMS_EDIT_SUBJECT_EXAM");?></strong></legend>
 						<table style="margin: 0 auto; width: 95%;" cellspacing="10">
 							<tr>
+								<td style="width: 100px"><?php echo $tr->translate("SUBJECT_EXAM_KH")?></td>
+								<td><?php  echo $subject_exam->getElement('subject_kh');?></td>
+							</tr>
+							<tr>
 								<td style="width: 100px"><?php echo $tr->translate("SUBJECT_EXAM")?></td>
-								<td><?php  echo $subject_exam->getElement('subject_exam');?></td>
+								<td><?php  echo $subject_exam->getElement('subject_en');?></td>
 							</tr>
 							<tr>
 								<td style="width: 5px"><?php echo $tr->translate("STATUS")?></td>

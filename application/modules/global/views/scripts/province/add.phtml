@@ -29,8 +29,10 @@
 									</tr>
 									<tr>
 										<td colspan="2" align="center">
-											<input type="submit" value="<?php echo $tr->translate("GO_SAVE");?>" label="<?php echo $tr->translate("GO_SAVE");?>" id="submitButton" dojoType="dijit.form.Button" 
-											 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_province").submit();"/>
+											<input type="submit" value="save_close" name="save_close" label="<?php echo $tr->translate('SAVE_CLOSE');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
+								<input type="submit" value="save_new" name="save_new" label="<?php echo $tr->translate('SAVE_NEW');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
 										</td>
 									</tr>					
 								</table>

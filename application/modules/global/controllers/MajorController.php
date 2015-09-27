@@ -46,14 +46,19 @@ class Global_MajorController extends Zend_Controller_Action {
 			Application_Model_DbTable_DbUserLog::writeMessageError($e->getMessage());
     	}
     	$frm = new Application_Form_FrmOther();
-    	$this->view->add_major = $frm->FrmAddMajor(null);
-    	$frm = new Global_Form_FrmSearchMajor();
-    	$frm = $frm->FrmMajors();
-    	Application_Model_Decorator::removeAllDecorator($frm);
-    	$this->view->frm_search = $frm;
+    	$frm_major = $frm->FrmAddMajor();
+    	Application_Model_Decorator::removeAllDecorator($frm_major);
+    	$this->view->add_major = $frm_major;
     	
-    	$frm = new Application_Form_FrmOther();
-    	$this->view->add_faculty = $frm->FrmAddDept(null);
+    	$frm_search = new Global_Form_FrmSearchMajor();
+    	$frm_search = $frm_search->FrmMajors();
+    	Application_Model_Decorator::removeAllDecorator($frm_search);
+    	$this->view->frm_search = $frm_search;
+    	
+    	
+    	$frm_faculty=$frm->FrmAddDept(null);
+    	Application_Model_Decorator::removeAllDecorator($frm_faculty);
+    	$this->view->add_faculty =$frm_faculty;
     }
     public function addAction(){
     	if($this->getRequest()->isPost()){

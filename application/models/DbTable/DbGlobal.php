@@ -97,14 +97,30 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
     	$time = strtotime($date);
     	return date($format, $time);
     }
-    public function getMarjorById($major_id){
+    function getAllProvince(){
+    	$db= $this->getAdapter();
+    	$sql="SELECT province_id AS id,province_en_name AS province_name FROM rms_province WHERE is_active=1 AND province_en_name!=''";
+    	$row =  $db->fetchAll($sql);
+    	return $row;
+    }
+    public function getMarjorById($major_id){ 
     	$db = $this->getAdapter();
     	$sql=" SELECT major_id AS id,major_enname AS name FROM `rms_major`
-    	WHERE `dept_id` = $major_id ";
-    	$db->fetchAll($sql);
+    	WHERE `dept_id` = $major_id ORDER BY major_id DESC";
+    	return $db->fetchAll($sql);
+    }
+    public function getAllRoom(){
+    	$db = $this->getAdapter();
+    	$sql=" SELECT room_id AS id ,room_name As name FROM `rms_room` WHERE is_active=1 AND room_name!='' order by room_id DESC ";
+    	return $db->fetchAll($sql);
+    }
+   
+    function getAllMajor(){
+    	$db = $this->getAdapter();
+    	$sql = "SELECT major_id AS id ,CONCAT(major_enname,'-',major_khname) AS name,CONCAT(major_enname,'-',major_khname) AS major_name FROM `rms_major` 
+    				WHERE is_active=1 AND (major_khname!='' OR major_enname!='') Order BY major_id DESC";
     	return $db->fetchAll($sql);
     }   
-
     public static function getResultWarning(){
           return array('err'=>1,'msg'=>'មិន​ទាន់​មាន​ទន្និន័យ​នូវ​ឡើយ​ទេ!');	
    }
@@ -116,7 +132,7 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    }
    public function getAllFecultyName(){
    	$db = $this->getAdapter();
-   	$sql ="SELECT DISTINCT en_name,dept_id,shortcut FROM rms_dept WHERE is_active=1 AND en_name!='' ORDER BY en_name";
+   	$sql ="SELECT DISTINCT en_name,dept_id,shortcut FROM rms_dept WHERE is_active=1 AND en_name!='' ORDER BY dept_id DESC";
    	return $db->fetchAll($sql);
    }
    public function getAllServiceItemsName($status=1,$type=null){
@@ -144,6 +160,22 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    			WHERE pt.id = pn.ser_cate_id AND pt.type=1 
    				AND pn.status = 1 AND pn.title!=""';
    	}
+   	return $db->fetchAll($sql);
+   }
+   public function getAllsubject(){
+   	$db = $this->getAdapter();
+   	$sql = "SELECT id ,CONCAT(subject_titleen,'-',subject_titlekh) AS  subject_name 
+   			FROM `rms_subject` WHERE status=1 AND(subject_titleen!='' OR subject_titlekh!='')";
+   	return $db->fetchAll($sql);
+   }
+   public function getAllTeacherSubject(){
+   	$db = $this->getAdapter();
+   	$sql = "SELECT ts.id,
+      				(SELECT CONCAT(t.teacher_name_kh,'-',t.teacher_name_kh)
+   				FROM `rms_teacher` AS t WHERE t.id=ts.teacher_id  AND status=1 LIMIT 1) AS teacher_name ,
+      				(SELECT CONCAT(s.subject_titleen,'-',s.subject_titlekh)
+   				FROM `rms_subject` AS s WHERE s.id=ts.subject_id  AND status=1 LIMIT 1) AS subject_name
+   			FROM `rms_teacher_subject` AS ts WHERE status=1";
    	return $db->fetchAll($sql);
    }
    function getAllDept($search, $start, $limit){
@@ -181,11 +213,13 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    }
    public function getAllDegree($id=null){
 	   $rs = array(
+	   		    2=>$this->tr->translate("BACHELOR"),
 	   			1=>$this->tr->translate("ASSOCIATE"),
-	   			2=>$this->tr->translate("BACHELOR"),
 	   			3=>$this->tr->translate('MASTER'),
 	   			4=>$this->tr->translate('DOCTORATE'),
-	   			5=>$this->tr->translate('INTERNATION_PROGRAM'));
+	   			//5=>$this->tr->translate('INTERNATION_PROGRAM')
+	   		
+	   );
 	   if($id==null)return $rs; 
 	   return $rs[$id];
    }
@@ -250,14 +284,17 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    	if($id==null)return $opt_term;
    	else return $opt_term[$id];
    }
-   public static function getSessionById($id){
+   public static function getSessionById($id=null){
    	$tr= Application_Form_FrmLanguages::getCurrentlanguage();
    	$arr_opt = array(
    			1=>$tr->translate('MORNING'),
 			2=>$tr->translate('AFTERNOON'),
 			3=>$tr->translate('EVERNING'),
 			4=>$tr->translate('WEEKEND'));
-   	return $arr_opt[$id];
+   	if($id!=null){
+   		return $arr_opt[$id];
+   	}return $arr_opt;
+   	
    }
    public static function getAllMention($id=null){
    	$tr= Application_Form_FrmLanguages::getCurrentlanguage();
@@ -319,6 +356,24 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    	}
    	return $db->fetchOne($sql);
    	
+   }
+   function getTeacherCode(){
+	   	$db = $this->getAdapter();
+	   	$sql ="SELECT COUNT(id) AS number FROM `rms_teacher` LIMIT 1 ";
+	   	$acc_no = $db->fetchOne($sql);
+	   	 
+	   	$new_acc_no= (int)$acc_no+1;
+	   	$acc_no= strlen((int)$acc_no+1);
+	   	$pre="L";
+	   	for($i = $acc_no;$i<3;$i++){
+	   		$pre.='0';
+	   	}
+	   	return $pre.$new_acc_no;
+   }
+   function getPrefixCode(){
+   	$db  = $this->getAdapter();
+   	$sql = " SELECT prefix FROM `ln_branch` ";
+   	return $db->fetchOne($sql);
    }
    
 }

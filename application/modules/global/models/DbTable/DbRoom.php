@@ -18,6 +18,15 @@ class Global_Model_DbTable_DbRoom extends Zend_Db_Table_Abstract
 		);
 		return  $this->insert($_arr);
 	}
+	public function addAjaxRoom($_data){
+		$_arr=array(
+				'room_name'	  => $_data['classname'],
+				'modify_date' => Zend_Date::now(),
+				'is_active'   => 1,
+				'user_id'	  => $this->getUserId()
+		);
+		return  $this->insert($_arr);
+	}
 	public function getRoomById($id){
 		$db = $this->getAdapter();
 		$sql = "SELECT * FROM rms_room WHERE room_id = ".$db->quote($id);

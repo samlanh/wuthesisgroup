@@ -32,11 +32,11 @@ class Global_SubjectController extends Zend_Controller_Action {
 			 
 			 
 			$list = new Application_Form_Frmtable();
-			$collumns = array("SRMS_SUBJECT_EXAM_LIST","MODIFY_DATE","STATUS","BY_USER");
+			$collumns = array("SUBJECT IN KHMER","SUBJECT IN KH","MODIFY_DATE","STATUS","BY_USER");
 			$link=array(
 					'module'=>'global','controller'=>'subject','action'=>'edit',
 			);
-			$this->view->list=$list->getCheckList(0, $collumns, $rs,array('subj_exam_name'=>$link));
+			$this->view->list=$list->getCheckList(0, $collumns, $rs,array('subject_titlekh'=>$link,'subject_titleen'=>$link));
 	
 		}catch (Exception $e){
 			Application_Form_FrmMessage::message("Application Error");
@@ -65,6 +65,16 @@ class Global_SubjectController extends Zend_Controller_Action {
 		$frm_subject_exam=$subject_exam->FrmAddSubjectExam();
 		Application_Model_Decorator::removeAllDecorator($frm_subject_exam);
 		$this->view->frm_subject_exam = $frm_subject_exam;
+	}
+	function addsubjectAction(){//At callecteral when click client
+		if($this->getRequest()->isPost()){
+			$data = $this->getRequest()->getPost();
+			$_dbmodel = new Global_Model_DbTable_DbSubjectExam();
+			$data['status']=1;	
+			$id=$_dbmodel->addNewSubjectExam($data);
+			print_r(Zend_Json::encode($id));
+			exit();
+		}
 	}
 	function editAction()
 	{

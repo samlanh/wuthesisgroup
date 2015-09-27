@@ -19,8 +19,12 @@ Class Global_Form_FrmAddSubjectExam extends Zend_Dojo_Form {
 	}
 	public function FrmAddSubjectExam($data=null){
 	
-		$_subject_exam = new Zend_Dojo_Form_Element_TextBox('subject_exam');
+		$_subject_exam = new Zend_Dojo_Form_Element_TextBox('subject_kh');
 		$_subject_exam->setAttribs(array('dojoType'=>$this->tvalidate,'required'=>'true','class'=>'fullside',));
+		
+		$_subject_kh = new Zend_Dojo_Form_Element_TextBox('subject_en');
+		$_subject_kh->setAttribs(array('dojoType'=>$this->tvalidate,'required'=>'true','class'=>'fullside',));
+		
 		
 		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status');
 		$_status->setAttribs(array('dojoType'=>$this->filter,'class'=>'fullside',));
@@ -32,10 +36,11 @@ Class Global_Form_FrmAddSubjectExam extends Zend_Dojo_Form {
 		$_submit = new Zend_Dojo_Form_Element_SubmitButton('submit');
 		$_submit->setLabel("save"); 
 		if(!empty($data)){
-			$_subject_exam->setValue($data['subj_exam_name']);
-			$_status->setValue($data['is_active']);
+			$_subject_exam->setValue($data['subject_titlekh']);
+			$_subject_kh->setValue($data['subject_titleen']);
+			$_status->setValue($data['status']);
 		}
-		$this->addElements(array($_subject_exam,$_status,$_submit));
+		$this->addElements(array($_subject_exam,$_status,$_submit,$_subject_kh));
 		
 		return $this;
 		

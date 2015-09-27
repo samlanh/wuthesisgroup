@@ -30,18 +30,19 @@ class Foundation_Model_DbTable_DbNewStudent extends Zend_Db_Table_Abstract
 //     	}
     	return $sql.$where.$order;
     }
-    function getAllNewStudent($search, $start, $limit){
-    
-    	$sql_rs = $this->sqlGetNewStudent($search)." LIMIT ".$start.", ".$limit;
-    	if ($limit == 'All') {
-    		$sql_rs = $this->sqlGetNewStudent($search);
-    	}
-    	$sql_count = $this->sqlGetNewStudent();
-    	if(!empty($search)){
-    		$sql_count = $this->sqlGetNewStudent($search);
-    	}
-    	$_db = new Application_Model_DbTable_DbGlobal();
-    	return($_db ->getGlobalResultList($sql_rs,$sql_count));
+    function getAllStudent($search){
+    	$db = $this->getAdapter();
+    	$sql = " SELECT stu_id AS id,stu_khname,stu_enname,sex,stu_card,
+			    	dob,phone,degree,
+			    	(SELECT shortcut FROM  rms_major AS m WHERE m.major_id=s.major_id )AS major_name
+			    	,session,status,create_date,
+			    	(SELECT first_name FROM rms_users WHERE id=user_id )AS user_name
+			    	FROM rms_student AS s
+			    	WHERE is_stu_new = 1 ";
+    	$order=" order by stu_card ";
+    	$where = '';
+    	return $db->fetchAll($sql.$where.$order);
+    	
     }
     public function getStudentInfoById($id){
     	$db = $this->getAdapter();

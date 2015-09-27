@@ -12,8 +12,12 @@
 						
 						<table style="margin: 0 auto; width: 95%;" cellspacing="10">
 							<tr>
+								<td style="width: 100px"><?php echo $tr->translate("SUBJECT_EXAM_KH")?></td>
+								<td><?php  echo $subject_exam->getElement('subject_kh');?></td>
+							</tr>
+							<tr>
 								<td style="width: 100px"><?php echo $tr->translate("SUBJECT_EXAM")?></td>
-								<td><?php  echo $subject_exam->getElement('subject_exam');?></td>
+								<td><?php  echo $subject_exam->getElement('subject_en');?></td>
 							</tr>
 							<tr>
 								<td style="width: 5px"><?php echo $tr->translate("STATUS")?></td>
@@ -21,8 +25,10 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center">
-									<input type="submit" value="រក្សាទុក" label="រក្សាទុក" id="submitButton" dojoType="dijit.form.Button" 
-										 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="dijit.byId("add_subject_exam").submit();"/>
+								<input type="submit" value="save_close" name="save_close" label="<?php echo $tr->translate('SAVE_CLOSE');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
+								<input type="submit" value="save_new" name="save_new" label="<?php echo $tr->translate('SAVE_NEW');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
 								</td>
 							</tr>
 						</table>	

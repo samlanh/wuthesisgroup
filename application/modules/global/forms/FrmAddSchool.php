@@ -40,13 +40,16 @@ Class Global_Form_FrmAddSchool extends Zend_Dojo_Form {
 		
 		$_submit = new Zend_Dojo_Form_Element_SubmitButton('submit');
 		$_submit->setLabel("save"); 
+		
+		$id=  new Zend_Form_Element_Hidden('id');
+		
 		if(!empty($data)){
-			//print_r($data);exit();
-			
-			$_classname->setValue($data['room_name']);
-			$_status->setValue($data['is_active']);
+			$_classname->setValue($data['school_name']);
+			$_status->setValue($data['status']);
+			$_province->setValue($data['province_id']);
+			$id->setValue($data['id']);
 		}
-		$this->addElements(array($_classname,$_status,$_submit,$_province));
+		$this->addElements(array($_classname,$_status,$_submit,$_province,$id));
 		
 		return $this;
 		

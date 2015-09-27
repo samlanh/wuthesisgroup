@@ -85,5 +85,15 @@ class Global_RoomController extends Zend_Controller_Action {
 	   	$this->view->update_room=$frm_room;
 	   	Application_Model_Decorator::removeAllDecorator($frm_room);
    }
+   function addroomAction()//ajax
+   {
+   	if($this->getRequest()->isPost()){
+   			$_data = $this->getRequest()->getPost();
+   			$_dbmodel = new Global_Model_DbTable_DbRoom();
+   			$roomid = $_dbmodel->addAjaxRoom($_data);
+   			print_r(Zend_Json::encode($roomid));
+   			exit();
+   	}
+   }
 }
 
