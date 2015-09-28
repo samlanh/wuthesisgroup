@@ -1,0 +1,12 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate("SRMS_GROUP"));
+?>	
+<?php $frm =  $this->frm_search;?>
+<form id="list" name="list" action="<?php echo $this->url(array('module'=>'global','controller'=>'group','action'=>'index')); ?>" dojoType="dijit.form.Form" method="post">
+	<?php //echo $frm->getElement('subjec_name');?>
+	<?php echo $frm->getElement("title");?>
+	<?php //echo $frm->getElement('status_search');?>
+	<button iconclass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" type="submit"><?php echo $tr->translate("SEARCH");?></button>
+<?php echo $this->list?>
+</form>

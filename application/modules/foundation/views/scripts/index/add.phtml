@@ -1,0 +1,168 @@
+<?php 
+	$frm_student = $this->frm_student;
+	$tr=Application_Form_FrmLanguages::getCurrentlanguage();
+?>
+	<script>
+		dojo.require("dojo.data.ObjectStore");
+		dojo.require("dojo.data.ItemFileWriteStore");  
+		dojo.require("dojo.store.Memory");
+		dojo.require("dojo.data.ObjectStore");
+		
+		var major_store  = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode(array()));?> );
+		dojo.ready(function(){
+		new dijit.form.FilteringSelect({
+	        store: major_store,
+	        autoComplete: true,                        
+	        required: true,
+	        id: "major",
+	        name: "major",           
+	        class: 'fullside',            
+	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
+	        onChange: function() {                
+	        }
+	    }, "major");
+		}); 
+   </script>
+		<form id="add_student" dojoType="dijit.form.Form" method="post">
+		<script type="dojo/method" event="onSubmit">			
+			if(this.validate()) {
+				return true;
+			}else {
+				return false;
+			}
+		</script>
+				<table width="100%">
+					<tr>
+						<td>
+						 <div id="mainTabContainer" style="width: 1150px;height: 350px;" dojoType="dijit.layout.TabContainer" region="center" width="1000px !importand" >
+					      <div class="tabContentSection" dojoType="dijit.layout.ContentPane" title="<?php echo $tr->translate("STUDENT_INFO");?>" selected="true">
+					      	<table cellspacing="8" style="margin:0 auto;" width="100%">
+					      		<tr>
+					      			<td  title="ឈ្មោះជាភាសារខ្មែរ"><?php echo $tr->translate("NAME_KH");?>*</td>
+									<td><?php echo $frm_student->getElement('kh_name');?></td>
+									<td  title="ឈ្មោះជាភាសារអង់គ្លេស"><?php echo $tr->translate("NAME_EN");?>*</td>
+									<td><?php echo $frm_student->getElement('en_name');?></td>
+									<td title="បញ្ជូលភេទនិស្សិត"><?php echo $tr->translate("SEX");?>*</td>
+									<td><?php echo $frm_student->getElement('sex');?></td>
+					      		</tr>
+					      		<tr>
+									<td title="ថ្ងៃខែឆ្នាំកំនើត"><?php echo $tr->translate("DOB");?>*</td>
+									<td><?php echo $frm_student->getElement('dob');?></td>
+									<td title="បញ្ជូលលេខសំគាល់និស្សិត"><?php echo $tr->translate("PHONE");?>*</td>
+									<td><?php echo $frm_student->getElement('phone');?></td>
+									<td title="បញ្ជូលលេខសំគាល់និស្សិត"><?php echo $tr->translate("ADDRESS");?>*</td>
+									<td><?php echo $frm_student->getElement('address');?></td>
+					      		</tr>
+					      		<tr>
+					      			<td colspan="6"​ style="border-bottom:1px solid #ccc;">ព័ត៏មានសិក្សានៅមហាវិទ្យាល័យ</td>
+					      		</tr>
+					      		<tr>
+					      			<td title="បញ្ជូលលេខសំគាល់និស្សិត"><?php echo $tr->translate("STUDENT_ID");?>*</td>
+									<td><?php echo $frm_student->getElement('stu_card');?></td>
+									<td><?php echo $tr->translate("DEGREE");?>*</td>
+									<td><?php echo $frm_student->getElement('degree');?></td>
+									<td><?php echo $tr->translate("BATCH");?>*</td>
+									<td><?php echo $frm_student->getElement('batch');?></td>
+								</tr>
+								<tr>
+									<td><?php echo $tr->translate("FACULTIES");?>*</td>
+									<td><?php echo $frm_student->getElement('dept');?></td>
+									<td><?php echo $tr->translate("MAJOR_C");?>*</td>
+									<td><?php echo $frm_student->getElement('major');?></td>
+									<td><?php echo $tr->translate("YEAR");?>*</td>
+									<td><?php echo $frm_student->getElement('year');?></td>
+								</tr>
+								<tr>
+									<td><?php echo $tr->translate("SEMESTER");?>*</td>
+									<td><?php echo $frm_student->getElement('semester');?></td>
+									<td><?php echo $tr->translate("SESSION");?>*</td>
+									<td><?php echo $frm_student->getElement('session');?></td>
+									<td colspan="4"></td>
+								</tr>
+					      	</table>
+					      </div><!-- end tab 1 -->
+					      <div class="tabContentSection" dojoType="dijit.layout.ContentPane" title="<?php echo $tr->translate("STUDNET_EDUCATION");?>" selected="false">
+					     	<table width="100%" style="margin:0 auto;" cellspacing="8">
+					      		<tr>
+					      			<td width="12%"><?php echo $tr->translate("FATHER_TEL");?>*</td>
+									<td><?php echo $frm_student->getElement('father_phone');?></td>
+									<td ><?php echo $tr->translate("MOTHER_TEL");?>*</td>
+									<td><?php echo $frm_student->getElement('mother_phone');?></td>
+									<td><?php echo $tr->translate("SITUATION");?>*</td>
+									<td><?php echo $frm_student->getElement('situation');?></td>
+					      		</tr>
+					      		<tr>
+									<td><?php echo $tr->translate("BACC_EXAME");?>*</td>
+									<td><?php echo $frm_student->getElement('finish_bacc');?></td>
+									<td><?php echo $tr->translate("CERTIFICATE_CODE");?>*</td>
+									<td><?php echo $frm_student->getElement('certificate_code');?></td>
+									<td><?php echo $tr->translate("SCROE");?>*</td>
+									<td><?php echo $frm_student->getElement('bacc_score');?></td>
+					      		</tr>
+					      		<tr>
+					      			<td ><?php echo $tr->translate("MENTION");?>*</td>
+									<td><?php echo $frm_student->getElement('mention');?></td>
+									<td ><?php echo $tr->translate("FROM_SCHOOL");?>*</td>
+									<td><?php echo $frm_student->getElement('from_school');?></td>
+									<td ><?php echo $tr->translate("POB");?>*</td>
+									<td><?php echo $frm_student->getElement('pob');?></td>
+					      		</tr>
+					      		<tr>
+									<td ><?php echo $tr->translate("ADD_STUDENT");?>*</td>
+									<td><?php echo $frm_student->getElement('student_add');?></td>
+									<td ><?php echo $tr->translate("COMPOSITION");?>*</td>
+									<td><?php echo $frm_student->getElement('composition');?></td>
+									<td ><?php echo $tr->translate("STUDNET_FROM");?>*</td>
+									<td><?php echo $frm_student->getElement('student_from');?></td>
+					      		</tr>
+					      		<tr>
+					      			<td ><?php echo $tr->translate("REMARK");?></td>
+									<td><?php echo $frm_student->getElement('remark');?></td>
+					      			<td ><?php echo $tr->translate("STATUS");?>*</td>
+									<td><?php echo $frm_student->getElement('status');?></td>
+					      		</tr>
+					      	</table>
+					      </div>
+					   </div>
+					   </td>
+					</tr>
+					<tr>
+						<td align="center">
+					   				<input iconClass="dijitIconClear" type="reset" value="សំអាត" label="<?php echo $tr->translate('CLEAR');?>" dojoType="dijit.form.Button"/>
+									<input type="submit" value="save_close" name="save_close" label="<?php echo $tr->translate('SAVECLOSE');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
+									<input type="submit" value="save_new" name="save_new" label="<?php echo $tr->translate('SAVENEW');?>" dojoType="dijit.form.Button" 
+										iconClass="dijitEditorIcon dijitEditorIconSave" />
+					   	</td>
+					  </tr>
+					  </table>
+					</form>
+<script>
+function printSave(){
+	alert(1);
+	dijit.byId("edit-student").submit();
+}
+
+var url_major = '<?php echo $this->url(array('module'=>'registrar','controller'=>'index','action'=>'get-majors')); ?>';
+function changeMajor(){
+	dept_id = dijit.byId('dept').get('value');
+			dojo.xhrPost({
+			    url: url_major,			    
+			    content : { 
+				    'dept_id':  dept_id	    
+				},
+				handleAs:"json", 
+			    load: function(response) {
+			    	major_store  = getDataStorefromJSON('id','name', response);
+					dijit.byId('major').set('store',major_store); 					    		    					    		    	
+			    },
+			    error: function(err) {
+			    	 alert(err);
+			        
+			    }
+			});
+}
+function CheckBaccCode(){
+	alert('check code of bacc');
+}
+</script>

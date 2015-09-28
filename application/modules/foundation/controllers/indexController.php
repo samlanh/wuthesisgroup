@@ -81,10 +81,19 @@ class Foundation_indexController extends Zend_Controller_Action {
 	}
 	function addAction(){
 		if($this->getRequest()->isPost()){
+			try{
 			$_data = $this->getRequest()->getPost();
 			$_model =new Foundation_Model_DbTable_DbNewStudent();
-			//print_r($_data);exit();
-			$_model->updateStudentINfo($_data);
+			$_model->addNewStudent($_data);
+			if(!empty($_data['save_close'])){
+				Application_Form_FrmMessage::Sucessfull("INSERT_SUCCESS","/foundation/index");
+			}
+				Application_Form_FrmMessage::message("INSERT_SUCCESS");
+			}catch (Exception $e){
+				Application_Form_FrmMessage::message("INSERT_FAIL");
+				$err =$e->getMessage();
+				Application_Model_DbTable_DbUserLog::writeMessageError($err);
+			}
 		}
 			$_model = new Foundation_Model_DbTable_DbNewStudent();
 			$_frm = new Foundation_Form_FrmStudent();
