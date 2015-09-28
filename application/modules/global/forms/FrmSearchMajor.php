@@ -358,4 +358,64 @@ Class Global_Form_FrmSearchMajor extends Zend_Dojo_Form{
 		}
 		return $this;
 	}
+	public function FrmsearchSituation(){
+		$request=Zend_Controller_Front::getInstance()->getRequest();
+	
+		$_title = new Zend_Dojo_Form_Element_TextBox('title');
+		$_title->setAttribs(array('dojoType'=>$this->text,
+				'placeholder'=>$this->tr->translate("SEARCH_SITUATION_TITLE")));
+		$_title->setValue($request->getParam("title"));
+	
+		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status_search');
+		$_status->setAttribs(array('dojoType'=>$this->filter,));
+		$_status_opt = array(
+				-1=>$this->tr->translate("ALL_STATUS"),
+				1=>$this->tr->translate("ACTIVE"),
+				0=>$this->tr->translate("DACTIVE"));
+		$_status->setMultiOptions($_status_opt);
+		$_status->setValue($request->getParam("status_search"));
+		$this->addElements(array($_title,$_status));
+	
+		return $this;
+	}
+	public function FrmsearchOccupation(){
+		$request=Zend_Controller_Front::getInstance()->getRequest();
+	
+		$_title = new Zend_Dojo_Form_Element_TextBox('title');
+		$_title->setAttribs(array('dojoType'=>$this->text,
+				'placeholder'=>$this->tr->translate("SEARCH_OCCUPATION_TITLE")));
+		$_title->setValue($request->getParam("title"));
+	
+		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status_search');
+		$_status->setAttribs(array('dojoType'=>$this->filter,));
+		$_status_opt = array(
+				-1=>$this->tr->translate("ALL_STATUS"),
+				1=>$this->tr->translate("ACTIVE"),
+				0=>$this->tr->translate("DACTIVE"));
+		$_status->setMultiOptions($_status_opt);
+		$_status->setValue($request->getParam("status_search"));
+		$this->addElements(array($_title,$_status));
+	
+		return $this;
+	}
+	public function FrmsearchScholarship(){
+		$request=Zend_Controller_Front::getInstance()->getRequest();
+	
+		$_title = new Zend_Dojo_Form_Element_TextBox('title');
+		$_title->setAttribs(array('dojoType'=>$this->text,
+				'placeholder'=>$this->tr->translate("SEARCH_SCHOLARSHIP_TITLE")));
+		$_title->setValue($request->getParam("title"));
+	
+		$_status=  new Zend_Dojo_Form_Element_FilteringSelect('status_search');
+		$_status->setAttribs(array('dojoType'=>$this->filter,));
+		$_status_opt = array(
+				-1=>$this->tr->translate("ALL_STATUS"),
+				1=>$this->tr->translate("ACTIVE"),
+				0=>$this->tr->translate("DACTIVE"));
+		$_status->setMultiOptions($_status_opt);
+		$_status->setValue($request->getParam("status_search"));
+		$this->addElements(array($_title,$_status));
+	
+		return $this;
+	}
 }

@@ -1,0 +1,49 @@
+<?php $rs=$this->rs;?>
+<form id='edit_situation' action="" method="post" enctype="application/x-www-form-urlencoded">
+<script type="dojo/method" event="onSubmit">										
+			if(this.validate()) {								
+				return true;
+			}
+			return false;
+</script>
+<table  cellspacing="10" style="margin: 0 auto; width: 50%;">
+	<tr>
+		<td>
+		<fieldset>
+					<legend align="center"><strong>Update Situation</strong></legend>
+					<table style="margin: 0 auto; width: 100%;  padding:10px;" cellspacing="7" >
+						<tr>
+							<td><input dojoType="dijit.form.TextBox" class="fullside" id="id" name="id" value="<?php echo $rs["situ_id"]?>" type="hidden"></td>
+						</tr>
+						<tr>
+							<td>Situation Name</td>
+							<td>
+								<input dojoType="dijit.form.ValidationTextBox" required="true" class="fullside" id="situ_name" name="situ_name" value="<?php echo $rs["situ_name"]?>" type="text"></td>
+						</tr>
+						<tr>
+						
+						<tr>
+							<td>Status</td>
+							<td>
+								<select name="status" id="status" dojoType="dijit.form.FilteringSelect" class="fullside">
+    								<option value="1" <?php if ($rs["status"]==1){echo "selected='selected'";}?> label="active" >Active</option>
+    								<option value="0" label="deactive" <?php if ($rs["status"]==0){echo "selected='selected'";}?>  >Deactive</option>
+								</select>
+							</td>
+							
+						</tr>
+						<tr>
+							<td colspan="4" align="center">
+								 <input type="submit" value="រក្សាទុក " label="រក្សាទុក " id="busyButton" dojoType="dijit.form.Button" 
+									iconClass="dijitEditorIcon dijitEditorIconSave" /> 
+									<input type="button" value="ចាកចេញ" label="ចាកចេញ" id="close" dojoType="dijit.form.Button" 
+									iconClass="dijitEditorIcon dijitEditorIconCancel" onclick="cancel();"/>
+							</td>
+						</tr>
+						
+					</table>
+		</fieldset>
+		</td>
+	</tr>
+</table>
+</form>

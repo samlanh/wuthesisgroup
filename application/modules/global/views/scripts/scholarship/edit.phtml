@@ -1,0 +1,61 @@
+<?php $rs=$this->rs;?>
+<form id='edit_scholarship' action="" method="post" enctype="application/x-www-form-urlencoded">
+<table  cellspacing="10" style="margin: 0 auto; width: 50%;">
+	<tr>
+		<td>
+		<fieldset>
+					<legend align="center"><strong>Update scholarship</strong></legend>
+					<table style="margin: 0 auto; width: 100%;  padding:10px;" cellspacing="7" >
+						<tr>
+							<td><input dojoType="dijit.form.TextBox" required="true" class="fullside" id="id" name="id" value="<?php echo $rs["id"]?>" type="hidden"></td>
+						</tr>
+						<tr>
+							<td>Title</td>
+							<td>
+								<input dojoType="dijit.form.ValidationTextBox" required="true" class="fullside" id="title" name="title" value="<?php echo $rs["title"]?>" type="text"></td>
+						</tr>
+						<tr>
+							<td>Note</td>
+							<td>
+								<input dojoType="dijit.form.ValidationTextBox"  class="fullside" id="note" name="note" value="<?php echo $rs["note"]?>" type="text"></td>
+						</tr>
+						<tr>
+							<td>Type</td>
+							<td>
+								<select name="type" id="type" dojoType="dijit.form.FilteringSelect" required="true" class="fullside">
+    								<option value="1" <?php if ($rs["type"]==1){echo "selected='selected'";}?> label="stateshcool">stateshcool</option>
+    								<option value="2" <?php if ($rs["type"]==2){echo "selected='selected'";}?> label="exam">exam</option>
+   									 <option value="3" <?php if ($rs["type"]==3){echo "selected='selected'";}?> label="other">other</option>
+								</select>
+							</td>
+							
+						</tr>
+						<tr>
+						<tr>
+							<tr>
+							<td>Status</td>
+							<td>
+								<select name="status" id="status" dojoType="dijit.form.FilteringSelect" required="true" class="fullside">
+    								<option value="1" <?php if ($rs["status"]==1){echo "selected='selected'";}?> label="active" >Active</option>
+    								<option value="0" label="deactive" <?php if ($rs["status"]==0){echo "selected='selected'";}?>  >Deactive</option>
+								</select>
+							</td>
+							
+						</tr>
+							
+						</tr>
+						<tr>
+							<td colspan="4" align="center">
+								<input type="submit" value="រក្សាទុក" label="រក្សាទុក" id="submitButton" dojoType="dijit.form.Button" 
+								 iconClass="dijitEditorIcon dijitEditorIconSave" />
+									<input type="button" value="ចាកចេញ" label="ចាកចេញ" id="close" dojoType="dijit.form.Button" 
+									iconClass="dijitEditorIcon dijitEditorIconCancel" onclick="cancel();"/>
+							</td>
+						</tr>
+						
+					</table>
+		</fieldset>
+		</td>
+	</tr>
+</table>
+</form>
