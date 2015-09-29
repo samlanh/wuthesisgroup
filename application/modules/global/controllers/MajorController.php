@@ -100,6 +100,20 @@ class Global_MajorController extends Zend_Controller_Action {
     		
     	}
     }
+    function addmajorAction(){
+    	if($this->getRequest()->isPost()){
+    			$_data = $this->getRequest()->getPost();
+    			$_dbmodel = new Global_Model_DbTable_DbDept();
+    			$_data['dept_id']=$_data['facultyid'];
+    			$_data['major_enname']=$_data['major_en'];
+    			$_data['major_khname']=$_data['major_kh'];
+    			$_data['shortcut']=$_data['shortcut'];
+    			$_data['status']=1;
+    			$_id =$_dbmodel->AddNewMajor($_data);
+    			print_r(Zend_Json::encode($_id));
+    			exit();
+    	}
+    }
  
 }
 

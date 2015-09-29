@@ -97,11 +97,33 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
     	$time = strtotime($date);
     	return date($format, $time);
     }
-    function getAllProvince(){
+    function getAllProvince($opt=null,$option=null){
     	$db= $this->getAdapter();
     	$sql="SELECT province_id AS id,province_en_name AS province_name FROM rms_province WHERE is_active=1 AND province_en_name!=''";
-    	$row =  $db->fetchAll($sql);
-    	return $row;
+    	$rows =  $db->fetchAll($sql);
+    	if($opt==null){
+    		return $rows;
+    	}else{
+    		if($option!=null){
+    			$opt_province = array(-1=>"Please Select Location");
+    		}else{$opt_province=array();}
+    		if(!empty($rows))foreach($rows AS $row) $opt_province[$row['id']]=$row['province_name'];
+    		return $opt_province;
+    	}
+    }
+    function getAllHighSchool($pro_id=null){
+    	$db = $this->getAdapter();
+    	$sql = " SELECT 
+					CONCAT(school_name,' - '
+					,(SELECT province_en_name FROM rms_province AS p 
+					WHERE p.province_id= sp.province_id)) AS name,id,province_id
+					FROM rms_school_province AS sp WHERE status=1 ";
+    	if($pro_id!=null){
+    		$sql.=" AND province_id = $pro_id";
+    		return $db->fetchAll($sql);
+    	}
+    	$sql.=" ORDER BY sp.province_id ";
+    	return $db->fetchAll($sql);
     }
     public function getMarjorById($major_id){ 
     	$db = $this->getAdapter();
@@ -375,6 +397,20 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    	$sql = " SELECT prefix FROM `ln_branch` ";
    	return $db->fetchOne($sql);
    }
+   function getallComposition(){
+   	$db  = $this->getAdapter();
+   	$sql = " SELECT occupation_id AS id,occu_name AS name FROM `rms_occupation` WHERE occu_name!='' AND status=1 ORDER BY id DESC ";
+   	return $db->fetchAll($sql);
+   	
+   }
+   function getallSituation(){
+   	$db  = $this->getAdapter();
+   	$sql = " SELECT situ_id AS id ,situ_name AS name FROM `rms_situation` WHERE situ_name!='' AND status=1 ORDER BY id DESC ";
+   	return $db->fetchAll($sql);
+   }
+  
+   
+   
    
 }
 ?>

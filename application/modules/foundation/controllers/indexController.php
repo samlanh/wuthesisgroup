@@ -80,10 +80,11 @@ class Foundation_indexController extends Zend_Controller_Action {
 		$this->view->frm_search = $frm;
 	}
 	function addAction(){
+		$_model =new Foundation_Model_DbTable_DbNewStudent();
 		if($this->getRequest()->isPost()){
 			try{
 			$_data = $this->getRequest()->getPost();
-			$_model =new Foundation_Model_DbTable_DbNewStudent();
+			
 			$_model->addNewStudent($_data);
 			if(!empty($_data['save_close'])){
 				Application_Form_FrmMessage::Sucessfull("INSERT_SUCCESS","/foundation/index");
@@ -95,11 +96,47 @@ class Foundation_indexController extends Zend_Controller_Action {
 				Application_Model_DbTable_DbUserLog::writeMessageError($err);
 			}
 		}
-			$_model = new Foundation_Model_DbTable_DbNewStudent();
 			$_frm = new Foundation_Form_FrmStudent();
 			$_frmstudent=$_frm->FrmStudent();
 			Application_Model_Decorator::removeAllDecorator($_frmstudent);
 			$this->view->frm_student = $_frmstudent;
+			$_db = new Application_Model_DbTable_DbGlobal();
+			
+			$comp = $_db->getallComposition();
+			array_unshift($comp, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី') );
+			$this->view->compo=$comp;
+			
+			$situation = $_db->getallSituation();
+			array_unshift($situation, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី') );
+			$this->view->situation=$situation;
+			
+			$school = $_db->getAllHighSchool();
+			array_unshift($school, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី','province_id'=>-1) );
+			$this->view->highschool=$school;
+			
+			
+			
 		}
+ 		public function getMajorsAction(){
+    	if($this->getRequest()->isPost()){
+    		$_data = $this->getRequest()->getPost();
+    		$_db = new Application_Model_DbTable_DbGlobal();
+    		$majors=$_db->getMarjorById($_data['dept_id']);
+    		array_unshift($majors, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី') );
+    		print_r(Zend_Json::encode($majors));
+    		exit();
+    	}
+   	 }
+   	 public function getSchoolAction(){
+   	 	if($this->getRequest()->isPost()){
+   	 		$_data = $this->getRequest()->getPost();
+   	 		$_db = new Application_Model_DbTable_DbGlobal();
+   	 		$school = $_db->getAllHighSchool($_data['province_id']);
+   	 		array_unshift($school, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី') );
+   	 		print_r(Zend_Json::encode($school));
+   	 		exit();
+   	 	}
+   	 }
+   	 
 
 }

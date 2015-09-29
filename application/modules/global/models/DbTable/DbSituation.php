@@ -42,6 +42,15 @@ class Global_Model_DbTable_DbSituation extends Zend_Db_Table_Abstract
 		FROM rms_situation
 		WHERE 1 ";
 		return $db->fetchAll($sql);	
+	}
+	public function addSituation($_data){//ajax
+		$_arr=array(
+				'situ_name'	  => $_data['txt_situation'],
+				'create_date' => Zend_Date::now(),
+				'status'   => 1,
+				'user_id'	  => $this->getUserId()
+		);
+		return  $this->insert($_arr);
 	}	
 }
 

@@ -42,5 +42,14 @@ class Global_Model_DbTable_DbOccupation extends Zend_Db_Table_Abstract
 		WHERE 1 ";
 		return $db->fetchAll($sql);	
 	}	
+	public function addOccupation($_data){//ajax
+		$_arr=array(
+				'occu_name'	  => $_data['occu_name'],
+				'create_date' => Zend_Date::now(),
+				'status'   => 1,
+				'user_id'	  => $this->getUserId()
+		);
+		return  $this->insert($_arr);
+	}
 }
 

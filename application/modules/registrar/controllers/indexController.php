@@ -28,17 +28,7 @@ class Registrar_indexController extends Zend_Controller_Action {
         $this->view->footer=$model->getReceiptFooter();
         
     }
-    public function getMajorAction(){
-    	if($this->getRequest()->isPost()){
-    		$_data = $this->getRequest()->getPost();
-    		$model = new Application_Model_DbTable_DbGlobal();
-    		$_marjorlist = $model->getMarjorById($_data['dept_id']);
-    		//array_unshift($__recieverlist, array ( 'id' => -1, 'name' => 'បន្ថែម​អ្នក​ទទួល​ថ្មី') );
-    		print_r(Zend_Json::encode($_marjorlist));
-    		exit();
-    		
-    	}
-    }
+   
     
     public function wuReceiptAction()
     {

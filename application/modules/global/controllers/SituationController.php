@@ -62,8 +62,6 @@ class Global_SituationController extends Zend_Controller_Action {
 		}
 	}
 	public function editAction(){
-		
-		
 		if($this->getRequest()->isPost())
 		{
 			try{
@@ -79,6 +77,15 @@ class Global_SituationController extends Zend_Controller_Action {
 		$id=$this->getRequest()->getParam("id");
 		$db = new Global_Model_DbTable_DbSituation();
 		$this->view->rs=$db->getSituationById($id);
+	}
+	function addsituationAction(){
+		if($this->getRequest()->isPost()){
+			$data = $this->getRequest()->getPost();
+			$db = new Global_Model_DbTable_DbSituation();
+			$id = $db->addSituation($data);
+			print_r(Zend_Json::encode($id));
+			exit();
+		}
 	}
 	
 }

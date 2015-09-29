@@ -77,6 +77,15 @@ class Global_OccupationController extends Zend_Controller_Action {
 		$db = new Global_Model_DbTable_DbOccupation();
 		$this->view->rs=$db->getOccupationById($id);
 	}
+	function addcompositionAction(){
+		if($this->getRequest()->isPost()){
+			$data = $this->getRequest()->getPost();
+			$db = new Global_Model_DbTable_DbOccupation();
+			$id = $db->addOccupation($data);
+			print_r(Zend_Json::encode($id));
+			exit();
+		}
+	}
 	
 }
 

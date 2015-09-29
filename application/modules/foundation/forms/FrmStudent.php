@@ -112,7 +112,7 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		
 		
 		$_db = new Application_Model_DbTable_DbGlobal();
-		$rows = $_db->getGlobalDb('SELECT dept_id,en_name FROM rms_dept WHERE is_active=1 AND en_name !="" ');
+		$rows=$_db->getAllFecultyName();
 		$opt = array("-1"=>"Select Faculty");
 		if(!empty($rows))foreach($rows AS $row) $opt[$row['dept_id']]=$row['en_name'];
 		 
@@ -124,26 +124,28 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'class'=>'fullside',
 				'onchange'=>'changeMajor();'));
 		
-		$opt_marjor = array(-1=>$this->tr->translate("SELECT_MAJOR"));
-		$_major = new Zend_Dojo_Form_Element_FilteringSelect("major");
-		$_major->setAttribs(array(
-				'dojoType'=>$this->filter,
-				'required'=>'true',
-				'class'=>'fullside'));
+// 		$opt_marjor = array(-1=>$this->tr->translate("SELECT_MAJOR"));
+// 		$_major = new Zend_Dojo_Form_Element_FilteringSelect("major");
+// 		$_major->setAttribs(array(
+// 				'dojoType'=>$this->filter,
+// 				'required'=>'true',
+// 				'class'=>'fullside'));
 		
-		$_situation = new Zend_Dojo_Form_Element_FilteringSelect("situation");
-		$opt_situation = array(1=>$this->tr->translate("កម្មករ ឫ និយោជិក"),2=>$this->tr->translate("កសិករ"),
-				3=>$this->tr->translate("អ្នកលក់ដូរតូចតាច"),4=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
-				5=>$this->tr->translate("បុគ្គលិកអង្គការក្រៅរដ្ឋាភិបាល"),6=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
-				7=>$this->tr->translate("បុគ្គលិកអង្គការអន្តរជាតិ"),8=>$this->tr->translate("កំព្រាឪពុក"),
-				9=>$this->tr->translate("កំព្រាម្តាយ"),10=>$this->tr->translate("ឪពុកឫម្តាយជរា"),
-				11=>$this->tr->translate("ផ្សេងៗ")
-				);
-		$_situation->setMultiOptions($opt_situation);
-		$_situation->setAttribs(array(
-				'dojoType'=>$this->filter,
-				'required'=>'true',
-				'class'=>'fullside',));
+// 		$_situation = new Zend_Dojo_Form_Element_FilteringSelect("situation");
+// 		$opt_situation = array(
+// 				1=>$this->tr->translate("កម្មករ ឫ និយោជិក"),2=>$this->tr->translate("កសិករ"),
+// 				3=>$this->tr->translate("អ្នកលក់ដូរតូចតាច"),4=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
+// 				5=>$this->tr->translate("បុគ្គលិកអង្គការក្រៅរដ្ឋាភិបាល"),6=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
+// 				7=>$this->tr->translate("បុគ្គលិកអង្គការអន្តរជាតិ"),8=>$this->tr->translate("កំព្រាឪពុក"),
+// 				9=>$this->tr->translate("កំព្រាម្តាយ"),10=>$this->tr->translate("ឪពុកឫម្តាយជរា"),
+// 				11=>$this->tr->translate("ផ្សេងៗ")
+// 				);
+		
+// 		$_situation->setMultiOptions($opt_situation);
+// 		$_situation->setAttribs(array(
+// 				'dojoType'=>$this->filter,
+// 				'required'=>'true',
+// 				'class'=>'fullside',));
 		
 		$_father_tel = new Zend_Dojo_Form_Element_TextBox('father_phone');
 		$_father_tel->setAttribs(array('dojoType'=>$this->t_num,'class'=>'fullside',));
@@ -171,19 +173,19 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'class'=>'fullside',
 				));
 		
-		$_from_school = new Zend_Dojo_Form_Element_FilteringSelect("situation");
-		$opt_school = array(1=>$this->tr->translate("កម្មករ ឫ និយោជិក"),2=>$this->tr->translate("កសិករ"),
-				3=>$this->tr->translate("អ្នកលក់ដូរតូចតាច"),4=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
-				5=>$this->tr->translate("បុគ្គលិកអង្គការក្រៅរដ្ឋាភិបាល"),6=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
-				7=>$this->tr->translate("បុគ្គលិកអង្គការអន្តរជាតិ"),8=>$this->tr->translate("កំព្រាឪពុក"),
-				9=>$this->tr->translate("កំព្រាម្តាយ"),10=>$this->tr->translate("ឪពុកឫម្តាយជរា"),
-				11=>$this->tr->translate("ផ្សេងៗ")
-		);
-		$_from_school->setMultiOptions($opt_school);
-		$_from_school->setAttribs(array(
-				'dojoType'=>$this->filter,
-				'required'=>'true',
-				'class'=>'fullside',));
+// 		$_from_school = new Zend_Dojo_Form_Element_FilteringSelect("situation");
+// 		$opt_school = array(1=>$this->tr->translate("កម្មករ ឫ និយោជិក"),2=>$this->tr->translate("កសិករ"),
+// 				3=>$this->tr->translate("អ្នកលក់ដូរតូចតាច"),4=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
+// 				5=>$this->tr->translate("បុគ្គលិកអង្គការក្រៅរដ្ឋាភិបាល"),6=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ន"),
+// 				7=>$this->tr->translate("បុគ្គលិកអង្គការអន្តរជាតិ"),8=>$this->tr->translate("កំព្រាឪពុក"),
+// 				9=>$this->tr->translate("កំព្រាម្តាយ"),10=>$this->tr->translate("ឪពុកឫម្តាយជរា"),
+// 				11=>$this->tr->translate("ផ្សេងៗ")
+// 		);
+// 		$_from_school->setMultiOptions($opt_school);
+// 		$_from_school->setAttribs(array(
+// 				'dojoType'=>$this->filter,
+// 				'required'=>'true',
+// 				'class'=>'fullside',));
 		
 		$_remark = new Zend_Dojo_Form_Element_Textarea('remark');
 		$_remark->setAttribs(array(
@@ -203,10 +205,8 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'dojoType'=>$this->filter,
 				'required'=>'true',
 				'class'=>'fullside',));
-		
-		$rows_provice = $_db->getGlobalDb("SELECT province_id,province_en_name FROM rms_province WHERE is_active=1 AND province_en_name!=''");
-		$opt_province = "";
-		if(!empty($rows_provice))foreach($rows_provice AS $row) $opt_province[$row['province_id']]=$row['province_en_name'];
+
+		$opt_province = $_db->getAllProvince(1);
 		$_pob = new Zend_Dojo_Form_Element_FilteringSelect("pob");
 		$_pob->setMultiOptions($opt_province);
 		$_pob->setAttribs(array(
@@ -229,6 +229,17 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'required'=>'true',
 				'class'=>'fullside',));
 		
+		//print_r($opt_province);
+		$opt_province = $_db->getAllProvince(1,1);
+		$_school = new Zend_Dojo_Form_Element_FilteringSelect("school_location");
+		$_school->setMultiOptions($opt_province);
+		$_school->setAttribs(array(
+				'dojoType'=>$this->filter,
+				'required'=>'true',
+				'class'=>'fullside',
+				'onchange'=>'filterSchool();'
+		));
+		
 		$_curr_add = new Zend_Dojo_Form_Element_FilteringSelect("curr_add");
 		$_curr_add->setMultiOptions($opt_school);
 		$_curr_add->setAttribs(array(
@@ -236,16 +247,16 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'required'=>'true',
 				'class'=>'fullside',));
 		
-		$_composition = new Zend_Dojo_Form_Element_FilteringSelect("composition");
-		$opt_compo = array(1=>$this->tr->translate("សិស្សទើបចាប់បាកឌុប"),2=>$this->tr->translate("ប្រជាជនធម្មតាគ្មានការងារធ្វើ"),
-				3=>$this->tr->translate("ពាណិជ្ជករ"),4=>$this->tr->translate("មន្រ្តីរាជការ"),
-				5=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ុន"),6=>$this->tr->translate("កសិករ"),
-				7=>$this->tr->translate("សមាសភាពដទៃទៀត"));
-		$_composition->setMultiOptions($opt_compo);
-		$_composition->setAttribs(array(
-				'dojoType'=>$this->filter,
-				'required'=>'true',
-				'class'=>'fullside',));
+// 		$_composition = new Zend_Dojo_Form_Element_FilteringSelect("composition");
+// 		$opt_compo = array(1=>$this->tr->translate("សិស្សទើបចាប់បាកឌុប"),2=>$this->tr->translate("ប្រជាជនធម្មតាគ្មានការងារធ្វើ"),
+// 				3=>$this->tr->translate("ពាណិជ្ជករ"),4=>$this->tr->translate("មន្រ្តីរាជការ"),
+// 				5=>$this->tr->translate("បុគ្គលិកក្រុមហ៊ុន"),6=>$this->tr->translate("កសិករ"),
+// 				7=>$this->tr->translate("សមាសភាពដទៃទៀត"));
+// 		$_composition->setMultiOptions($opt_compo);
+// 		$_composition->setAttribs(array(
+// 				'dojoType'=>$this->filter,
+// 				'required'=>'true',
+// 				'class'=>'fullside',));
 		$_age = new Zend_Dojo_Form_Element_TextBox('age');
 		$_age->setAttribs(array('dojoType'=>$this->t_num,'class'=>'fullside',));
 		
@@ -266,11 +277,11 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 				'missingMessage'=>'Invalid Module!',
 				'class'=>'fullside'));
 		
-		$this->addElements(array(
+		$this->addElements(array($_school,
 			  $_khname, $_enname,$_studid, $_sex,$_dob,$_degree,$_phone,
-			  $_dept,$_batch,$_year,$_session,$_dept,$_major,$_from_school,$_student_add,$_student_from,$_situation,$_father_tel,
-			  $_mother_tel, $_bacc_exam, $_bacc_code, $_bacc_score, $_from_school,$_remark,
-			  $_pob, $_curr_add, $_composition, $_age,$_semester, $_mention, $_status,$_address));
+			  $_dept,$_batch,$_year,$_session,$_dept,$_student_add,$_student_from,$_father_tel,
+			  $_mother_tel, $_bacc_exam, $_bacc_code, $_bacc_score,$_remark,
+			  $_pob, $_curr_add, $_age,$_semester, $_mention, $_status,$_address));
 		if(!empty($data)){
 			$_khname->setValue($data['stu_khname']);
 			$_enname->setValue($data['stu_enname']);
@@ -289,16 +300,16 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 			$_pob->setValue($data['pob']);
 			$_student_add->setValue($data['student_add']);
 			$_student_from->setValue($data['from_school']);
-			$_situation->setValue($data['situation']);
-			$_from_school->setValue($data['from_school']);
+// 			$_situation->setValue($data['situation']);
+// 			$_from_school->setValue($data['from_school']);
 			$_father_tel->setValue($data['father_phone']);
 			$_mother_tel->setValue($data['mother_phone']);
 			$_bacc_exam->setValue($data['finish_bacc']);
 			$_bacc_score->setValue($data['bacc_score']);
 			$_bacc_code->setValue($data['certificate_code']);
 			$_mention->setValue($data['mention']);
-			$_from_school->setValue($data['from_school']);
-			$_composition->setValue($data['composition']);
+// 			$_from_school->setValue($data['from_school']);
+// 			$_composition->setValue($data['composition']);
 			$_status->setValue($data['status']);
 			$_remark->setValue($data['remark']);
 			//echo $data['composition'];exit();

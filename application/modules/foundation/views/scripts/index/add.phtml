@@ -9,6 +9,10 @@
 		dojo.require("dojo.data.ObjectStore");
 		
 		var major_store  = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode(array()));?> );
+		var situation_store  = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode($this->situation));?> );
+		var compo_store = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode($this->compo));?> );
+		var highschool_store = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode(array()));?> );
+		
 		dojo.ready(function(){
 		new dijit.form.FilteringSelect({
 	        store: major_store,
@@ -18,10 +22,65 @@
 	        name: "major",           
 	        class: 'fullside',            
 	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
-	        onChange: function() {                
+	        onChange: function() {  
+	        	major_id = dijit.byId('major').get('value');
+	        	if(major_id==-1){
+	        		fac_id = dijit.byId('dept').get('value');
+		        	dijit.byId('facultyid').attr('value',fac_id);
+		        	dijit.byId('lbl_faculty').attr('value',dijit.byId('dept').attr('displayedValue'));
+					dijit.byId('pop_major').show();
+			     }           
 	        }
 	    }, "major");
+
+		new dijit.form.FilteringSelect({
+		        store: situation_store,
+		        autoComplete: true,                        
+		        required: true,
+		        id: "situation",
+		        name: "situation",           
+		        class: 'fullside',            
+		        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
+		        onChange: function() {  
+		        	situation_id = dijit.byId('situation').get('value');
+		        	if(situation_id==-1){
+						dijit.byId('pop_situation').show();
+				     }           
+		        }
+		    }, "situation");
+
+		new dijit.form.FilteringSelect({
+	        store: compo_store,
+	        autoComplete: true,                        
+	        required: true,
+	        id: "composition",
+	        name: "composition",           
+	        class: 'fullside',            
+	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
+	        onChange: function() {  
+	        	composition = dijit.byId('composition').get('value');
+	        	if(composition==-1){
+		        	dijit.byId('pop_composition').show();
+			     }           
+	        }
+	    }, "composition");
+		new dijit.form.FilteringSelect({
+	        store: highschool_store,
+	        autoComplete: true,                     
+	        id: "from_school",
+	        name: "from_school",           
+	        class: 'fullside',            
+	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
+	        onChange: function() {  
+	        	//composition = dijit.byId('composition').get('value');
+	        	//if(composition==-1){
+		        //	dijit.byId('pop_composition').show();
+			    // }           
+	        }
+	    }, "from_school");
+
 		}); 
+		
    </script>
 		<form id="add_student" dojoType="dijit.form.Form" method="post">
 		<script type="dojo/method" event="onSubmit">			
@@ -68,7 +127,7 @@
 									<td><?php echo $tr->translate("FACULTIES");?>*</td>
 									<td><?php echo $frm_student->getElement('dept');?></td>
 									<td><?php echo $tr->translate("MAJOR_C");?>*</td>
-									<td><?php echo $frm_student->getElement('major');?></td>
+									<td><input id="major" /><?php //echo $frm_student->getElement('major');?></td>
 									<td><?php echo $tr->translate("YEAR");?>*</td>
 									<td><?php echo $frm_student->getElement('year');?></td>
 								</tr>
@@ -89,7 +148,7 @@
 									<td ><?php echo $tr->translate("MOTHER_TEL");?>*</td>
 									<td><?php echo $frm_student->getElement('mother_phone');?></td>
 									<td><?php echo $tr->translate("SITUATION");?>*</td>
-									<td><?php echo $frm_student->getElement('situation');?></td>
+									<td><input id="situation" /><?php //echo $frm_student->getElement('situation');?></td>
 					      		</tr>
 					      		<tr>
 									<td><?php echo $tr->translate("BACC_EXAME");?>*</td>
@@ -102,20 +161,22 @@
 					      		<tr>
 					      			<td ><?php echo $tr->translate("MENTION");?>*</td>
 									<td><?php echo $frm_student->getElement('mention');?></td>
+									<td ><?php echo $tr->translate("អនាគតដ្ឋាន");?>*</td>
+									<td><?php echo $frm_student->getElement('school_location');?></td>
 									<td ><?php echo $tr->translate("FROM_SCHOOL");?>*</td>
-									<td><?php echo $frm_student->getElement('from_school');?></td>
-									<td ><?php echo $tr->translate("POB");?>*</td>
-									<td><?php echo $frm_student->getElement('pob');?></td>
+									<td><input id="from_school" /><?php //echo $frm_student->getElement('from_school');?></td>
 					      		</tr>
 					      		<tr>
-									<td ><?php echo $tr->translate("ADD_STUDENT");?>*</td>
+					      			<td><?php echo $tr->translate("POB");?>*</td>
+									<td><?php echo $frm_student->getElement('pob');?></td>
+									<td><?php echo $tr->translate("ADD_STUDENT");?>*</td>
 									<td><?php echo $frm_student->getElement('student_add');?></td>
 									<td ><?php echo $tr->translate("COMPOSITION");?>*</td>
-									<td><?php echo $frm_student->getElement('composition');?></td>
-									<td ><?php echo $tr->translate("STUDNET_FROM");?>*</td>
-									<td><?php echo $frm_student->getElement('student_from');?></td>
+									<td><input id="composition" /><?php //echo $frm_student->getElement('composition');?></td>
 					      		</tr>
 					      		<tr>
+					      			<td ><?php echo $tr->translate("STUDNET_FROM");?>*</td>
+									<td><?php echo $frm_student->getElement('student_from');?></td>
 					      			<td ><?php echo $tr->translate("REMARK");?></td>
 									<td><?php echo $frm_student->getElement('remark');?></td>
 					      			<td ><?php echo $tr->translate("STATUS");?>*</td>
@@ -137,17 +198,155 @@
 					  </tr>
 					  </table>
 					</form>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" data-dojo-type="dijit.Dialog" id="pop_major" >
+		<form id='frm_major' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td>មហាវិទ្យាល័យ</td>
+				<td><input dojoType="dijit.form.TextBox"  id="facultyid" name="facultyid" value="" type="hidden">
+				<input dojoType="dijit.form.TextBox" readonly="readonly"  id="lbl_faculty" name="lbl_faculty" value="" type="text"></td>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<td>ជំនាញ/EN</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" missingMessage="Invalid Module!" class="full height-text" id="major_en" name="major_en" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td>ជំនាញ/KH</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" missingMessage="Invalid Module!" class="full height-text" id="major_kh" name="major_kh" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td>អក្សរកាត់</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" class=" fullside height-text" missingMessage="ភ្លេច​បំពេញ​ពាក្យកាត់!" id="shortcut" name="shortcut" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				  	<input type="button"  label="រក្សាទុក" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addNewMajor();"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" data-dojo-type="dijit.Dialog" id="pop_situation" >
+		<form id='frm_situation' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td>វណ្ណៈក្នុងគ្រួសារ</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" id="txt_situation" name="txt_situation" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				  	<input type="button"  label="រក្សាទុក" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addsituation();"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" data-dojo-type="dijit.Dialog" id="pop_composition" >
+		<form id='frm_composition' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td>សមាសភាពនិស្សិត</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" id="occu_name" name="occu_name" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				  	<input type="button"  label="រក្សាទុក" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addcomposition();"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+
+
 <script>
 function printSave(){
 	alert(1);
 	dijit.byId("edit-student").submit();
 }
 
-var url_major = '<?php echo $this->url(array('module'=>'registrar','controller'=>'index','action'=>'get-majors')); ?>';
+var url_major = '<?php echo $this->url(array('module'=>'global','controller'=>'major','action'=>'addmajor')); ?>';
+function addNewMajor(){
+	if(dijit.byId('frm_major').validate()){
+		dojo.xhrPost({
+			url:url_major,
+			form: dojo.byId("frm_major"),
+			handleAs:"json",
+			load: function(data) {
+				var majorItem = {					
+						id: data,
+					    name: dijit.byId('major_en').get('value')+' - '+dijit.byId('major_kh').get('value')
+				};			
+				addDataToSelectbox(dijit.byId('major'), major_store, majorItem, data);
+				dijit.byId('frm_major').reset();
+				dijit.byId("pop_major").hide();
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	}
+}
+var url_situation = '<?php echo $this->url(array('module'=>'global','controller'=>'situation','action'=>'addsituation')); ?>';
+function addsituation(){
+	if(dijit.byId('frm_situation').validate()){
+		dojo.xhrPost({
+			url:url_situation,
+			form: dojo.byId("frm_situation"),
+			handleAs:"json",
+			load: function(data) {
+				var situItem = {					
+						id: data,
+					    name: dijit.byId('txt_situation').get('value')
+				};			
+				addDataToSelectbox(dijit.byId('situation'), situation_store, situItem, data);
+				dijit.byId('frm_situation').reset();
+				dijit.byId("pop_situation").hide();
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	}
+}
+var url_composition = '<?php echo $this->url(array('module'=>'global','controller'=>'occupation','action'=>'addcomposition')); ?>';
+function addcomposition(){
+	if(dijit.byId('frm_composition').validate()){
+		dojo.xhrPost({
+			url:url_composition,
+			form: dojo.byId("frm_composition"),
+			handleAs:"json",
+			load: function(data) {
+				var compoItem = {					
+						id: data,
+					    name: dijit.byId('occu_name').get('value')
+				};
+				addDataToSelectbox(dijit.byId('composition'), compo_store, compoItem, data);
+				dijit.byId('frm_composition').reset();
+				dijit.byId("pop_composition").hide();
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	}
+}
+var url_getmajor = '<?php echo $this->url(array('module'=>'foundation','controller'=>'index','action'=>'get-majors')); ?>';
 function changeMajor(){
 	dept_id = dijit.byId('dept').get('value');
 			dojo.xhrPost({
-			    url: url_major,			    
+			    url: url_getmajor,			    
 			    content : { 
 				    'dept_id':  dept_id	    
 				},
@@ -162,7 +361,35 @@ function changeMajor(){
 			    }
 			});
 }
+
 function CheckBaccCode(){
 	alert('check code of bacc');
+}
+var url_getschool = '<?php echo $this->url(array('module'=>'foundation','controller'=>'index','action'=>'get-school')); ?>';
+function filterSchool(){
+		dojo.xhrPost({
+			url:url_getschool,
+			  content : { 
+				    'province_id' :  dijit.byId('school_location').get('value')	    
+				},
+			handleAs:"json",
+			load: function(response) {
+				//alert(data);
+				highschool_store  = getDataStorefromJSON('id','name', response);
+				dijit.byId('from_school').set('store',highschool_store); 		
+// 				var schoolItem = {					
+// 						id: -1,
+// 						province_id: dijit.byId('school_location').get('value'),
+// 					    name: 'បន្ថែម​អ្នក​ទទួល​ថ្មី'
+// 				};
+// 				addDataToSelectbox(dijit.byId('from_school'), highschool_store, schoolItem, -1);
+// 				dijit.byId('from_school').query.province_id =dijit.byId('school_location').get('value');
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	
+	
 }
 </script>
