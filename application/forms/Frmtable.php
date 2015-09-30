@@ -205,7 +205,7 @@ class Application_Form_Frmtable
 			</div>	';
     	/* end define string*/
     	
-    	$head='<form name="list"><div style="overflow:scroll; max-height:450px; overflow-x:hidden;" ><table class="collape tablesorter" id="'.$id.'" width="100%">';
+    	$head='<form name="list"><div><table class="collape tablesorter" id="'.$id.'" width="100%">';
     	$col_str='';
     	$col_str .='<thead><tr>';
     	if($delete== 1) {

@@ -12,7 +12,7 @@ class Registrar_indexController extends Zend_Controller_Action {
     {
         
     }
-    public function wuRegisterAction()
+    public function addAction()
     {
        $frm = new Registrar_Form_FrmRegister();
        $frm_register = $frm->FrmRegistarWU();

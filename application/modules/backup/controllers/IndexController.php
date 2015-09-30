@@ -13,21 +13,21 @@ class Backup_IndexController extends Zend_Controller_Action
     {
         // action body
     }
-
-    public function viewAction()
-    {
-       
+    public function addAction(){
+    
     }
-
-    public function addAction()
+    public function backupAction()
     {
-      
+    	Application_Form_FrmMessage::Sucessfull("ការរក្សាទុកទិន្នន័យដោយជោគជ័យ !",'/backup/index');
     }
+    public function restoreAction(){
+    	if($this->getRequest()->isPost()){
+    		$data = $this->getRequest()->getPost();
+    		$db = new Backup_Model_DbTable_DbRestore();
+    		$db->UploadFileDatabase($db);
+    	}
+    } 
 
-    public function editedAction()
-    {
-       
-    }
 
 
 }

@@ -20,6 +20,15 @@ class Global_Model_DbTable_DbScholarship extends Zend_Db_Table_Abstract
 		);
 		return  $this->insert($_arr);
 	}
+	public function ajaxaddScholarship($_data){
+		$_arr=array(
+				'title'	  => $_data['txt_scholarship'],
+				'date' => Zend_Date::now(),
+				'status'   => 1,
+				'user_id'	  => $this->getUserId()
+		);
+		return  $this->insert($_arr);
+	}
 	public function getScholarshipById($id){
 		$db = $this->getAdapter();
 		$sql = "SELECT * FROM rms_scholarship WHERE id = ".$db->quote($id);

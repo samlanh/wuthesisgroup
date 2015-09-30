@@ -36,8 +36,8 @@ Class Foundation_Form_FrmStudent extends Zend_Dojo_Form {
 		$_address =  new Zend_Dojo_Form_Element_TextBox('address');
 		$_address->setAttribs(array('dojoType'=>$this->text,'class'=>'fullside',));
 		
-		$_semester=  new Zend_Dojo_Form_Element_TextBox('semester');
-		$_semester->setAttribs(array('dojoType'=>$this->text,'class'=>'fullside',));
+		$_semester=  new Zend_Dojo_Form_Element_NumberTextBox('semester');
+		$_semester->setAttribs(array('dojoType'=>$this->t_num,'class'=>'fullside',));
 		
 		$sex_opt = array(
 				1=>$this->tr->translate("MALE"),

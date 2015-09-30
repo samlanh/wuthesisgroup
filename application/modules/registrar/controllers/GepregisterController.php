@@ -16,7 +16,7 @@ class Registrar_GepregisterController extends Zend_Controller_Action {
  
    
     
-    public function registerAction()
+    public function addAction()
     {
     	$frm = new Registrar_Form_FrmRecept();
     	$frm_recept=$frm->FrmRecept();

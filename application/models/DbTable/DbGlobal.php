@@ -125,6 +125,12 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
     	$sql.=" ORDER BY sp.province_id ";
     	return $db->fetchAll($sql);
     }
+    public function getallScholarship(){
+    	$db = $this->getAdapter();
+    	$sql=" SELECT id ,title AS name FROM `rms_scholarship` WHERE status=1 AND title!=''
+    	  ORDER BY id DESC";
+    	return $db->fetchAll($sql);
+    }
     public function getMarjorById($major_id){ 
     	$db = $this->getAdapter();
     	$sql=" SELECT major_id AS id,major_enname AS name FROM `rms_major`

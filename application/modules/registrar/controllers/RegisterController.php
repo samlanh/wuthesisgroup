@@ -13,7 +13,7 @@ class Registrar_RegisterController extends Zend_Controller_Action {
     {
         
     }
-    public function wuRegisterAction()
+    public function addAction()
     {
       if($this->getRequest()->isPost()){
       	$_data = $this->getRequest()->getPost();

@@ -52,7 +52,8 @@
 		}
 		.fullside{ width:98%; height: 30px;}
 		.full{ width:100%;}
-		body, html {font-size:98%; font-family:'Khmer OS Battambang'}
+		body, html {font-size:96%; font-family:'Khmer OS Battambang'}
+		.normal,.alternate{ font-size:90% !important;}
         /*body, html { font-family:helvetica,arial,sans-serif; font-size:95%; }*/
 		*{ padding: 0; margin: 0;}
 		fieldset{ font-family: inherit;}
@@ -130,7 +131,7 @@ dojo.require("dojo.parser");
                 	<td colspan="2" height="70px;"></td>
                 </tr>
                 <tr>
-                	<td valign="top" <?php if($module!='home') echo'width="220px"';  ?> >
+                	<td valign="top" <?php if($module!='home') echo'width="200px"';  ?> >
 			             <?php if($module!='home'){?>
 			             <?php echo $this->render('menuleft.phtml')?>
 			             <?php }?>

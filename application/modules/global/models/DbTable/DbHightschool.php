@@ -56,5 +56,17 @@ class Global_Model_DbTable_DbHightschool extends Zend_Db_Table_Abstract
     	}
     	return $db->fetchAll($sql.$where.$order);
     }
+    public function addNewschool($_data){//ajax
+    	$_arr=array(
+    			'province_id'	  => $_data['province'],
+    			'school_name'	  => $_data['school_name'],
+    			'create_date' => Zend_Date::now(),
+    			'status'   => 1,
+    			'user_id'	  => $this->getUserId()
+    	);
+    	 
+    	return $this->insert($_arr);
+    }
+     
 }
 

@@ -12,6 +12,7 @@
 		var situation_store  = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode($this->situation));?> );
 		var compo_store = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode($this->compo));?> );
 		var highschool_store = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode(array()));?> );
+		var scholarship_store  = getDataStorefromJSON('id','name', <?php print_r(Zend_Json::encode($this->scholarship));?> );
 		
 		dojo.ready(function(){
 		new dijit.form.FilteringSelect({
@@ -72,12 +73,29 @@
 	        class: 'fullside',            
 	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
 	        onChange: function() {  
-	        	//composition = dijit.byId('composition').get('value');
-	        	//if(composition==-1){
-		        //	dijit.byId('pop_composition').show();
-			    // }           
+	        	school_id = dijit.byId('from_school').get('value');
+	        	if(school_id==-1){
+		        	dijit.byId('from_province').attr('value',dijit.byId('school_location').attr('displayedValue'));
+		        	dijit.byId('province').attr('value',dijit.byId('school_location').get('value'));
+		       		dijit.byId('pop_school').show();
+			    }           
 	        }
 	    }, "from_school");
+
+		new dijit.form.FilteringSelect({
+	        store: scholarship_store,
+	        autoComplete: true,                     
+	        id: "scholarship",
+	        name: "scholarship",           
+	        class: 'fullside',            
+	        missingMessage:"អ្នក​ភ្លេច​បំពេញ​ ឈ្មោះ​អ្នក​ផ្ញើរ!",            
+	        onChange: function() {  
+	        	scholarship_id = dijit.byId('scholarship').get('value');
+	        	if(scholarship_id==-1){
+		       		dijit.byId('pop_scholarship').show();
+			    }           
+	        }
+	    }, "scholarship");
 
 		}); 
 		
@@ -113,7 +131,7 @@
 									<td><?php echo $frm_student->getElement('address');?></td>
 					      		</tr>
 					      		<tr>
-					      			<td colspan="6"​ style="border-bottom:1px solid #ccc;">ព័ត៏មានសិក្សានៅមហាវិទ្យាល័យ</td>
+					      			<td colspan="6"​ style="border-bottom:1px solid #ccc;"><strong>ព័ត៏មានសិក្សានៅមហាវិទ្យាល័យ</strong></td>
 					      		</tr>
 					      		<tr>
 					      			<td title="បញ្ជូលលេខសំគាល់និស្សិត"><?php echo $tr->translate("STUDENT_ID");?>*</td>
@@ -136,7 +154,8 @@
 									<td><?php echo $frm_student->getElement('semester');?></td>
 									<td><?php echo $tr->translate("SESSION");?>*</td>
 									<td><?php echo $frm_student->getElement('session');?></td>
-									<td colspan="4"></td>
+									<td>scholarship</td>
+									<td><input id="scholarship" /></td>
 								</tr>
 					      	</table>
 					      </div><!-- end tab 1 -->
@@ -150,6 +169,17 @@
 									<td><?php echo $tr->translate("SITUATION");?>*</td>
 									<td><input id="situation" /><?php //echo $frm_student->getElement('situation');?></td>
 					      		</tr>
+					      		<tr>
+					      			<td><?php echo $tr->translate("POB");?>*</td>
+									<td><?php echo $frm_student->getElement('pob');?></td>
+									<td><?php echo $tr->translate("ADD_STUDENT");?>*</td>
+									<td><?php echo $frm_student->getElement('student_add');?></td>
+									<td><?php echo $tr->translate("COMPOSITION");?>*</td>
+									<td><input id="composition" /><?php //echo $frm_student->getElement('composition');?></td>
+								</tr>
+								<tr>
+									<td colspan="6" style="border-bottom:1px solid #ccc;"><strong>ព័ត៏មានមធ្យមសិក្សា</strong></td>
+								</tr>
 					      		<tr>
 									<td><?php echo $tr->translate("BACC_EXAME");?>*</td>
 									<td><?php echo $frm_student->getElement('finish_bacc');?></td>
@@ -165,14 +195,6 @@
 									<td><?php echo $frm_student->getElement('school_location');?></td>
 									<td ><?php echo $tr->translate("FROM_SCHOOL");?>*</td>
 									<td><input id="from_school" /><?php //echo $frm_student->getElement('from_school');?></td>
-					      		</tr>
-					      		<tr>
-					      			<td><?php echo $tr->translate("POB");?>*</td>
-									<td><?php echo $frm_student->getElement('pob');?></td>
-									<td><?php echo $tr->translate("ADD_STUDENT");?>*</td>
-									<td><?php echo $frm_student->getElement('student_add');?></td>
-									<td ><?php echo $tr->translate("COMPOSITION");?>*</td>
-									<td><input id="composition" /><?php //echo $frm_student->getElement('composition');?></td>
 					      		</tr>
 					      		<tr>
 					      			<td ><?php echo $tr->translate("STUDNET_FROM");?>*</td>
@@ -208,8 +230,6 @@
 				<input dojoType="dijit.form.TextBox" readonly="readonly"  id="lbl_faculty" name="lbl_faculty" value="" type="text"></td>
 				</td>
 			</tr>
-			
-			
 			<tr>
 				<td>ជំនាញ/EN</td>
 				<td><input dojoType="dijit.form.ValidationTextBox" required="true" missingMessage="Invalid Module!" class="full height-text" id="major_en" name="major_en" value="" type="text"></td>
@@ -268,7 +288,48 @@
 		</form>
 	</div>
 </div>
-
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" data-dojo-type="dijit.Dialog" id="pop_school" >
+		<form id='frm_school' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td>ខេត្ត/រាជធានី</td>
+				<td><input dojoType="dijit.form.TextBox" readonly="readonly" id="from_province" name="from_province" value="" type="text">
+					<input dojoType="dijit.form.TextBox" id="province" name="province" value="" type="text">
+				</td>
+			</tr>
+			<tr>
+				<td>ឈ្មោះសាលា</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" id="school_name" name="school_name" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				  	<input type="button"  label="រក្សាទុក" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addschool();"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+<div class="dijitHidden">
+	<div data-dojo-type="dijit.Dialog" data-dojo-type="dijit.Dialog" id="pop_scholarship" >
+		<form id='frm_scholarship' dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+		<table class="height" >
+			<tr>
+				<td>ឈ្មោះអាហារូបការណ៏</td>
+				<td><input dojoType="dijit.form.ValidationTextBox" required="true" id="txt_scholarship" name="txt_scholarship" value="" type="text"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				  	<input type="button"  label="រក្សាទុក" dojoType="dijit.form.Button" 
+				 	iconClass="dijitEditorIcon dijitEditorIconSave" onclick="addscholarship();"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
 
 <script>
 function printSave(){
@@ -391,5 +452,49 @@ function filterSchool(){
 		});
 	
 	
+}
+var url_addschool = '<?php echo $this->url(array('module'=>'foundation','controller'=>'index','action'=>'add-school')); ?>';
+function addschool(){
+	if(dijit.byId('frm_school').validate()){
+		dojo.xhrPost({
+			url:url_addschool,
+			form: dojo.byId("frm_school"),
+			handleAs:"json",
+			load: function(data) {
+				var schoolItem = {					
+						id: data,
+					    name: dijit.byId('school_name').get('value')
+				};
+				addDataToSelectbox(dijit.byId('from_school'), highschool_store, schoolItem, data);
+				dijit.byId('frm_school').reset();
+				dijit.byId("pop_school").hide();
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	}
+}
+var url_scholarship = '<?php echo $this->url(array('module'=>'foundation','controller'=>'index','action'=>'add-scholarship')); ?>';
+function addscholarship(){
+	if(dijit.byId('frm_scholarship').validate()){
+		dojo.xhrPost({
+			url:url_scholarship,
+			form: dojo.byId("frm_scholarship"),
+			handleAs:"json",
+			load: function(data) {
+				var scholashipItem = {					
+						id: data,
+					    name: dijit.byId('txt_scholarship').get('value')
+				};
+				addDataToSelectbox(dijit.byId('scholarship'), scholarship_store, scholashipItem, data);
+				dijit.byId('frm_scholarship').reset();
+				dijit.byId("pop_scholarship").hide();
+			},
+			error: function(err) {
+				alert(err);
+			}
+		});
+	}
 }
 </script>

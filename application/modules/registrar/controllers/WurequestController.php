@@ -13,7 +13,7 @@ class Registrar_WurequestController extends Zend_Controller_Action {
     {
         
     }
-	public function wuRequestAction()
+	public function addAction()
     {
     	$frm = new Registrar_Form_FrmRegister();
     	$frm_request=$frm->FrmStudentRequest();
