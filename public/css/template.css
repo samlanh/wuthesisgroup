@@ -36,7 +36,8 @@ th.tdheader {
     font-size: 12px;
     font-weight: bold;
     line-height: 30px;
-    padding: 2px 5px 2px 5px;
+	font-family: 'Kh Battambang','Khmer Battambang',Arial,Helvetica,sans-serif;
+    padding: 2px 2px 2px 2px;
     text-align: center;
     cursor: pointer;
 }
@@ -46,7 +47,7 @@ th.tdedit { width: 30px;}
 tr.normal td, tr.alternate td {
     border: 1px solid #DDDDDD;
     line-height: 14px;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 2px 0px 2px;
 }
 td.items-no {
     border: 1px solid #CCCCCC;
