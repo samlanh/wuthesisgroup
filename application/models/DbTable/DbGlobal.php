@@ -414,6 +414,11 @@ class Application_Model_DbTable_DbGlobal extends Zend_Db_Table_Abstract
    	$sql = " SELECT situ_id AS id ,situ_name AS name FROM `rms_situation` WHERE situ_name!='' AND status=1 ORDER BY id DESC ";
    	return $db->fetchAll($sql);
    }
+   function getSession(){
+   	$db=$this->getAdapter();
+   	$sql="SELECT key_code,CONCAT(name_en,'-',name_kh) AS view_name FROM rms_view WHERE `type`=4 AND `status`=1";
+   	return $db->fetchAll($sql);
+   }
   
    
    

@@ -1,0 +1,17 @@
+
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate('STUDENT_CHANGE_GROUP')); 
+?>
+
+<form  id='foundation_class' action="<?php echo $this->url(array('module'=>'foundation','controller'=>'studentchangegroup','action'=>'index')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<table style="width:60%">
+		  <tr> 
+			<td> <input dojoType="dijit.form.TextBox"   id="adv_search" name="adv_search" placeholder="Search....." value="<?php echo $this->adv_search['txtsearch']; ?>" type="text">
+			<button iconclass="dijitIconSearch" dojoType="dijit.form.Button" showLabel="true" name="search"  type="submit"><?php echo $tr->translate("SEARCH");?></button></td>
+		  </tr>
+	 </table>
+</form>
+
+
+<?php echo $this->list;?>

@@ -1,0 +1,233 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	$this->headTitle('SRMS | WU RECEIPT'); 
+	echo $this->headTitle();
+	$base_url = Application_Form_FrmMessage::getUrl("/");
+?>	
+<script type="text/javascript">
+	dojo.require("dojo.store.Memory");
+	dojo.require("dojo.data.ObjectStore");
+	dojo.require("dijit.Dialog");
+</script>
+<style>
+select{ width:100%;}
+fieldset{  background:none;}
+</style>
+<?php $recept = $this->frm_recept;?>
+<form id='receipt' action="<?php echo $this->url(array('module'=>'transfer','controller'=>'index','action'=>'add')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+<table  cellspacing="10" style="margin: 0 auto; width: 65%;" >
+	<tr>
+		<td>
+		<fieldset>
+					<legend align="center"><strong><?php echo $tr->translate("OFFICIAL_RECEIPT");?></strong></legend>
+					<table style="margin: 0 auto; width: 100%; background:#DFF7FD;" cellspacing="5">
+						<tr>
+							
+							<td style="width: 170px"><?php echo $tr->translate("RECEIPT_NO")."<sup>o</sup>";?></td>
+							<td><?php echo $recept->getElement('no');?></td>
+							<td><?php echo $tr->translate("DATE");?></td>
+							<td><?php echo $recept->getElement('no_date');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("NAME_KH");?></td>
+							<td><?php echo $recept->getElement('kh_name');?></td>
+							<td><?php echo $tr->translate("NAME_EN");?></td>
+							<td><?php echo $recept->getElement('en_name');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("ID_NUMBER");?></td>
+							<td><?php echo $recept->getElement('id_number');?></td>
+							<td><?php echo $tr->translate("SEX");?></td>
+							<td><?php echo $recept->getElement('sex');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("DOB");?></td>
+							<td><?php echo $recept->getElement('dob');?></td>
+							<td><?php echo $tr->translate("TEL");?></td>
+							<td><?php echo $recept->getElement('tel');?></td>
+							
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("COURSE");?></td>
+							<td><?php echo $recept->getElement('course');?></td>
+							<td><?php echo $tr->translate("LEVEL");?></td>
+							<td><?php echo $recept->getElement('level');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("START_DATE");?></td>
+							<td><?php echo $recept->getElement('start_date');?></td>
+							<td><?php echo $tr->translate("END_DATE");?></td>
+							<td><?php echo $recept->getElement('end_date');?></td>
+							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><?php echo $tr->translate("SESSION");?></td>
+							<td><?php echo $recept->getElement('session');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("COURSE_OF_STUDY_MATERIALS");?></td>
+							<td><?php echo $recept->getElement('course_of_study_materials');?></td>
+							<td><?php echo $tr->translate("PAYMENT_FOR");?></td>
+							<td><?php echo $recept->getElement('payment_for');?></td>
+						</tr>
+						<tr>
+							<td><?php echo $tr->translate("TUITION_FEE");?></td>
+							<td><?php echo $recept->getElement('tuition_fee');?></td>
+							<td><?php echo $tr->translate("DISCOUND");?></td>
+							<td><?php echo $recept->getElement('discount');?></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><?php echo $tr->translate("AMOUNT_PAID");?></td>
+							<td><?php echo $recept->getElement('amount_paid');?></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><?php echo $tr->translate('IN_WORDS');?></td>
+							<td ><?php echo $recept->getElement('in_words');?></td>
+						</tr>
+						<tr>
+							<td colspan="4" align="center">
+							<input type="button" value="រក្សាទុក" label="រក្សាទុក" id="submitButton" dojoType="dijit.form.Button" 
+								 iconClass="dijitEditorIcon dijitEditorIconSave" onclick="printSave()"/>
+							</td>
+						</tr>
+					</table>	
+		</fieldset>		
+		</td>
+	</tr>
+</table>	
+</form>
+<script>
+function printSave(){		
+	if(dijit.byId('receipt').validate()) {
+		/*if(dijit.byId('recieve_money').get('value') < dijit.byId('total').get('value') || dijit.byId('return_money').get('value') < 0){
+			alert('សូម​ពិនិត្រ ទឹក​ដែល​​ទទួល​បាន​ម្តង ​ទៀត..');
+			dijit.byId('recieve_money').focus();
+			return false;
+		}*/
+		//showDialog();		
+		dijit.byId("tc_reciept").show();	
+	}
+	
+}
+</script>
+<div class="dijitHidden">
+<?php $keycode = $this->keycode;?>
+	<div data-dojo-type="dijit.Dialog" style="width:7cm;" align="center" data-dojo-props="title:'<?php echo $tr->translate("STUDENT_PAYMENT_RECEIPT");?>'" id="tc_reciept" >
+		<div id="divPrint" style="width: 21cm; height: 14cm ; padding: 0px; margin: 0px;">
+			<style>
+				.fontbig{
+					font-size: 15px;	
+				}
+				.fonttel{
+					font-size: 18px;	
+				}
+				.pleft{
+					width: 110px;	
+				}
+				.label{ font-weight: bold;font-size: 22px;}
+			</style>	
+			<table bgcolor="#DFF7FD" cellspacing="5" style="width: 21cm;height: 14cm; font-size:12pt; padding: 0px; margin: 0px;">
+					<tr height="50px">
+						<td><img src="<?php echo $base_url.'/images/logo.png';?>" width="50%"/></td>
+					   	<td align="center" colspan="2">	
+				            <strong style="font-size: 24px;font-weight:bold"><?php echo $keycode['branch'];?></strong><br/>
+							<strong style="font-size: 20px;font-weight:bold"><?php echo $keycode['branch_en'];?></strong><br/>
+			            </td>
+			            <td></td>
+				   </tr>
+				   <tr height="50px">
+						<td></td>
+					   	<td align="center" colspan="2">	
+				            <strong style="font-size: 22px;"><?php echo $keycode['request_student']; ?></strong><br/>
+							<strong style="line-height:2px; font-size: 16px;"><?php echo $keycode['request_student_en'];?></strong>
+			            </td>
+			            <td>Receipt N<sup>o</sup> 062951</td>
+				   </tr>
+					<tr>
+						<td width="25%">នាម - គោត្តនាម</td>
+						<td  width="25%">&nbsp; : </td>
+						<td  width="25%">Full Name(First|Last):</td>
+					   	<td  width="25%">&nbsp; : Chea Dany</td>
+				   </tr>
+				   <tr>
+						<td>ID N<sup>o</sup></td>
+						<td>&nbsp; : B8-008</td>
+						<td>Year</td>
+					   	<td>&nbsp; : 4</td>
+				   </tr>
+				    <tr>
+						<td>Session</td>
+						<td>&nbsp; : Everning</td>
+						<td>Faculty</td>
+						<td>&nbsp; : Business</td>
+						
+				   </tr>
+				    <tr>
+						<td>Date of Birth</td>
+						<td>&nbsp; : 30/03/1990 </td>
+						<td>Place of Birth</td>
+						<td>&nbsp; : Phnom Penh</td>
+				   </tr>
+				   <tr>
+						<td>Request for:</td>
+						<td>&nbsp; : Certificate of Completion</td>
+						<td>Other</td>
+						<td>&nbsp; : Graduated</td>
+				   </tr>
+				   <tr>
+						<td>&nbsp; :</td>
+						<td>&nbsp; :</td>
+						<td>Paid</td>
+						<td>&nbsp; : 10 $</td>
+				   </tr>
+				   <tr>
+						<td>ឈ្មោះអ្នកទទូល :</td>
+						<td>&nbsp; : <?php $session_user=new Zend_Session_Namespace('auth');
+			        			$username = $session_user->first_name; echo $username;?></td>
+						<td>Paid Date</td>
+						<td>&nbsp; : 23/02/2014</td>
+				   </tr>
+				   <tr>
+						<td colspan="2">
+						<hr size="1" />
+							<?php $brachs = explode('/',$keycode['footer_branch']);?>
+							<ul style="list-style-type: none;">
+								<?php foreach ($brachs AS $key =>$branch):?>
+								<li><?php echo $branch;?></li>
+							    <?php endforeach;?>
+							</ul>
+						</td>
+						<td>
+						<hr size="1" />
+							<?php $phones = explode('/',$keycode['foot_phone']);?>
+							<ul style="list-style-type: none;">
+								<?php foreach ($phones AS $key =>$phone):?>
+								<li><?php echo $phone;?></li>
+							    <?php endforeach;?>
+							</ul>
+						</td>
+						<td>
+						<hr size="1" />
+							<?php $phones = explode('/',$keycode['foot_phone']);?>
+							<ul style="list-style-type: none;">
+								<?php foreach ($phones AS $key =>$phone):?>
+								<li><?php echo $phone;?></li>
+							    <?php endforeach;?>
+							</ul>
+						</td>			
+				   </tr>
+			</table>
+		</div>
+		<iframe name=print_frame width=0 height=0 frameborder=0 src=about:blank></iframe>	
+		<button dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconPrint"
+				showLabel="false" type="button" onclick="doPrint();">Print</button>
+		<button dojoType="dijit.form.Button" iconClass="dijitEditorIcon dijitEditorIconCancel"
+				showLabel="false" type="button" onclick="hideDialog();">Cancel</button>
+	</div>
+</div>

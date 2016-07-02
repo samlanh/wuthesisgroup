@@ -1,0 +1,184 @@
+<?php
+	$tr = Application_Form_FrmLanguages::getCurrentlanguage();
+	echo $this->headTitle($tr->translate('EDIT_STUDENT_CHANGE_GROUP')); 
+?>
+<form id="add_car" action="<?php echo $this->url(array('module'=>'foundation','controller'=>'studentchangegroup','action'=>'edit')); ?>" dojoType="dijit.form.Form" method="post" enctype="application/x-www-form-urlencoded">
+	<table cellspacing="20" style="margin: 0 auto; width:100%">
+		<tr>
+			<td>
+				<fieldset>
+					<legend align="center"><strong><?php echo $tr->translate("EDIT_STUDENT_CHANGE_GROUP");?></strong></legend>
+					<table cellspacing="20" width="100%" >
+						<tr>
+							<td align="center" valign="top">
+								<table cellspacing="10" width="100%"​>
+									<tr>
+										<td ><?php echo $tr->translate("STUDENT_ID")?></td>
+										<td>
+											<select class="fullside" name="studentid" id="studentid" dojoType="dijit.form.FilteringSelect" onchange="getStudentInfo();" >
+										    	<?php if(!empty($this->rs))foreach ($this->rs as $row){?>
+													<option value="<?php echo $row['stu_id']?>"<?php if($row['stu_id']==$this->rows['stu_id']) echo 'selected="selected"';?>><?php echo $row['stu_code']?></option>
+												<?php }?>
+											</select>
+										</td>
+										
+										
+										<td align="right"><?php echo $tr->translate("STUDENT_NAME")?></td>
+										<td ><input dojoType="dijit.form.TextBox" readonly="readonly" class="fullside" id="studentname" name="studentname" value="" type="text">
+										</td>
+									 
+									 
+										<td align="right"><?php echo $tr->translate("SEX")?></td><input type="hidden" name="id" value="<?php echo $this->rows['id'];?>" />
+										<td>
+											<select dojoType="dijit.form.FilteringSelect"  readonly="readonly" class="fullside" id="gender" name="gender" type="text">
+												<option value="1">Male</option>
+												<option value="2">Female</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td><?php echo $tr->translate("FROM_GROUP")?></td>
+										<td>
+											<select dojoType="dijit.form.FilteringSelect" required="true" readonly="readonly" class="fullside" id="from_group" name="from_group" type="text" onchange="toStudentGroup(1);">
+												<option value="0" placeholder="select group">Select Year </option>
+												<?php if(!empty($this->row))foreach ($this->row as $_row){?>
+													<option value="<?php echo $_row['id']?>"<?php if($_row['id']==$this->rows['from_group']) echo 'selected="selected"';?>><?php echo $_row['group_code']?></option>
+												<?php }?>
+											</select>
+										</td>
+									
+										<td align="right"><?php echo $tr->translate("DETAIL")?></td>
+										<td  colspan="3" rowspan="1"><label id="lblfromgroup" readonly="readonly" name="detail_from_group" style="background:#fff;width:100%;height:70px;display:block;"></label></td>
+									</tr>
+									
+									<tr>
+										<td><?php echo $tr->translate("TO_GROUP")?></td>
+										<td>
+											<select dojoType="dijit.form.FilteringSelect" required="true" class="fullside" id="to_group" name="to_group" type="text" onchange="toStudentGroup(2);">
+												<?php if(!empty($this->row))foreach ($this->row as $_row){?>
+													<option value="<?php echo $_row['id']?>" <?php if($_row['id']==$this->rows['to_group']) echo 'selected="selected"';?>><?php echo $_row['group_code']?></option>
+												<?php }?>
+											</select>
+										</td>
+									
+										<td align="right"><?php echo $tr->translate("DETAIL")?></td>
+										<td  colspan="3" rowspan="1"><label id="lbltogroup" readonly="readonly" name="detail_to_group" style="background:#fff;width:100%;height:70px;display:block;"></label></td>
+									</tr>
+									
+									
+									<tr>
+										<td><?php echo $tr->translate("MOVING_DATE")?></td>
+										<td><input dojoType="dijit.form.DateTextBox" required="true" class="fullside" id="moving_date" name="moving_date" value="<?php echo $this->rows['moving_date'];?>" type="text"></td>
+									
+										<td align="right"><?php echo $tr->translate("NOTE")?></td>
+										<td>
+											<input dojoType="dijit.form.TextBox" required="true" class="fullside" value="<?php echo $this->rows['note'];?>" id="note" name="note" type="text" />
+												
+										</td>
+									
+										<td align="right"><?php echo $tr->translate("STATUS")?></td>
+										<td>
+											<select dojoType="dijit.form.FilteringSelect" required="true" class="fullside" id="status" name="status" type="text">
+												<option value="1" <?php if($this->rows['status']==1) echo 'selected="selected"';?>>Active</option>
+												<option value="0" <?php if($this->rows['status']==0) echo 'selected="selected"';?>>Deactive</option>
+											</select>
+										</td>
+									</tr>
+									
+									
+									<tr>
+										<td colspan="6" align="center">
+											<input iconClass="dijitIconClear" type="reset" value="សំអាត" label="<?php echo $tr->translate('CLEAR');?>" dojoType="dijit.form.Button"/>
+											<input type="button" label="<?php echo $tr->translate('GO_BACK');?>" id="back" dojoType="dijit.form.Button" 
+											 iconClass="dijitIconUndo" onclick="window.location = '<?php echo $this->url(array('module'=>'foundation','controller'=>"studentchangegroup",'action'=>'index'),null,true); ?>';" />
+											<input type="submit" value="save_close" name="save_close" label="<?php echo $tr->translate('GO_EDIT');?>" dojoType="dijit.form.Button" 
+											iconClass="dijitEditorIcon dijitEditorIconSave" />
+									
+										</td>
+									</tr>					
+								</table>
+							</td>							
+						</tr>
+					</table>	
+				</fieldset>
+			</td>			
+		</tr>
+		
+	</table>	
+</form>
+<script type="text/javascript">
+var url_student = '<?php echo $this->url(array('module'=>'foundation','controller'=>'studentchangegroup','action'=>'get-student')); ?>';
+
+dojo.ready(function(){
+
+	getStudentInfo();
+	toStudentGroup(1);
+	toStudentGroup(2);
+
+});
+
+
+
+function getStudentInfo(){
+			studentid = dijit.byId('studentid').get('value');
+			var i=0;
+			dojo.xhrPost({
+				url:url_student,
+				content:{
+					'studentid':studentid
+					},
+				handleAs:"json",
+				load: function(data) {
+					//alert(data.stu_enname);
+					dijit.byId("studentname").attr("value",data.stu_enname);
+					dijit.byId("gender").attr("value",data.sex);
+					
+						//dijit.byId("from_group").attr("value",data.group_id);
+					
+				},
+				error: function(err) {
+					alert(err);
+				}
+			});
+}
+
+var url_to_group = '<?php echo $this->url(array('module'=>'foundation','controller'=>'studentchangegroup','action'=>'get-to-group')); ?>';
+function toStudentGroup(type){
+	//alert(type);
+	if(type==1){
+		togroup = dijit.byId('from_group').get('value');
+	}else{
+		togroup = dijit.byId('to_group').get('value');
+		}
+	
+	dojo.xhrPost({
+		url:url_to_group,
+		content:{
+			'to_group':togroup
+			},
+		handleAs:"json",
+		load: function(data) {
+			//alert(data);
+
+			if(type==1){
+				dojo.byId('lblfromgroup').innerHTML='<span style="color:red;">Academic :  </span>'+data.year+'-'+data.to_academic+'<span style="color:red;">  Degree :  </span>'+data.degree+'<span style="color:red;">  Grade :  </span>'+data.grade+'<span style="color:red;">  Session :  </span>'+data.session+"<br />"+'<span style="color:red;">  Start Date :  </span>'+data.start_date+'<span style="color:red;">  Expired Date :  </span>'+data.expired_date;
+			}else{
+				dojo.byId('lbltogroup').innerHTML='<span style="color:red;">Academic :  </span>'+data.year+'-'+data.to_academic+'<span style="color:red;">  Degree :  </span>'+data.degree+'<span style="color:red;">  Grade :  </span>'+data.grade+'<span style="color:red;">  Session :  </span>'+data.session+"<br />"+'<span style="color:red;">  Start Date :  </span>'+data.start_date+'<span style="color:red;">  Expired Date :  </span>'+data.expired_date;
+			}
+				//dijit.byId("from_detail").attr("value",);
+			//dijit.byId("gender").attr("value",data.to_academic);
+			
+
+		},
+		error: function(err) {
+			alert(err);
+		}
+	});
+}
+
+
+
+
+
+</script>
+
